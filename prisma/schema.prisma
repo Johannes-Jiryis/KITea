@@ -20,6 +20,7 @@ model User {
   sessions Session[]
   reviews  Review[]
   helpfulVotes ReviewHelpful[]
+  submissions ReviewSubmission[]
 }
 
 model Account {
@@ -89,12 +90,17 @@ model Module {
   moduleNumber String   // e.g., "MA-101", "CS-201"
   moduleName   String
   description  String?
+  createdAt    DateTime? @default(now())
+  searchVector Unsupported("tsvector")?
   semesters    Semester[]
   reviews      Review[]
 
   @@unique([moduleNumber])
   @@index([moduleNumber])
   @@index([moduleName])
+  @@index([searchVector], type: Gin, map: "Module_name_search_idx")
+  @@index([moduleNumber(ops: raw("gin_trgm_ops"))], type: Gin, map: "Module_moduleNumber_trgm_idx")
+  @@index([moduleName(ops: raw("gin_trgm_ops"))], type: Gin, map: "Module_moduleName_trgm_idx")
 }
 
 model Review {
@@ -123,6 +129,9 @@ model Review {
   @@unique([userId, moduleId, semesterTakenId], map: "user_module_semester_index")
   @@index([moduleId])
   @@index([createdAt])
+  @@index([userId, createdAt])
+  @@index([moduleId, createdAt, id])
+  @@index([moduleId, semesterTakenId, createdAt, id])
 }
 
 model ReviewHelpful {
@@ -136,5 +145,20 @@ model ReviewHelpful {
 
   @@unique([reviewId, userId])
   @@index([reviewId])
+}
+
+model ReviewSubmission {
+  id String @id @default(cuid())
+  userId String
+  createdAt DateTime @default(now()) @db.Timestamptz(3)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  @@index([userId, createdAt])
+}
+
+model RequestLimit {
+  key String @id
+  count Int
+  expiresAt DateTime @db.Timestamptz(3)
+  @@index([expiresAt])
 }
 

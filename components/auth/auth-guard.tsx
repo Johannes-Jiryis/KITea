@@ -1,26 +1,26 @@
-"use client"
+"use client";
 
-import { useEffect } from "react"
-import { useRouter } from "next/navigation"
-import { useSession } from "next-auth/react"
-import { Loader2 } from "lucide-react"
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
+import { Loader2 } from "lucide-react";
 
 type AuthGuardProps = {
-  children: React.ReactNode
-  fallback?: React.ReactNode
-}
+  children: React.ReactNode;
+  fallback?: React.ReactNode;
+};
 
 export function AuthGuard({ children, fallback }: AuthGuardProps) {
-  const { data: session, status } = useSession()
-  const router = useRouter()
+  const { data: session, status } = useSession();
+  const router = useRouter();
 
   useEffect(() => {
     // Only redirect if we're certain about the auth state
     if (status === "unauthenticated") {
-      const callbackUrl = encodeURIComponent(window.location.pathname + window.location.search)
-      router.push(`/login?callbackUrl=${callbackUrl}`)
+      const callbackUrl = encodeURIComponent(window.location.pathname + window.location.search);
+      router.push(`/login?callbackUrl=${callbackUrl}`);
     }
-  }, [status, router])
+  }, [status, router]);
 
   // Show loading state while checking auth
   if (status === "loading") {
@@ -31,17 +31,17 @@ export function AuthGuard({ children, fallback }: AuthGuardProps) {
           <p className="text-sm text-muted-foreground">Checking authentication...</p>
         </div>
       </div>
-    )
+    );
   }
 
   // Show fallback if provided and not authenticated
   if (status === "unauthenticated" && fallback) {
-    return <>{fallback}</>
+    return <>{fallback}</>;
   }
 
   // Only render children if authenticated
   if (status === "authenticated") {
-    return <>{children}</>
+    return <>{children}</>;
   }
 
   // Default loading state
@@ -52,5 +52,5 @@ export function AuthGuard({ children, fallback }: AuthGuardProps) {
         <p className="text-sm text-muted-foreground">Loading...</p>
       </div>
     </div>
-  )
+  );
 }

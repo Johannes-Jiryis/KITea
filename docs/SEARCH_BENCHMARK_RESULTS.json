@@ -1,0 +1,79 @@
+{
+  "at": "2026-10-19T17:55:04.161Z",
+  "node": "v22.14.0",
+  "platform": "win32",
+  "cpu": "AMD Ryzen 7 5700U with Radeon Graphics         ",
+  "logicalCpus": 16,
+  "memoryGb": 15.3,
+  "postgres": [
+    {
+      "version": "PostgreSQL 17.6 on x86_64-windows, compiled by msvc-19.44.35213, 64-bit"
+    }
+  ],
+  "catalogRows": 3124,
+  "queries": [
+    "MA-101",
+    "Analysis",
+    "analysis",
+    "Mathematik",
+    "Analysiz",
+    "Höhere",
+    "machine learning",
+    "100%",
+    "%_",
+    "zzzzmissing",
+    "CS",
+    "   Analysis  "
+  ],
+  "scope": "Loopback HTTP harness invoking production search handler; baseline reproduces original Prisma query. Includes database read limiter; excludes Next middleware/routing, TLS, WAN and client debounce.",
+  "reports": [
+    {
+      "mode": "baseline",
+      "modules": 3124,
+      "reviews": 31240,
+      "concurrency": 20,
+      "samples": 1000,
+      "warmup": 60,
+      "p50Ms": 54.36,
+      "p95Ms": 69.5,
+      "p99Ms": 94.88,
+      "errors": 0
+    },
+    {
+      "mode": "optimized",
+      "modules": 3124,
+      "reviews": 31240,
+      "concurrency": 20,
+      "samples": 1000,
+      "warmup": 60,
+      "p50Ms": 68.06,
+      "p95Ms": 109.84,
+      "p99Ms": 124.93,
+      "errors": 0
+    },
+    {
+      "mode": "baseline",
+      "modules": 10000,
+      "reviews": 100000,
+      "concurrency": 20,
+      "samples": 1000,
+      "warmup": 60,
+      "p50Ms": 47.7,
+      "p95Ms": 74.15,
+      "p99Ms": 92.85,
+      "errors": 0
+    },
+    {
+      "mode": "optimized",
+      "modules": 10000,
+      "reviews": 100000,
+      "concurrency": 20,
+      "samples": 1000,
+      "warmup": 60,
+      "p50Ms": 83.18,
+      "p95Ms": 107.51,
+      "p99Ms": 117.3,
+      "errors": 0
+    }
+  ]
+}

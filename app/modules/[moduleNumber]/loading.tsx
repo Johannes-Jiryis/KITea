@@ -1,6 +1,6 @@
-import { Skeleton } from "@/components/ui/skeleton"
-import { Navbar } from "@/components/navbar"
-import { Footer } from "@/components/footer"
+import { Skeleton } from "@/components/ui/skeleton";
+import { Navbar } from "@/components/navbar";
+import { Footer } from "@/components/footer";
 
 export default function ModulePageLoading() {
   return (
@@ -38,5 +38,5 @@ export default function ModulePageLoading() {
       </main>
       <Footer />
     </>
-  )
+  );
 }

@@ -1,123 +1,114 @@
-"use client"
+"use client";
 
-import { useMemo, useState } from "react"
-import { SlidersHorizontal } from "lucide-react"
-
-import { ReviewCard } from "@/components/modules/review-card"
+import { useTransition } from "react";
+import { useRouter, usePathname, useSearchParams } from "next/navigation";
+import { ReviewCard } from "@/components/modules/review-card";
+import { Button } from "@/components/ui/button";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
-import {
-  filterReviewsBySemester,
-  sortReviews,
-} from "@/lib/modules/sort-reviews"
-import type { ModulePageData, ReviewSortOption } from "@/lib/modules/types"
+} from "@/components/ui/select";
+import type { ModulePageData, ReviewSortOption } from "@/lib/modules/types";
 
-type ModuleReviewsSectionProps = {
-  moduleId: string
-  reviews: ModulePageData["reviews"]
-  semesters: ModulePageData["semesters"]
-  currentUserId?: string | null
-}
-
+type Props = {
+  moduleId: string;
+  reviews: ModulePageData["reviews"];
+  semesters: ModulePageData["semesters"];
+  reviewPage: ModulePageData["reviewPage"];
+};
 const sortLabels: Record<ReviewSortOption, string> = {
   newest: "Newest first",
   oldest: "Oldest first",
   highest: "Highest rated",
   lowest: "Lowest rated",
   most_helpful: "Most helpful",
-}
-
-export function ModuleReviewsSection({
-  moduleId,
-  reviews,
-  semesters,
-  currentUserId,
-}: ModuleReviewsSectionProps) {
-  const [semesterFilter, setSemesterFilter] = useState<string>("all")
-  const [sort, setSort] = useState<ReviewSortOption>("newest")
-
-  const semesterOptions = useMemo(() => {
-    const reviewSemesterIds = new Set(reviews.map((review) => review.semesterId))
-    return semesters.filter((semester) => reviewSemesterIds.has(semester.id))
-  }, [reviews, semesters])
-
-  const displayedReviews = useMemo(() => {
-    const filtered = filterReviewsBySemester(reviews, semesterFilter)
-    return sortReviews(filtered, sort)
-  }, [reviews, semesterFilter, sort])
-
+};
+export const ModuleReviewsSection = ({ moduleId, reviews, semesters, reviewPage }: Props) => {
+  const router = useRouter();
+  const path = usePathname();
+  const search = useSearchParams();
+  const [pending, startTransition] = useTransition();
+  const update = (key: string, value: string) => {
+    const params = new URLSearchParams(search.toString());
+    params.set(key, value);
+    if (key !== "page") params.delete("page");
+    startTransition(() => router.replace(`${path}?${params.toString()}`, { scroll: false }));
+  };
   return (
-    <section className="space-y-5">
+    <section className="space-y-5" aria-busy={pending}>
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <h2 className="text-lg font-semibold tracking-tight">Student reviews</h2>
           <p className="text-sm text-muted-foreground">
-            {displayedReviews.length} of {reviews.length} shown
+            {reviews.length} of {reviewPage.total} shown · Page {reviewPage.page}
           </p>
         </div>
-
-        <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
-          <div className="flex items-center gap-2">
-            <SlidersHorizontal className="h-4 w-4 text-muted-foreground" />
-            <Select value={semesterFilter} onValueChange={setSemesterFilter}>
-              <SelectTrigger className="w-full sm:w-[200px]">
-                <SelectValue placeholder="Semester" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">All semesters</SelectItem>
-                {semesterOptions.map((semester) => (
-                  <SelectItem key={semester.id} value={semester.id}>
-                    {semester.label}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-
-          <Select value={sort} onValueChange={(value) => setSort(value as ReviewSortOption)}>
-            <SelectTrigger className="w-full sm:w-[180px]">
-              <SelectValue placeholder="Sort" />
+        <div className="flex flex-col gap-2 sm:flex-row">
+          <Select
+            value={reviewPage.semesterId}
+            onValueChange={(value) => update("semesterId", value)}
+          >
+            <SelectTrigger aria-label="Filter reviews by semester" className="w-[200px]">
+              <SelectValue />
             </SelectTrigger>
             <SelectContent>
-              {(Object.keys(sortLabels) as ReviewSortOption[]).map((option) => (
-                <SelectItem key={option} value={option}>
-                  {sortLabels[option]}
+              <SelectItem value="all">All semesters</SelectItem>
+              {semesters.map((s) => (
+                <SelectItem key={s.id} value={s.id}>
+                  {s.label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+          <Select value={reviewPage.sortBy} onValueChange={(value) => update("sortBy", value)}>
+            <SelectTrigger aria-label="Sort reviews" className="w-[180px]">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              {Object.entries(sortLabels).map(([key, label]) => (
+                <SelectItem key={key} value={key}>
+                  {label}
                 </SelectItem>
               ))}
             </SelectContent>
           </Select>
         </div>
       </div>
-
-      {displayedReviews.length === 0 ? (
-        <div className="rounded-2xl border border-dashed border-border/60 bg-muted/20 px-6 py-12 text-center">
-          <p className="text-sm text-muted-foreground">
-            {reviews.length === 0
-              ? "No reviews yet. Be the first to share your experience."
-              : "No reviews match this semester filter."}
-          </p>
-        </div>
-      ) : (
+      {reviews.length ? (
         <ul className="space-y-4">
-          {displayedReviews.map((review) => (
-            <li
-              key={review.id}
-              className="animate-in fade-in-0 slide-in-from-bottom-2 duration-300"
-            >
-              <ReviewCard
-                review={review}
-                moduleId={moduleId}
-                currentUserId={currentUserId}
-              />
+          {reviews.map((review) => (
+            <li key={review.id}>
+              <ReviewCard review={review} moduleId={moduleId} />
             </li>
           ))}
         </ul>
+      ) : (
+        <p className="rounded-2xl border border-dashed p-8 text-center text-sm text-muted-foreground">
+          No reviews on this page. Choose another page or semester, or share your experience.
+        </p>
       )}
+      <nav aria-label="Review pages" className="flex items-center justify-between gap-3">
+        <Button
+          variant="outline"
+          disabled={pending || reviewPage.page <= 1}
+          onClick={() => update("page", String(reviewPage.page - 1))}
+        >
+          Previous
+        </Button>
+        <span className="text-sm" role="status">
+          {pending ? "Loading reviews…" : `${reviewPage.total} matching reviews`}
+        </span>
+        <Button
+          variant="outline"
+          disabled={pending || reviewPage.page * reviewPage.pageSize >= reviewPage.total}
+          onClick={() => update("page", String(reviewPage.page + 1))}
+        >
+          Next
+        </Button>
+      </nav>
     </section>
-  )
-}
+  );
+};

@@ -1,75 +1,61 @@
-import { z } from "zod"
+import { z } from "zod";
 
-const shouldSkipValidation = process.env.SKIP_ENV_VALIDATION?.toLowerCase() === "true"
-
-// Runtime environment variables validation.
-// We parse lazily (via `getEnv`) to avoid crashing during `next build` when
-// env vars are not present yet (common in some CI/dev setups).
-const envSchema = z
+export const envSchema = z
   .object({
-    NODE_ENV: z
-      .enum(["development", "test", "production"])
-      .optional()
-      .default("development"),
-
-    DATABASE_URL: z.string().min(1, "DATABASE_URL is required"),
-
-    // OAuth vars are validated only when auth is initialized, so Prisma
-    // commands like `prisma generate` / `prisma migrate` don't require them.
+    NODE_ENV: z.enum(["development", "test", "production"]).default("development"),
+    DATABASE_URL: z.string().url(),
+    DATABASE_CA_CERT: z.string().startsWith("-----BEGIN CERTIFICATE-----").optional(),
     GOOGLE_CLIENT_ID: z.string().min(1).optional(),
     GOOGLE_CLIENT_SECRET: z.string().min(1).optional(),
-
     NEXTAUTH_URL: z.string().url().optional(),
-    NEXTAUTH_SECRET: z.string().min(1).optional(),
+    NEXTAUTH_SECRET: z.string().optional(),
+    SKIP_ENV_VALIDATION: z.string().optional(),
   })
-  .superRefine((val, ctx) => {
-    // In production, NextAuth requires a secret.
-    if (val.NODE_ENV === "production" && !val.NEXTAUTH_SECRET) {
+  .superRefine((env, ctx) => {
+    if (env.NODE_ENV !== "production") return;
+    for (const key of [
+      "GOOGLE_CLIENT_ID",
+      "GOOGLE_CLIENT_SECRET",
+      "NEXTAUTH_URL",
+      "NEXTAUTH_SECRET",
+    ] as const) {
+      if (!env[key])
+        ctx.addIssue({ code: "custom", path: [key], message: "Required in production" });
+    }
+    if (
+      !env.NEXTAUTH_SECRET ||
+      env.NEXTAUTH_SECRET.length < 32 ||
+      /your-secret|development-secret|change-in-production/i.test(env.NEXTAUTH_SECRET)
+    )
       ctx.addIssue({
-        code: z.ZodIssueCode.custom,
+        code: "custom",
         path: ["NEXTAUTH_SECRET"],
-        message: "NEXTAUTH_SECRET is required in production",
-      })
-    }
-  })
+        message: "Use a random secret of at least 32 characters",
+      });
+    if (env.NEXTAUTH_URL && !env.NEXTAUTH_URL.startsWith("https://"))
+      ctx.addIssue({
+        code: "custom",
+        path: ["NEXTAUTH_URL"],
+        message: "HTTPS is required in production",
+      });
+    if (env.SKIP_ENV_VALIDATION?.toLowerCase() === "true")
+      ctx.addIssue({
+        code: "custom",
+        path: ["SKIP_ENV_VALIDATION"],
+        message: "Validation cannot be disabled in production",
+      });
+  });
 
-export type Env = z.infer<typeof envSchema>
-
-let cached: Env | null = null
-
-export function getEnv(): Env {
-  if (cached) return cached
-  if (shouldSkipValidation) return (process.env as unknown as Env)
-
-  const parsed = envSchema.safeParse(process.env)
-  if (!parsed.success) {
-    const issues = parsed.error.issues
-      .map((i) => `${i.path.join(".")}: ${i.message}`)
-      .join("\n")
-    throw new Error(`Invalid environment variables:\n${issues}`)
-  }
-
-  cached = parsed.data
-  return cached
-}
-
-export function getGoogleAuthEnv() {
-  const env = getEnv()
-
-  const missing: string[] = []
-  if (!env.GOOGLE_CLIENT_ID) missing.push("GOOGLE_CLIENT_ID")
-  if (!env.GOOGLE_CLIENT_SECRET) missing.push("GOOGLE_CLIENT_SECRET")
-
-  if (missing.length > 0) {
-    console.warn(`[Auth] Missing Google OAuth environment variables: ${missing.join(", ")}. Google sign-in will not work.`)
-    // Return env with empty strings to prevent crash during initialization
-    return {
-      ...env,
-      GOOGLE_CLIENT_ID: env.GOOGLE_CLIENT_ID || "",
-      GOOGLE_CLIENT_SECRET: env.GOOGLE_CLIENT_SECRET || "",
-    }
-  }
-
-  return env
-}
-
+export type Env = z.infer<typeof envSchema>;
+let cached: Env | undefined;
+export const getEnv = (): Env => {
+  if (cached) return cached;
+  const result = envSchema.safeParse(process.env);
+  if (!result.success)
+    throw new Error(
+      `Invalid configuration: ${result.error.issues.map((issue) => issue.path.join(".")).join(", ")}`,
+    );
+  cached = result.data;
+  return cached;
+};
+export const getGoogleAuthEnv = () => getEnv();

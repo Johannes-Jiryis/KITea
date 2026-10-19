@@ -1,6 +1,6 @@
 #!/usr/bin/env npx tsx
-import 'dotenv/config';
-import { getPrisma } from '../lib/prisma';
+import "dotenv/config";
+import { getPrisma } from "../lib/prisma";
 
 const prisma = getPrisma();
 
@@ -10,11 +10,11 @@ async function main() {
     select: {
       moduleNumber: true,
       moduleName: true,
-    }
+    },
   });
-  
+
   console.log(`Found ${modules.length} modules in database`);
-  console.log('Sample modules:');
+  console.log("Sample modules:");
   modules.forEach((module, index) => {
     console.log(`${index + 1}. ${module.moduleNumber} - ${module.moduleName}`);
   });

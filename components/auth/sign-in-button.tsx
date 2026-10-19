@@ -1,22 +1,16 @@
-import Link from "next/link"
+import Link from "next/link";
 
-import { Button } from "@/components/ui/button"
-import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 type SignInButtonProps = {
-  callbackUrl?: string
-  className?: string
-  variant?: "default" | "ghost" | "outline"
-}
+  callbackUrl?: string;
+  className?: string;
+  variant?: "default" | "ghost" | "outline";
+};
 
-export function SignInButton({
-  callbackUrl,
-  className,
-  variant = "ghost",
-}: SignInButtonProps) {
-  const href = callbackUrl
-    ? `/login?callbackUrl=${encodeURIComponent(callbackUrl)}`
-    : "/login"
+export function SignInButton({ callbackUrl, className, variant = "ghost" }: SignInButtonProps) {
+  const href = callbackUrl ? `/login?callbackUrl=${encodeURIComponent(callbackUrl)}` : "/login";
 
   return (
     <Button
@@ -24,10 +18,10 @@ export function SignInButton({
       variant={variant}
       className={cn(
         "h-9 rounded-full px-4 text-sm font-medium text-muted-foreground hover:text-foreground",
-        className
+        className,
       )}
     >
       <Link href={href}>Sign in</Link>
     </Button>
-  )
+  );
 }

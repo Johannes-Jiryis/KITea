@@ -1,22 +1,22 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Eye, Pencil } from "lucide-react"
+import { useState } from "react";
+import { Eye, Pencil } from "lucide-react";
 
-import { MarkdownPreview } from "@/components/reviews/markdown-preview"
-import { Textarea } from "@/components/ui/textarea"
-import { cn } from "@/lib/utils"
+import { MarkdownPreview } from "@/components/reviews/markdown-preview";
+import { Textarea } from "@/components/ui/textarea";
+import { cn } from "@/lib/utils";
 
 type MarkdownFieldProps = {
-  id?: string
-  value: string
-  onChange: (value: string) => void
-  onBlur?: () => void
-  placeholder?: string
-  rows?: number
-  disabled?: boolean
-  "aria-invalid"?: boolean
-}
+  id?: string;
+  value: string;
+  onChange: (value: string) => void;
+  onBlur?: () => void;
+  placeholder?: string;
+  rows?: number;
+  disabled?: boolean;
+  "aria-invalid"?: boolean;
+};
 
 export function MarkdownField({
   id,
@@ -28,7 +28,7 @@ export function MarkdownField({
   disabled,
   "aria-invalid": ariaInvalid,
 }: MarkdownFieldProps) {
-  const [tab, setTab] = useState<"write" | "preview">("write")
+  const [tab, setTab] = useState<"write" | "preview">("write");
 
   return (
     <div className="overflow-hidden rounded-xl border border-border/60 bg-muted/20">
@@ -40,7 +40,7 @@ export function MarkdownField({
             "flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-medium transition-colors",
             tab === "write"
               ? "bg-background text-foreground shadow-sm"
-              : "text-muted-foreground hover:text-foreground"
+              : "text-muted-foreground hover:text-foreground",
           )}
         >
           <Pencil className="h-3.5 w-3.5" />
@@ -53,7 +53,7 @@ export function MarkdownField({
             "flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-medium transition-colors",
             tab === "preview"
               ? "bg-background text-foreground shadow-sm"
-              : "text-muted-foreground hover:text-foreground"
+              : "text-muted-foreground hover:text-foreground",
           )}
         >
           <Eye className="h-3.5 w-3.5" />
@@ -82,5 +82,5 @@ export function MarkdownField({
         </div>
       )}
     </div>
-  )
+  );
 }

@@ -1,18 +1,18 @@
-import type { Review } from "@prisma/client"
+import type { Review } from "@prisma/client";
 
-import type { ReviewFormValues } from "@/lib/reviews/schema"
+import type { ReviewFormValues } from "@/lib/reviews/schema";
 
 export type ReviewListItem = {
-  id: string
-  moduleId: string
-  moduleNumber: string
-  moduleName: string
-  semesterLabel: string
-  overallRating: number
-  summary: string | null
-  createdAt: string
-  updatedAt: string
-}
+  id: string;
+  moduleId: string;
+  moduleNumber: string;
+  moduleName: string;
+  semesterLabel: string;
+  overallRating: number;
+  summary: string | null;
+  createdAt: string;
+  updatedAt: string;
+};
 
 export function toReviewFormValues(review: Review): ReviewFormValues {
   return {
@@ -28,9 +28,9 @@ export function toReviewFormValues(review: Review): ReviewFormValues {
     overallRating: Number(review.overallRating),
     difficultyRating: Number(review.difficultyRating),
     workloadRating: Number(review.workloadRating),
-  }
+  };
 }
 
 export function semesterLabel(name: string, year: number) {
-  return `${name} ${year}`
+  return `${name} ${year}`;
 }

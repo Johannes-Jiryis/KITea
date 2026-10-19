@@ -1,0 +1,16 @@
+.git
+.agents
+.codex
+.aws
+.work
+node_modules
+.next
+dist
+.env*
+*.env
+*.env.*
+!.env.example
+coverage
+test-results
+playwright-report
+kit-ea-homepage-design.zip

@@ -1,5 +1,6 @@
-import { normalizeModuleNumber } from "../normalize"
-import type { ImportModuleRecord } from "../types"
+import { normalizeModuleNumber } from "../normalize";
+import { moduleTitleIssue } from "../module-title";
+import type { ImportModuleRecord } from "../types";
 
 /**
  * Heuristic HTML/text parser for KIT campus catalog exports.
@@ -12,8 +13,8 @@ import type { ImportModuleRecord } from "../types"
  * or provide a custom fetch URL via --campus-url.
  */
 export function parseCampusCatalogText(htmlOrText: string): ImportModuleRecord[] {
-  const text = stripHtml(htmlOrText)
-  const records = new Map<string, ImportModuleRecord>()
+  const text = stripHtml(htmlOrText);
+  const records = new Map<string, ImportModuleRecord>();
 
   const patterns: RegExp[] = [
     // Table style: | 2400123 | Linear Algebra I |
@@ -24,16 +25,16 @@ export function parseCampusCatalogText(htmlOrText: string): ImportModuleRecord[]
     /\b([A-Z]{2,5}-\d{2,4})\b\s+([A-Za-z0-9][^\n,;|]{2,100})/g,
     // 2400123: Title
     /\b(\d{5,9})\s*[:–—-]\s*([^\n]{3,120})/g,
-  ]
+  ];
 
   for (const pattern of patterns) {
-    let match: RegExpExecArray | null
+    let match: RegExpExecArray | null;
     while ((match = pattern.exec(text)) !== null) {
-      addRecord(records, match[1], match[2])
+      addRecord(records, match[1], match[2]);
     }
   }
 
-  return [...records.values()]
+  return [...records.values()];
 }
 
 function stripHtml(html: string): string {
@@ -43,27 +44,24 @@ function stripHtml(html: string): string {
     .replace(/<[^>]+>/g, " ")
     .replace(/&nbsp;/g, " ")
     .replace(/&amp;/g, "&")
-    .replace(/\s+/g, " ")
+    .replace(/\s+/g, " ");
 }
 
-function addRecord(
-  map: Map<string, ImportModuleRecord>,
-  rawNumber: string,
-  rawName: string
-) {
-  const moduleNumber = normalizeModuleNumber(rawNumber)
-  let moduleName = rawName.trim().replace(/\s+/g, " ")
+function addRecord(map: Map<string, ImportModuleRecord>, rawNumber: string, rawName: string) {
+  const moduleNumber = normalizeModuleNumber(rawNumber);
+  let moduleName = rawName.trim().replace(/\s+/g, " ");
 
   moduleName = moduleName
     .replace(/\|.*$/, "")
     .replace(/\b(Dozent|Lecturer|Typ|Type)\b.*$/i, "")
-    .trim()
+    .trim();
 
-  if (!moduleNumber || moduleName.length < 3) return
-  if (/^\d+$/.test(moduleName)) return
+  if (!moduleNumber || moduleName.length < 3) return;
+  if (moduleTitleIssue(moduleName)) return;
+  if (/^\d+$/.test(moduleName)) return;
 
-  const existing = map.get(moduleNumber)
+  const existing = map.get(moduleNumber);
   if (!existing || moduleName.length > existing.moduleName.length) {
-    map.set(moduleNumber, { moduleNumber, moduleName })
+    map.set(moduleNumber, { moduleNumber, moduleName });
   }
 }

@@ -1,0 +1,36 @@
+name: Verify
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      DATABASE_URL: postgresql://build:build@127.0.0.1:1/build
+      NEXTAUTH_URL: https://example.test
+      NEXTAUTH_SECRET: ci-only-not-a-production-secret-012345678901234567890
+      GOOGLE_CLIENT_ID: ci-placeholder
+      GOOGLE_CLIENT_SECRET: ci-placeholder
+      NEXT_TELEMETRY_DISABLED: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: npm run prisma:generate
+      - run: npm run db:validate
+      - run: npm run check
+      - run: npm run test:integration
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:e2e
+      - run: npm run build
+      - run: npm run test:smoke
+      - run: npm run test:smoke:db
+      - run: npm audit --omit=dev --audit-level=high
+      - run: docker build --target runtime -t kitea:ci .
+      - run: docker build --target migrate -t kitea-migrate:ci .

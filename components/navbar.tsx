@@ -1,29 +1,23 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { useTheme } from "next-themes"
-import { useSession } from "next-auth/react"
-import { Coffee, Menu, Moon, Sun } from "lucide-react"
+import Link from "next/link";
+import { usePreferenceTheme } from "@/components/theme-provider";
+import { useSession } from "next-auth/react";
+import { Coffee, Menu, Moon, Sun } from "lucide-react";
 
-import { AuthButtonSkeleton } from "@/components/auth/auth-button-skeleton"
-import { ProfileMenu } from "@/components/auth/profile-menu"
-import { SignInButton } from "@/components/auth/sign-in-button"
-import { Button } from "@/components/ui/button"
-import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet"
+import { AuthButtonSkeleton } from "@/components/auth/auth-button-skeleton";
+import { ProfileMenu } from "@/components/auth/profile-menu";
+import { SignInButton } from "@/components/auth/sign-in-button";
+import { Button } from "@/components/ui/button";
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 
 export function Navbar() {
-  const { theme, setTheme } = useTheme()
-  const { data: session, status } = useSession()
+  const { theme, setTheme } = usePreferenceTheme();
+  const { data: session, status } = useSession();
 
-  const user = session?.user
-  const isAuthed = status === "authenticated" && user
-  const isLoading = status === "loading"
+  const user = session?.user;
+  const isAuthed = status === "authenticated" && user;
+  const isLoading = status === "loading";
 
   const ThemeToggleButton = (
     <Button
@@ -36,7 +30,7 @@ export function Navbar() {
       <Sun className="h-6 w-6 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
       <Moon className="absolute h-6 w-6 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
     </Button>
-  )
+  );
 
   const AuthControl = isLoading ? (
     <AuthButtonSkeleton />
@@ -44,7 +38,7 @@ export function Navbar() {
     <ProfileMenu user={user} />
   ) : (
     <SignInButton />
-  )
+  );
 
   return (
     <nav className="fixed top-0 right-0 left-0 z-50 border-b border-border/40 bg-background/80 backdrop-blur-md">
@@ -81,9 +75,7 @@ export function Navbar() {
                 </SheetHeader>
 
                 <div className="mt-6 flex flex-col gap-4">
-                  <div className="flex items-center gap-2">
-                    {ThemeToggleButton}
-                  </div>
+                  <div className="flex items-center gap-2">{ThemeToggleButton}</div>
 
                   <div className="border-t border-border/50 pt-4">
                     {isLoading ? (
@@ -107,5 +99,5 @@ export function Navbar() {
         </div>
       </div>
     </nav>
-  )
+  );
 }

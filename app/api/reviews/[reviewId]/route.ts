@@ -1,170 +1,52 @@
-import { NextRequest, NextResponse } from "next/server"
+import { auth } from "@/auth";
+import { getPrisma } from "@/lib/prisma";
+import { apiError, publicReadGuard, readJson } from "@/lib/http/api";
+import { HttpError } from "@/lib/http/errors";
+import { removeReview, saveReview } from "@/lib/reviews/service";
+import { invalidateReviews } from "@/lib/reviews/invalidate";
+import { publicReviewSelect } from "@/lib/reviews/public";
 
-import { getPrisma } from "@/lib/prisma"
-import { auth } from "@/auth"
-
-export async function GET(
-  request: NextRequest,
-  { params }: { params: Promise<{ reviewId: string }> }
-) {
-  const prisma = getPrisma()
-  const { reviewId } = await params
-
+type Context = { params: Promise<{ reviewId: string }> };
+export const GET = async (request: Request, { params }: Context) => {
   try {
-    const review = await prisma.review.findUnique({
-      where: {
-        id: reviewId,
-      },
-      include: {
-        user: {
-          select: {
-            id: true,
-            name: true,
-            email: true,
-          },
-        },
-        semesterTaken: {
-          select: {
-            id: true,
-            name: true,
-            year: true,
-          },
-        },
-      },
-    })
-
-    if (!review) {
-      return NextResponse.json({ error: "Review not found" }, { status: 404 })
-    }
-
-    return NextResponse.json(review)
+    await publicReadGuard(request);
+    const { reviewId } = await params;
+    const review = await getPrisma().review.findUnique({
+      where: { id: reviewId },
+      select: publicReviewSelect,
+    });
+    if (!review) throw new HttpError(404, "Review not found.");
+    return Response.json(review, { headers: { "Cache-Control": "no-store" } });
   } catch (error) {
-    console.error("Failed to fetch review:", error)
-    return NextResponse.json({ error: "Failed to fetch review" }, { status: 500 })
+    return apiError(error, "reviews.get");
   }
-}
+};
 
-export async function PUT(
-  request: NextRequest,
-  { params }: { params: Promise<{ reviewId: string }> }
-) {
-  const prisma = getPrisma()
-  const session = await auth()
-
-  if (!session?.user?.id) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
-  }
-
-  const { reviewId } = await params
-
+export const PUT = async (request: Request, { params }: Context) => {
   try {
-    const existingReview = await prisma.review.findUnique({
-      where: {
-        id: reviewId,
-      },
-    })
-
-    if (!existingReview) {
-      return NextResponse.json({ error: "Review not found" }, { status: 404 })
-    }
-
-    if (existingReview.userId !== session.user.id) {
-      return NextResponse.json({ error: "Forbidden" }, { status: 403 })
-    }
-
-    const body = await request.json()
-    
-    const {
-      lecturerName,
-      lecturerReview,
-      taName,
-      taReview,
-      homeworkReview,
-      examReview,
-      summary,
-      overallRating,
-      difficultyRating,
-      workloadRating,
-    } = body
-
-    const review = await prisma.review.update({
-      where: {
-        id: reviewId,
-      },
-      data: {
-        lecturerName,
-        lecturerReview,
-        taName,
-        taReview,
-        homeworkReview,
-        examReview,
-        summary,
-        overallRating,
-        difficultyRating,
-        workloadRating,
-      },
-      include: {
-        user: {
-          select: {
-            id: true,
-            name: true,
-            email: true,
-          },
-        },
-        semesterTaken: {
-          select: {
-            id: true,
-            name: true,
-            year: true,
-          },
-        },
-      },
-    })
-
-    return NextResponse.json(review)
+    const session = await auth();
+    if (!session?.user?.id) throw new HttpError(401, "Sign in to edit a review.");
+    const { reviewId } = await params;
+    const result = await saveReview(session.user.id, await readJson(request), reviewId, true);
+    invalidateReviews(result.moduleNumbers);
+    return Response.json({ id: result.review.id });
   } catch (error) {
-    console.error("Failed to update review:", error)
-    return NextResponse.json({ error: "Failed to update review" }, { status: 500 })
+    return apiError(error, "reviews.update");
   }
-}
+};
 
-export async function DELETE(
-  request: NextRequest,
-  { params }: { params: Promise<{ reviewId: string }> }
-) {
-  const prisma = getPrisma()
-  const session = await auth()
-
-  if (!session?.user?.id) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
-  }
-
-  const { reviewId } = await params
-
+export const DELETE = async (request: Request, { params }: Context) => {
   try {
-    const existingReview = await prisma.review.findUnique({
-      where: {
-        id: reviewId,
-      },
-    })
-
-    if (!existingReview) {
-      return NextResponse.json({ error: "Review not found" }, { status: 404 })
-    }
-
-    if (existingReview.userId !== session.user.id) {
-      return NextResponse.json({ error: "Forbidden" }, { status: 403 })
-    }
-
-    await prisma.review.delete({
-      where: {
-        id: reviewId,
-      },
-    })
-
-    return NextResponse.json({ success: true })
+    const session = await auth();
+    if (!session?.user?.id) throw new HttpError(401, "Sign in to delete a review.");
+    const origin = request.headers.get("origin");
+    if (!origin || origin !== new URL(process.env.NEXTAUTH_URL || request.url).origin)
+      throw new HttpError(403, "Request origin is not allowed.");
+    const { reviewId } = await params;
+    const number = await removeReview(session.user.id, reviewId);
+    invalidateReviews([number]);
+    return Response.json({ success: true });
   } catch (error) {
-    console.error("Failed to delete review:", error)
-    return NextResponse.json({ error: "Failed to delete review" }, { status: 500 })
+    return apiError(error, "reviews.delete");
   }
-}
+};

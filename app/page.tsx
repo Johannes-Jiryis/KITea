@@ -1,7 +1,6 @@
-import { Navbar } from "@/components/navbar"
-import { HeroSection } from "@/components/hero-section"
-import { PopularModules } from "@/components/popular-modules"
-import { Footer } from "@/components/footer"
+import { Navbar } from "@/components/navbar";
+import { HeroSection } from "@/components/hero-section";
+import { Footer } from "@/components/footer";
 
 export default function HomePage() {
   return (
@@ -9,9 +8,8 @@ export default function HomePage() {
       <Navbar />
       <main className="flex-1">
         <HeroSection />
-        <PopularModules />
       </main>
       <Footer />
     </div>
-  )
+  );
 }

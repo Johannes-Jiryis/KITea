@@ -1,9 +1,9 @@
-import Link from "next/link"
-import { Search, ArrowLeft } from "lucide-react"
+import Link from "next/link";
+import { Search, ArrowLeft } from "lucide-react";
 
-import { Navbar } from "@/components/navbar"
-import { Footer } from "@/components/footer"
-import { Button } from "@/components/ui/button"
+import { Navbar } from "@/components/navbar";
+import { Footer } from "@/components/footer";
+import { Button } from "@/components/ui/button";
 
 export default function ModuleNotFound() {
   return (
@@ -16,8 +16,8 @@ export default function ModuleNotFound() {
           </div>
           <h1 className="mb-2 text-2xl font-semibold">Module not found</h1>
           <p className="mb-8 text-muted-foreground">
-            We couldn't find the module you're looking for. It may have been
-            removed or the URL might be incorrect.
+            We couldn&apos;t find the module you&apos;re looking for. It may have been removed or
+            the URL might be incorrect.
           </p>
           <div className="flex flex-col gap-2 sm:flex-row sm:justify-center">
             <Button asChild>
@@ -31,5 +31,5 @@ export default function ModuleNotFound() {
       </main>
       <Footer />
     </>
-  )
+  );
 }

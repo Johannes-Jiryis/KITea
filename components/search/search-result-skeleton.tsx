@@ -1,4 +1,4 @@
-import { Skeleton } from "@/components/ui/skeleton"
+import { Skeleton } from "@/components/ui/skeleton";
 
 export function SearchResultSkeleton() {
   return (
@@ -13,7 +13,7 @@ export function SearchResultSkeleton() {
         <Skeleton className="h-4 w-8" />
       </div>
     </div>
-  )
+  );
 }
 
 export function SearchResultsSkeletonList({ count = 4 }: { count?: number }) {
@@ -23,5 +23,5 @@ export function SearchResultsSkeletonList({ count = 4 }: { count?: number }) {
         <SearchResultSkeleton key={index} />
       ))}
     </div>
-  )
+  );
 }

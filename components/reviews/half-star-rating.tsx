@@ -1,52 +1,37 @@
-"use client"
+"use client";
 
-import { Star } from "lucide-react"
+import { Star } from "lucide-react";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 type HalfStarRatingProps = {
-  value: number
-  onChange: (value: number) => void
-  disabled?: boolean
-  size?: "sm" | "md"
-}
+  value: number;
+  onChange: (value: number) => void;
+  disabled?: boolean;
+  size?: "sm" | "md";
+};
 
-export function HalfStarRating({
-  value,
-  onChange,
-  disabled,
-  size = "md",
-}: HalfStarRatingProps) {
-  const starSize = size === "sm" ? "h-5 w-5" : "h-7 w-7"
-  const buttonSize = size === "sm" ? "h-5 w-5" : "h-7 w-7"
+export function HalfStarRating({ value, onChange, disabled, size = "md" }: HalfStarRatingProps) {
+  const starSize = size === "sm" ? "h-5 w-5" : "h-7 w-7";
+  const buttonSize = size === "sm" ? "h-5 w-5" : "h-7 w-7";
 
   return (
-    <div
-      className="inline-flex items-center gap-0.5"
-      role="radiogroup"
-      aria-label="Rating"
-    >
+    <div className="inline-flex items-center gap-0.5" role="radiogroup" aria-label="Rating">
       {[1, 2, 3, 4, 5].map((star) => {
-        const filled = value >= star
-        const halfFilled = value >= star - 0.5 && value < star
+        const filled = value >= star;
+        const halfFilled = value >= star - 0.5 && value < star;
 
         return (
           <div key={star} className={cn("relative", buttonSize)}>
             <Star
-              className={cn(
-                starSize,
-                "text-muted-foreground/25 transition-colors"
-              )}
+              className={cn(starSize, "text-muted-foreground/25 transition-colors")}
               aria-hidden
             />
             <div
               className="absolute inset-0 overflow-hidden"
               style={{ width: halfFilled ? "50%" : filled ? "100%" : "0%" }}
             >
-              <Star
-                className={cn(starSize, "fill-amber-400 text-amber-400")}
-                aria-hidden
-              />
+              <Star className={cn(starSize, "fill-amber-400 text-amber-400")} aria-hidden />
             </div>
             <button
               type="button"
@@ -63,13 +48,11 @@ export function HalfStarRating({
               onClick={() => onChange(star)}
             />
           </div>
-        )
+        );
       })}
       {value > 0 && (
-        <span className="ml-2 text-sm tabular-nums text-muted-foreground">
-          {value.toFixed(1)}
-        </span>
+        <span className="ml-2 text-sm tabular-nums text-muted-foreground">{value.toFixed(1)}</span>
       )}
     </div>
-  )
+  );
 }

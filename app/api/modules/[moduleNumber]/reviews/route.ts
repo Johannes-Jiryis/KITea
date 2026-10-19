@@ -1,168 +1,49 @@
-import { NextRequest, NextResponse } from "next/server"
+import { auth } from "@/auth";
+import { getPrisma } from "@/lib/prisma";
+import { apiError, publicReadGuard, readJson } from "@/lib/http/api";
+import { HttpError } from "@/lib/http/errors";
+import { getModuleReviews } from "@/lib/modules/reviews";
+import { reviewQuerySchema } from "@/lib/modules/review-query";
+import { saveReview } from "@/lib/reviews/service";
+import { invalidateReviews } from "@/lib/reviews/invalidate";
 
-import { getPrisma } from "@/lib/prisma"
-import { auth } from "@/auth"
-
-export async function GET(
-  request: NextRequest,
-  { params }: { params: Promise<{ moduleNumber: string }> }
-) {
-  const prisma = getPrisma()
-  const { moduleNumber } = await params
-  const { searchParams } = new URL(request.url)
-
-  const sortBy = searchParams.get("sortBy") || "newest"
-  const semesterId = searchParams.get("semesterId")
-
+type Context = { params: Promise<{ moduleNumber: string }> };
+export const GET = async (request: Request, { params }: Context) => {
   try {
-    const module = await prisma.module.findUnique({
-      where: {
-        moduleNumber: moduleNumber.toUpperCase(),
-      },
-    })
-
-    if (!module) {
-      return NextResponse.json({ error: "Module not found" }, { status: 404 })
-    }
-
-    let orderBy: any = { createdAt: "desc" }
-    
-    switch (sortBy) {
-      case "oldest":
-        orderBy = { createdAt: "asc" }
-        break
-      case "highest":
-        orderBy = { overallRating: "desc" }
-        break
-      case "lowest":
-        orderBy = { overallRating: "asc" }
-        break
-      case "newest":
-      default:
-        orderBy = { createdAt: "desc" }
-        break
-    }
-
-    const where: any = {
-      moduleId: module.id,
-    }
-    
-    if (semesterId && semesterId !== "all") {
-      where.semesterTakenId = semesterId
-    }
-
-    const reviews = await prisma.review.findMany({
-      where,
-      include: {
-        user: {
-          select: {
-            id: true,
-            name: true,
-            email: true,
-          },
-        },
-        semesterTaken: {
-          select: {
-            id: true,
-            name: true,
-            year: true,
-          },
-        },
-      },
-      orderBy,
-    })
-
-    return NextResponse.json(reviews)
+    await publicReadGuard(request);
+    const { moduleNumber } = await params;
+    const foundModule = await getPrisma().module.findUnique({
+      where: { moduleNumber: moduleNumber.toUpperCase() },
+      select: { id: true },
+    });
+    if (!foundModule) throw new HttpError(404, "Module not found.");
+    const query = reviewQuerySchema.parse(Object.fromEntries(new URL(request.url).searchParams));
+    const session = await auth();
+    return Response.json(await getModuleReviews(foundModule.id, query, session?.user?.id), {
+      headers: { "Cache-Control": "private, no-store" },
+    });
   } catch (error) {
-    console.error("Failed to fetch reviews:", error)
-    return NextResponse.json({ error: "Failed to fetch reviews" }, { status: 500 })
+    return apiError(error, "foundModule.reviews.get");
   }
-}
+};
 
-export async function POST(
-  request: NextRequest,
-  { params }: { params: Promise<{ moduleNumber: string }> }
-) {
-  const prisma = getPrisma()
-  const session = await auth()
-
-  if (!session?.user?.id) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
-  }
-
-  const { moduleNumber } = await params
-
+export const POST = async (request: Request, { params }: Context) => {
   try {
-    const body = await request.json()
-    
-    const {
-      semesterTakenId,
-      lecturerName,
-      lecturerReview,
-      taName,
-      taReview,
-      homeworkReview,
-      examReview,
-      summary,
-      overallRating,
-      difficultyRating,
-      workloadRating,
-    } = body
-
-    if (!semesterTakenId || !overallRating || !difficultyRating || !workloadRating) {
-      return NextResponse.json(
-        { error: "Missing required fields" },
-        { status: 400 }
-      )
-    }
-
-    const module = await prisma.module.findUnique({
-      where: {
-        moduleNumber: moduleNumber.toUpperCase(),
-      },
-    })
-
-    if (!module) {
-      return NextResponse.json({ error: "Module not found" }, { status: 404 })
-    }
-
-    const review = await prisma.review.create({
-      data: {
-        userId: session.user.id,
-        moduleId: module.id,
-        semesterTakenId,
-        lecturerName,
-        lecturerReview,
-        taName,
-        taReview,
-        homeworkReview,
-        examReview,
-        summary,
-        overallRating,
-        difficultyRating,
-        workloadRating,
-      },
-      include: {
-        user: {
-          select: {
-            id: true,
-            name: true,
-            email: true,
-          },
-        },
-        semesterTaken: {
-          select: {
-            id: true,
-            name: true,
-            year: true,
-          },
-        },
-      },
-    })
-
-    return NextResponse.json(review, { status: 201 })
+    const session = await auth();
+    if (!session?.user?.id) throw new HttpError(401, "Sign in to write a review.");
+    const body = await readJson(request);
+    if (!body || typeof body !== "object" || Array.isArray(body))
+      throw new HttpError(400, "Expected an object.");
+    const { moduleNumber } = await params;
+    const foundModule = await getPrisma().module.findUnique({
+      where: { moduleNumber: moduleNumber.toUpperCase() },
+      select: { id: true },
+    });
+    if (!foundModule) throw new HttpError(404, "Module not found.");
+    const result = await saveReview(session.user.id, { ...body, moduleId: foundModule.id });
+    invalidateReviews(result.moduleNumbers);
+    return Response.json({ id: result.review.id }, { status: 201 });
   } catch (error) {
-    console.error("Failed to create review:", error)
-    return NextResponse.json({ error: "Failed to create review" }, { status: 500 })
+    return apiError(error, "foundModule.reviews.create");
   }
-}
+};

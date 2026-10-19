@@ -1,82 +1,65 @@
 # KITea
 
-A vibe-coded module review platform for KIT students to share and discover honest reviews about their courses. Spill your tea about the modules ☕
+A module review platform for KIT students, built with Next.js App Router, React, TypeScript, Prisma, PostgreSQL and Google OAuth.
 
-Made by students, for students.
+## Local setup
 
-## What you get
+Use the Node 22 patch pinned in `.nvmrc` and npm 10.9.2. Node 22.14+ is the minimum tested local version; deployment and CI use the pinned patched runtime.
 
-- Next.js 15 (App Router) + TypeScript
-- TailwindCSS + shadcn/ui
-- Dark mode (theme toggle + CSS variables)
-- Prisma ORM + PostgreSQL
-- NextAuth/Auth.js with Google OAuth
-- React Hook Form + Zod (used in the homepage search bar)
-- ESLint + Prettier
+1. Run `npm ci` (Windows PowerShell: `npm.cmd ci`).
+2. Copy `.env.example` to `.env.local` and configure a development PostgreSQL database and Google OAuth application.
+3. Run `npm run prisma:generate`, then `npm run db:deploy`.
+4. Run `npm run dev`.
 
-## Folder structure
+The app, Prisma CLI and maintained import CLI load shell variables first, then `.env.local`, then `.env`. Keep secrets out of source control. OAuth callback: `http://localhost:3000/api/auth/callback/google`.
 
-- `app/` - Next.js routes (`/`, `/login`, `/profile`) + API auth route
-- `components/` - UI components (Navbar, Hero, Module cards) + shadcn primitives
-- `lib/` - Prisma client (`lib/prisma.ts`) and env validation (`lib/env.ts`)
-- `prisma/` - Prisma schema (`prisma/schema.prisma`)
-- `public/` - icons and static assets
+Use `npm run db:migrate -- --name descriptive_name` only when developing a new migration. Deploy committed migrations with `npm run db:deploy`.
 
-## Prerequisites
+## Verification
 
-- Node.js 18+ (recommended)
-- A Google OAuth project (OAuth Client ID/Secret)
-- A PostgreSQL database
+Account deletion is available under **Profile → Delete account**. Users must type `DELETE` before confirming. Deletion removes their reviews, helpful votes, linked login records, sessions, and submission history in one transaction, then signs them out. Existing JWTs are rejected when the deleted user next requests a server session. The module catalog and other users' reviews remain. No additional migration is required. Database backup retention remains an operator responsibility.
 
-## Setup
-
-1. Install dependencies
-
-```bash
-npm install
-```
-
-2. Configure environment variables
-
-Copy `.env.example` to `.env.local` and fill in values:
-
-```bash
+```sh
 npm run prisma:generate
+npm run db:validate
+npm run check
+npm run test:integration
+npx playwright install chromium
+npm run test:e2e
+npm run build
+npm run test:smoke
+npm run test:smoke:db
+npm audit --omit=dev --audit-level=high
 ```
 
-3. Run Prisma migrations (creates the tables used by NextAuth)
+Generation/validation requires a syntactically valid `DATABASE_URL`, even without a live database. A build can use `postgresql://build:build@127.0.0.1:1/build`; builds do not run migrations or seed data.
 
-```bash
-npm run db:migrate
+Integration, browser and benchmark commands start PostgreSQL 17 on loopback port 55432 using the development-only `embedded-postgres` package. They create fresh databases, use test-only identity and secrets, and stop PostgreSQL afterward. Never point them at an existing database. Run these commands sequentially because the port is shared. On Linux, run as a normal user; the runner never creates OS accounts. Files remain under ignored `.work/` for inspection.
+
+Browser tests use a signed local Auth.js test session on port 3101, with isolated build output in `.work/next-e2e`; they do not bypass production authentication or contact Google. They cover review actions, account deletion, cancellation, and stale-session rejection. Real Google OAuth must still be verified on the deployed hostname.
+
+## Search and data access
+
+Search uses one parameterized PostgreSQL query with exact-code, prefix, full-text, substring and trigram relevance, deterministic ordering and a ten-result bound. It returns plain text. Two-character terms use literal substring/word matching; typo tolerance starts at three characters. Unicode compatibility forms and whitespace are normalized. Accents are preserved; transliteration is not promised. See [search benchmarks](docs/SEARCH_BENCHMARK.md).
+
+Review pages and APIs paginate in batches of 20 and perform filtering and sorting in the database. Aggregate statistics cover the entire module. Public responses omit author emails and other users' vote identities. Review REST mutations and server actions share validation, ownership checks, durable submission limits and invalidation. See [the audit](docs/PRODUCTION_AUDIT.md).
+
+Reviews display as **Anonymous student** with a generic avatar. Public review responses omit author names, photos, and user IDs. Personalized lists include only an `isOwnReview` flag for edit/delete controls; server-side ownership checks still protect mutations. Account/profile information remains visible to its signed-in owner.
+
+## Importing modules
+
+```sh
+npm run import:modules -- --source csv --file data/modules.example.csv --semester Wintersemester --year 2026 --dry-run
 ```
 
-4. Start the dev server
+Inspect the dry run before importing into the intended database. Remove `--dry-run` only when ready. The maintained CLI supports CSV, JSON and saved campus exports. The historical winter-import scripts are preserved for reference, excluded from the maintained CLI typecheck and never run automatically. See [import documentation](docs/MODULE_IMPORT.md).
 
-```bash
-npm run dev
-```
+## Deployment
 
-## NextAuth (Google OAuth)
+For Vercel with the existing Supabase database, follow [the Vercel deployment guide](docs/VERCEL_DEPLOYMENT.md). The repository supplies build settings and a Dublin function region; confirm it matches your actual database location.
 
-- Add a Google OAuth credential in the Google Cloud Console.
-- Set `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET` in your `.env.local`.
-- Ensure `NEXTAUTH_URL` matches the URL you run the app on (e.g. `http://localhost:3000`).
+For self-hosted Linux Docker behind an HTTPS reverse proxy, see the [Docker deployment runbook](docs/DEPLOYMENT.md) for build-time public settings, runtime secrets, migration ordering, health probes, pooling, backups, rollback and operator release gates.
 
-## Starter UI components
+Local fonts are bundled; builds do not contact Google Fonts. The app does not load analytics or display cookie prompts. Theme choices persist in browser storage.
 
-- `components/navbar.tsx` - responsive navbar with theme toggle + login/profile UI
-- `components/hero-section.tsx` - Apple-inspired hero + centered search bar (RHF + Zod)
-- `components/popular-modules.tsx` - recent + popular module sections
-- `components/module-card.tsx` - clean rounded “module” cards
-- `components/footer.tsx` - footer slogan
-
-## Commands
-
-- `npm run dev` - start dev server
-- `npm run build` - build for production
-- `npm run lint` - lint
-- `npm run typecheck` - TypeScript check
-- `npm run format` / `npm run format:check` - Prettier
-- `npm run prisma:generate` - generate Prisma client
-- `npm run db:migrate` - run Prisma migrations
-
+Nothing in the local tooling publishes the app or modifies production databases automatically.

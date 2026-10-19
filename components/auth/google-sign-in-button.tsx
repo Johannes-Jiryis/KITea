@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { signIn } from "next-auth/react"
-import { Loader2 } from "lucide-react"
+import { useState } from "react";
+import { signIn } from "next-auth/react";
+import { Loader2 } from "lucide-react";
 
-import { useToast } from "@/hooks/use-toast"
-import { cn } from "@/lib/utils"
+import { useToast } from "@/hooks/use-toast";
+import { cn } from "@/lib/utils";
 
 function GoogleIcon({ className }: { className?: string }) {
   return (
@@ -27,34 +27,34 @@ function GoogleIcon({ className }: { className?: string }) {
         fill="#EA4335"
       />
     </svg>
-  )
+  );
 }
 
 type GoogleSignInButtonProps = {
-  callbackUrl?: string
-  className?: string
-}
+  callbackUrl?: string;
+  className?: string;
+};
 
 export function GoogleSignInButton({
   callbackUrl = "/profile",
   className,
 }: GoogleSignInButtonProps) {
-  const [isLoading, setIsLoading] = useState(false)
-  const { toast } = useToast()
+  const [isLoading, setIsLoading] = useState(false);
+  const { toast } = useToast();
 
   async function handleSignIn() {
-    setIsLoading(true)
+    setIsLoading(true);
     try {
       // Use default redirect behavior (more reliable than manual handling)
-      await signIn("google", { callbackUrl })
+      await signIn("google", { callbackUrl });
     } catch (error) {
-      console.error("[GoogleSignInButton] Sign in error:", error)
-      setIsLoading(false)
+      console.error("[GoogleSignInButton] Sign in error:", error);
+      setIsLoading(false);
       toast({
         variant: "destructive",
         title: "Sign in failed",
         description: "An unexpected error occurred. Please try again.",
-      })
+      });
     }
   }
 
@@ -70,7 +70,7 @@ export function GoogleSignInButton({
         "hover:bg-muted/50 hover:shadow-md active:scale-[0.98]",
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
         "disabled:pointer-events-none disabled:opacity-60",
-        className
+        className,
       )}
     >
       {isLoading ? (
@@ -82,5 +82,5 @@ export function GoogleSignInButton({
         </>
       )}
     </button>
-  )
+  );
 }

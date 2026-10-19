@@ -1,17 +1,23 @@
-import Link from "next/link"
-import { Plus } from "lucide-react"
+import Link from "next/link";
+import { Plus } from "lucide-react";
 
-import { getMyReviews } from "@/app/actions/reviews"
-import { Footer } from "@/components/footer"
-import { Navbar } from "@/components/navbar"
-import { AuthGuard } from "@/components/auth/auth-guard"
-import { MyReviewsList } from "@/components/reviews/my-reviews-list"
-import { Button } from "@/components/ui/button"
+import { getMyReviews } from "@/app/actions/reviews";
+import { Footer } from "@/components/footer";
+import { Navbar } from "@/components/navbar";
+import { AuthGuard } from "@/components/auth/auth-guard";
+import { MyReviewsList } from "@/components/reviews/my-reviews-list";
+import { Button } from "@/components/ui/button";
 
-export const dynamic = "force-dynamic"
+export const dynamic = "force-dynamic";
 
-export default async function MyReviewsPage() {
-  const reviews = await getMyReviews()
+export default async function MyReviewsPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ page?: string }>;
+}) {
+  const rawPage = Number((await searchParams).page || 1);
+  const page = Number.isInteger(rawPage) && rawPage > 0 && rawPage <= 10000 ? rawPage : 1;
+  const reviews = await getMyReviews(page);
 
   return (
     <AuthGuard>
@@ -34,11 +40,16 @@ export default async function MyReviewsPage() {
               </Button>
             </div>
 
-            <MyReviewsList reviews={reviews} />
+            <MyReviewsList reviews={reviews.slice(0, 20)} />
+            <nav aria-label="My review pages" className="flex gap-4">
+              {page > 1 && <Link href={`/my-reviews?page=${page - 1}`}>Previous</Link>}
+              <span>Page {page}</span>
+              {reviews.length > 20 && <Link href={`/my-reviews?page=${page + 1}`}>Next</Link>}
+            </nav>
           </div>
         </main>
         <Footer />
       </div>
     </AuthGuard>
-  )
+  );
 }

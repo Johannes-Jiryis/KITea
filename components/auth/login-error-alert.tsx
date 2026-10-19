@@ -1,14 +1,14 @@
-import { AlertCircle } from "lucide-react"
+import { AlertCircle } from "lucide-react";
 
-import { getAuthErrorMessage } from "@/lib/auth-errors"
+import { getAuthErrorMessage } from "@/lib/auth-errors";
 
 type LoginErrorAlertProps = {
-  error?: string | null
-}
+  error?: string | null;
+};
 
 export function LoginErrorAlert({ error }: LoginErrorAlertProps) {
-  const message = getAuthErrorMessage(error)
-  if (!message) return null
+  const message = getAuthErrorMessage(error);
+  if (!message) return null;
 
   return (
     <div
@@ -18,5 +18,5 @@ export function LoginErrorAlert({ error }: LoginErrorAlertProps) {
       <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
       <p>{message}</p>
     </div>
-  )
+  );
 }

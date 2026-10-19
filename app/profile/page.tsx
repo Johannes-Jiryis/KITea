@@ -1,15 +1,16 @@
-import Link from "next/link"
-import { Edit } from "lucide-react"
+import Link from "next/link";
+import { Edit } from "lucide-react";
 
-import { Footer } from "@/components/footer"
-import { Navbar } from "@/components/navbar"
-import { AuthGuard } from "@/components/auth/auth-guard"
-import { ProfileUserInfoClient } from "@/components/auth/profile-user-info"
-import { SignOutButton } from "@/components/auth/sign-out-button"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Footer } from "@/components/footer";
+import { Navbar } from "@/components/navbar";
+import { AuthGuard } from "@/components/auth/auth-guard";
+import { ProfileUserInfoClient } from "@/components/auth/profile-user-info";
+import { SignOutButton } from "@/components/auth/sign-out-button";
+import { DeleteAccountButton } from "@/components/auth/delete-account-button";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-export const dynamic = "force-dynamic"
+export const dynamic = "force-dynamic";
 
 function getInitials(name: string | null | undefined) {
   return (name ?? "U")
@@ -18,7 +19,7 @@ function getInitials(name: string | null | undefined) {
     .slice(0, 2)
     .map((part) => part[0])
     .join("")
-    .toUpperCase()
+    .toUpperCase();
 }
 
 export default async function ProfilePage() {
@@ -26,7 +27,7 @@ export default async function ProfilePage() {
     <AuthGuard>
       <ProfileContent />
     </AuthGuard>
-  )
+  );
 }
 
 function ProfileContent() {
@@ -37,9 +38,7 @@ function ProfileContent() {
         <div className="mx-auto w-full max-w-lg">
           <Card className="border-border/50 bg-card shadow-sm">
             <CardHeader>
-              <CardTitle className="text-xl font-semibold tracking-tight">
-                Your profile
-              </CardTitle>
+              <CardTitle className="text-xl font-semibold tracking-tight">Your profile</CardTitle>
             </CardHeader>
             <CardContent className="space-y-6">
               <ProfileUserInfoClient />
@@ -57,6 +56,9 @@ function ProfileContent() {
               </div>
 
               <SignOutButton />
+              <div className="border-t border-border/50 pt-6">
+                <DeleteAccountButton />
+              </div>
 
               <p className="text-xs leading-relaxed text-muted-foreground">
                 Signed in with Google. Sessions remain active for 30 days on this device.
@@ -67,5 +69,5 @@ function ProfileContent() {
       </main>
       <Footer />
     </>
-  )
+  );
 }

@@ -1,39 +1,45 @@
-import Link from "next/link"
-import { notFound } from "next/navigation"
-import { ArrowLeft } from "lucide-react"
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { ArrowLeft } from "lucide-react";
 
-import { getReviewForEdit, getReviewFormOptions } from "@/app/actions/reviews"
-import { Footer } from "@/components/footer"
-import { Navbar } from "@/components/navbar"
-import { AuthGuard } from "@/components/auth/auth-guard"
-import { ReviewForm } from "@/components/reviews/review-form"
-import { Button } from "@/components/ui/button"
+import { getReviewForEdit, getReviewFormOptions } from "@/app/actions/reviews";
+import { Footer } from "@/components/footer";
+import { Navbar } from "@/components/navbar";
+import { AuthGuard } from "@/components/auth/auth-guard";
+import { ReviewForm } from "@/components/reviews/review-form";
+import { Button } from "@/components/ui/button";
 
-export const dynamic = "force-dynamic"
+export const dynamic = "force-dynamic";
 
 type EditReviewPageProps = {
-  params: Promise<{ reviewId: string }>
-}
+  params: Promise<{ reviewId: string }>;
+};
 
 export default async function EditReviewPage({ params }: EditReviewPageProps) {
-  const { reviewId } = await params
-  const [options, editData] = await Promise.all([
-    getReviewFormOptions(),
-    getReviewForEdit(reviewId),
-  ])
+  const { reviewId } = await params;
+  const editData = await getReviewForEdit(reviewId);
 
   if (!editData) {
-    notFound()
+    notFound();
   }
+  const options = await getReviewFormOptions(editData.review.moduleId);
 
   return (
     <AuthGuard>
       <EditReviewContent options={options} reviewId={reviewId} editData={editData} />
     </AuthGuard>
-  )
+  );
 }
 
-function EditReviewContent({ options, reviewId, editData }: { options: any, reviewId: string, editData: any }) {
+function EditReviewContent({
+  options,
+  reviewId,
+  editData,
+}: {
+  options: Awaited<ReturnType<typeof getReviewFormOptions>>;
+  reviewId: string;
+  editData: NonNullable<Awaited<ReturnType<typeof getReviewForEdit>>>;
+}) {
   return (
     <>
       <Navbar />
@@ -47,15 +53,10 @@ function EditReviewContent({ options, reviewId, editData }: { options: any, revi
               </Link>
             </Button>
             <div className="space-y-2">
-              <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">
-                Edit review
-              </h1>
+              <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">Edit review</h1>
               <p className="text-sm text-muted-foreground">
                 Update your review for{" "}
-                <span className="font-medium text-foreground">
-                  {editData.moduleLabel}
-                </span>
-                .
+                <span className="font-medium text-foreground">{editData.moduleLabel}</span>.
               </p>
             </div>
           </header>
@@ -71,5 +72,5 @@ function EditReviewContent({ options, reviewId, editData }: { options: any, revi
       </main>
       <Footer />
     </>
-  )
+  );
 }

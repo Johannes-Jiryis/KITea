@@ -1,33 +1,29 @@
-"use client"
+"use client";
 
-import { Bar, BarChart, Cell, XAxis, YAxis } from "recharts"
+import { Bar, BarChart, Cell, XAxis, YAxis } from "recharts";
 
-import {
-  ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
-} from "@/components/ui/chart"
-import type { ModulePageData } from "@/lib/modules/types"
-import { cn } from "@/lib/utils"
+import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
+import type { ModulePageData } from "@/lib/modules/types";
+import { cn } from "@/lib/utils";
 
 type ModuleChartsProps = {
-  stats: ModulePageData["stats"]
-}
+  stats: ModulePageData["stats"];
+};
 
 const ratingChartConfig = {
   count: { label: "Reviews", color: "hsl(var(--primary))" },
-}
+};
 
 function ScoreGauge({
   label,
   value,
   colorClass,
 }: {
-  label: string
-  value: number | null
-  colorClass: string
+  label: string;
+  value: number | null;
+  colorClass: string;
 }) {
-  const pct = value !== null ? (value / 5) * 100 : 0
+  const pct = value !== null ? (value / 5) * 100 : 0;
 
   return (
     <div className="space-y-3">
@@ -40,15 +36,12 @@ function ScoreGauge({
       </div>
       <div className="h-2.5 overflow-hidden rounded-full bg-muted">
         <div
-          className={cn(
-            "h-full rounded-full transition-all duration-700 ease-out",
-            colorClass
-          )}
+          className={cn("h-full rounded-full transition-all duration-700 ease-out", colorClass)}
           style={{ width: `${pct}%` }}
         />
       </div>
     </div>
-  )
+  );
 }
 
 export function ModuleCharts({ stats }: ModuleChartsProps) {
@@ -57,36 +50,26 @@ export function ModuleCharts({ stats }: ModuleChartsProps) {
       <div
         className={cn(
           "rounded-2xl border border-border/50 bg-card/80 p-5 shadow-sm backdrop-blur-sm",
-          "transition-all duration-300 hover:shadow-md lg:col-span-2"
+          "transition-all duration-300 hover:shadow-md lg:col-span-2",
         )}
       >
-        <h3 className="mb-4 text-sm font-semibold tracking-tight">
-          Rating distribution
-        </h3>
+        <h3 className="mb-4 text-sm font-semibold tracking-tight">Rating distribution</h3>
         {stats.reviewCount === 0 ? (
-          <p className="py-8 text-center text-sm text-muted-foreground">
-            No ratings yet.
-          </p>
+          <p className="py-8 text-center text-sm text-muted-foreground">No ratings yet.</p>
         ) : (
           <ChartContainer config={ratingChartConfig} className="h-[220px] w-full">
-            <BarChart data={stats.ratingDistribution} margin={{ top: 8, right: 8, left: -20, bottom: 0 }}>
-              <XAxis
-                dataKey="rating"
-                tickLine={false}
-                axisLine={false}
-                tick={{ fontSize: 11 }}
-              />
+            <BarChart
+              data={stats.ratingDistribution}
+              margin={{ top: 8, right: 8, left: -20, bottom: 0 }}
+            >
+              <XAxis dataKey="rating" tickLine={false} axisLine={false} tick={{ fontSize: 11 }} />
               <YAxis allowDecimals={false} tickLine={false} axisLine={false} width={28} />
               <ChartTooltip content={<ChartTooltipContent />} />
               <Bar dataKey="count" radius={[6, 6, 0, 0]}>
                 {stats.ratingDistribution.map((entry, index) => (
                   <Cell
                     key={entry.rating}
-                    fill={
-                      entry.count > 0
-                        ? "hsl(var(--primary))"
-                        : "hsl(var(--muted))"
-                    }
+                    fill={entry.count > 0 ? "hsl(var(--primary))" : "hsl(var(--muted))"}
                     opacity={entry.count > 0 ? 0.85 - index * 0.04 : 0.35}
                   />
                 ))}
@@ -99,12 +82,10 @@ export function ModuleCharts({ stats }: ModuleChartsProps) {
       <div
         className={cn(
           "rounded-2xl border border-border/50 bg-card/80 p-5 shadow-sm backdrop-blur-sm",
-          "transition-all duration-300 hover:shadow-md"
+          "transition-all duration-300 hover:shadow-md",
         )}
       >
-        <h3 className="mb-5 text-sm font-semibold tracking-tight">
-          Score overview
-        </h3>
+        <h3 className="mb-5 text-sm font-semibold tracking-tight">Score overview</h3>
         <div className="space-y-6">
           <ScoreGauge
             label="Average difficulty"
@@ -119,5 +100,5 @@ export function ModuleCharts({ stats }: ModuleChartsProps) {
         </div>
       </div>
     </div>
-  )
+  );
 }

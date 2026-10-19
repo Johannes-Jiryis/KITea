@@ -1,25 +1,26 @@
-import { getPrisma } from "@/lib/prisma"
+import { getPrisma } from "@/lib/prisma";
+import { databaseRead } from "@/lib/database/read";
+import { cache } from "react";
 
-export async function getModuleByNumber(moduleNumber: string) {
-  const prisma = getPrisma()
-  const module = await prisma.module.findUnique({
-    where: {
-      moduleNumber: moduleNumber.toUpperCase(),
-    },
-    include: {
-      semesters: {
-        select: {
-          id: true,
-          name: true,
-          year: true,
-        },
-        orderBy: [
-          { year: "desc" },
-          { name: "desc" },
-        ],
+export const getModuleByNumber = cache(async (moduleNumber: string) => {
+  const prisma = getPrisma();
+  const foundModule = await databaseRead(() =>
+    prisma.module.findFirst({
+      where: {
+        OR: [{ moduleNumber: moduleNumber.toUpperCase() }, { id: moduleNumber }],
       },
-    },
-  })
+      include: {
+        semesters: {
+          select: {
+            id: true,
+            name: true,
+            year: true,
+          },
+          orderBy: [{ year: "desc" }, { name: "asc" }],
+        },
+      },
+    }),
+  );
 
-  return module
-}
+  return foundModule;
+});

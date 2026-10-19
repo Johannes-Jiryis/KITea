@@ -1,65 +1,49 @@
-"use server"
+"use server";
 
-import { revalidatePath } from "next/cache"
-
-import { auth } from "@/auth"
-import { getPrisma } from "@/lib/prisma"
+import { auth } from "@/auth";
+import { getPrisma } from "@/lib/prisma";
+import { HttpError } from "@/lib/http/errors";
+import { lockUser, consumeWriteBudget } from "@/lib/reviews/service";
+import { invalidateReviews } from "@/lib/reviews/invalidate";
 
 type HelpfulResult =
   | { success: true; helpfulCount: number; userHasVoted: boolean }
-  | { success: false; error: string }
+  | { success: false; error: string };
 
-export async function toggleReviewHelpful(
+export const toggleReviewHelpful = async (
   reviewId: string,
-  moduleId: string
-): Promise<HelpfulResult> {
-  const session = await auth()
-  const userId = session?.user?.id
-
-  if (!userId) {
-    return { success: false, error: "Sign in to mark reviews as helpful." }
+  moduleId: string,
+): Promise<HelpfulResult> => {
+  try {
+    const session = await auth();
+    if (!session?.user?.id) return { success: false, error: "Sign in to mark reviews as helpful." };
+    const userId = session.user.id;
+    await consumeWriteBudget(userId);
+    const result = await getPrisma().$transaction(async (tx) => {
+      await lockUser(tx, userId);
+      // Serialize votes for a review, including counts and concurrent toggles.
+      await tx.$queryRaw`SELECT id FROM "Review" WHERE id = ${reviewId} FOR UPDATE`;
+      const review = await tx.review.findUnique({
+        where: { id: reviewId },
+        include: { module: { select: { moduleNumber: true } } },
+      });
+      if (!review || review.moduleId !== moduleId) throw new HttpError(404, "Review not found.");
+      if (review.userId === userId) throw new HttpError(403, "You cannot vote on your own review.");
+      const existing = await tx.reviewHelpful.findUnique({
+        where: { reviewId_userId: { reviewId, userId } },
+      });
+      if (existing) await tx.reviewHelpful.delete({ where: { id: existing.id } });
+      else await tx.reviewHelpful.create({ data: { reviewId, userId } });
+      const helpfulCount = await tx.reviewHelpful.count({ where: { reviewId } });
+      return { moduleNumber: review.module.moduleNumber, helpfulCount, userHasVoted: !existing };
+    });
+    invalidateReviews([result.moduleNumber]);
+    return { success: true, helpfulCount: result.helpfulCount, userHasVoted: result.userHasVoted };
+  } catch (error) {
+    return {
+      success: false,
+      error:
+        error instanceof HttpError ? error.message : "Could not update vote. Please try again.",
+    };
   }
-
-  const prisma = getPrisma()
-
-  const review = await prisma.review.findUnique({
-    where: { id: reviewId },
-    select: { id: true, moduleId: true, userId: true },
-  })
-
-  if (!review || review.moduleId !== moduleId) {
-    return { success: false, error: "Review not found." }
-  }
-
-  if (review.userId === userId) {
-    return { success: false, error: "You cannot upvote your own review." }
-  }
-
-  const existing = await prisma.reviewHelpful.findUnique({
-    where: {
-      reviewId_userId: { reviewId, userId },
-    },
-  })
-
-  if (existing) {
-    await prisma.reviewHelpful.delete({
-      where: { id: existing.id },
-    })
-  } else {
-    await prisma.reviewHelpful.create({
-      data: { reviewId, userId },
-    })
-  }
-
-  const helpfulCount = await prisma.reviewHelpful.count({
-    where: { reviewId },
-  })
-
-  revalidatePath(`/modules/${moduleId}`)
-
-  return {
-    success: true,
-    helpfulCount,
-    userHasVoted: !existing,
-  }
-}
+};

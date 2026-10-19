@@ -1,17 +1,17 @@
-import type { NextAuthConfig } from "next-auth"
-import { NextResponse } from "next/server"
+import type { NextAuthConfig } from "next-auth";
+import { NextResponse } from "next/server";
 
-const protectedPaths = ["/profile", "/write-review", "/my-reviews"]
+const protectedPaths = ["/profile", "/write-review", "/my-reviews"];
 
 function isProtectedPath(pathname: string) {
-  return protectedPaths.some((path) => pathname.startsWith(path))
+  return protectedPaths.some((path) => pathname.startsWith(path));
 }
 
 function safeCallbackUrl(value: string | null | undefined) {
-  if (!value || !value.startsWith("/") || value.startsWith("//")) {
-    return "/profile"
+  if (!value || !value.startsWith("/") || value.startsWith("//") || value.includes("\\")) {
+    return "/profile";
   }
-  return value
+  return value;
 }
 
 /**
@@ -29,23 +29,21 @@ export const authConfig = {
   },
   callbacks: {
     authorized({ auth, request }) {
-      const { pathname } = request.nextUrl
-      const isLoggedIn = !!auth?.user
+      const { pathname } = request.nextUrl;
+      const isLoggedIn = !!auth?.user;
 
       if (isProtectedPath(pathname) && !isLoggedIn) {
-        const url = new URL("/login", request.nextUrl)
-        url.searchParams.set("callbackUrl", pathname)
-        return NextResponse.redirect(url)
+        const url = new URL("/login", request.nextUrl);
+        url.searchParams.set("callbackUrl", pathname);
+        return NextResponse.redirect(url);
       }
 
       if (pathname === "/login" && isLoggedIn) {
-        const callbackUrl = safeCallbackUrl(
-          request.nextUrl.searchParams.get("callbackUrl")
-        )
-        return NextResponse.redirect(new URL(callbackUrl, request.nextUrl))
+        const callbackUrl = safeCallbackUrl(request.nextUrl.searchParams.get("callbackUrl"));
+        return NextResponse.redirect(new URL(callbackUrl, request.nextUrl));
       }
 
-      return true
+      return true;
     },
   },
-} satisfies NextAuthConfig
+} satisfies NextAuthConfig;

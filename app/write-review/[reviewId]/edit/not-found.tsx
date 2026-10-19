@@ -1,8 +1,8 @@
-import Link from "next/link"
+import Link from "next/link";
 
-import { Footer } from "@/components/footer"
-import { Navbar } from "@/components/navbar"
-import { Button } from "@/components/ui/button"
+import { Footer } from "@/components/footer";
+import { Navbar } from "@/components/navbar";
+import { Button } from "@/components/ui/button";
 
 export default function EditReviewNotFound() {
   return (
@@ -19,5 +19,5 @@ export default function EditReviewNotFound() {
       </main>
       <Footer />
     </>
-  )
+  );
 }

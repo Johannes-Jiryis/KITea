@@ -1,9 +1,11 @@
-@import 'tailwindcss';
-@import 'tw-animate-css';
+@import "tailwindcss";
+@import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
 :root {
+  --font-inter: "Inter Variable";
+  --font-geist-mono: "Geist Mono Variable";
   /* KITea Theme - Light Mode */
   --background: oklch(0.985 0.002 90);
   --foreground: oklch(0.2 0.02 30);
@@ -11,37 +13,37 @@
   --card-foreground: oklch(0.2 0.02 30);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.2 0.02 30);
-  
+
   /* Primary - Tea Green */
   --primary: oklch(0.55 0.15 145);
   --primary-foreground: oklch(1 0 0);
-  
+
   /* Secondary - Tea Brown */
   --secondary: oklch(0.5 0.08 55);
   --secondary-foreground: oklch(1 0 0);
-  
+
   --muted: oklch(0.96 0.005 90);
   --muted-foreground: oklch(0.45 0.02 30);
-  
+
   /* Accent - Soft Green */
   --accent: oklch(0.92 0.03 145);
   --accent-foreground: oklch(0.35 0.1 145);
-  
+
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(1 0 0);
   --border: oklch(0.92 0.01 90);
   --input: oklch(0.92 0.01 90);
   --ring: oklch(0.55 0.15 145);
-  
+
   /* Chart colors */
   --chart-1: oklch(0.55 0.15 145);
   --chart-2: oklch(0.5 0.08 55);
   --chart-3: oklch(0.65 0.12 145);
   --chart-4: oklch(0.6 0.1 55);
   --chart-5: oklch(0.7 0.08 145);
-  
+
   --radius: 0.75rem;
-  
+
   /* Sidebar */
   --sidebar: oklch(0.98 0.002 90);
   --sidebar-foreground: oklch(0.2 0.02 30);
@@ -61,35 +63,35 @@
   --card-foreground: oklch(0.95 0.005 90);
   --popover: oklch(0.2 0.01 30);
   --popover-foreground: oklch(0.95 0.005 90);
-  
+
   /* Primary - Tea Green */
   --primary: oklch(0.65 0.15 145);
   --primary-foreground: oklch(0.15 0.01 30);
-  
+
   /* Secondary - Tea Brown */
   --secondary: oklch(0.55 0.1 55);
   --secondary-foreground: oklch(0.95 0.005 90);
-  
+
   --muted: oklch(0.25 0.01 30);
   --muted-foreground: oklch(0.65 0.01 90);
-  
+
   /* Accent - Soft Green */
   --accent: oklch(0.3 0.05 145);
   --accent-foreground: oklch(0.85 0.1 145);
-  
+
   --destructive: oklch(0.5 0.2 27);
   --destructive-foreground: oklch(0.95 0.005 90);
   --border: oklch(0.28 0.01 30);
   --input: oklch(0.28 0.01 30);
   --ring: oklch(0.65 0.15 145);
-  
+
   /* Chart colors */
   --chart-1: oklch(0.65 0.15 145);
   --chart-2: oklch(0.55 0.1 55);
   --chart-3: oklch(0.7 0.12 145);
   --chart-4: oklch(0.6 0.1 55);
   --chart-5: oklch(0.75 0.08 145);
-  
+
   /* Sidebar */
   --sidebar: oklch(0.18 0.01 30);
   --sidebar-foreground: oklch(0.95 0.005 90);
@@ -102,8 +104,8 @@
 }
 
 @theme inline {
-  --font-sans: 'Inter', 'Inter Fallback', system-ui, sans-serif;
-  --font-mono: 'Geist Mono', 'Geist Mono Fallback';
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), monospace;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -153,13 +155,23 @@
 
 /* Custom animations */
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(74, 142, 83, 0.2); }
-  50% { box-shadow: 0 0 40px rgba(74, 142, 83, 0.4); }
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(74, 142, 83, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(74, 142, 83, 0.4);
+  }
 }
 
 .animate-float {
@@ -171,7 +183,8 @@
 }
 
 @keyframes search-glow {
-  0%, 100% {
+  0%,
+  100% {
     box-shadow: 0 4px 24px rgba(74, 142, 83, 0.08);
   }
   50% {

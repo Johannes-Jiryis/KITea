@@ -1,0 +1,1632 @@
+{
+  "semester": {
+    "name": "Wintersemester",
+    "year": 2026
+  },
+  "source": {
+    "program": "Informatik Master (Master of Science)",
+    "handbookDate": "2026-09-10",
+    "section": "4. Module",
+    "semesterLabel": "Wintersemester 2026/27",
+    "notes": [
+      "Prepared from the user-provided module-handbook table of contents; no descriptions or teaching schedules were supplied.",
+      "Entries 4.90 and 4.188 span lines and were joined.",
+      "The line-broken identifier M / INFO-105870 in entry 4.188 was restored to M-INFO-105870, following the identifier format throughout the source.",
+      "Section 5 (Teilleistungen, T-* identifiers) is excluded; these are course components, not separate module records."
+    ]
+  },
+  "modules": [
+    {
+      "moduleNumber": "M-INFO-106303",
+      "moduleName": "Access Control Systems: Models and Technology"
+    },
+    {
+      "moduleNumber": "M-INFO-106812",
+      "moduleName": "Advanced Bayesian Data Analysis"
+    },
+    {
+      "moduleNumber": "M-ETIT-106815",
+      "moduleName": "Advanced Communications Engineering"
+    },
+    {
+      "moduleNumber": "M-INFO-107863",
+      "moduleName": "Advanced Competitive Programming"
+    },
+    {
+      "moduleNumber": "M-INFO-107200",
+      "moduleName": "Advanced Data Structures"
+    },
+    {
+      "moduleNumber": "M-WIWI-105659",
+      "moduleName": "Advanced Machine Learning and Data Science"
+    },
+    {
+      "moduleNumber": "M-MATH-101315",
+      "moduleName": "Algebra"
+    },
+    {
+      "moduleNumber": "M-MATH-101724",
+      "moduleName": "Algebraische Geometrie"
+    },
+    {
+      "moduleNumber": "M-MATH-101725",
+      "moduleName": "Algebraische Zahlentheorie"
+    },
+    {
+      "moduleNumber": "M-INFO-100795",
+      "moduleName": "Algorithm Engineering"
+    },
+    {
+      "moduleNumber": "M-INFO-100031",
+      "moduleName": "Algorithmen für Routenplanung"
+    },
+    {
+      "moduleNumber": "M-INFO-106960",
+      "moduleName": "Algorithmic Graph Theory"
+    },
+    {
+      "moduleNumber": "M-INFO-107460",
+      "moduleName": "Algorithmische Netzwerkanalyse"
+    },
+    {
+      "moduleNumber": "M-INFO-106961",
+      "moduleName": "Algorithms for Visualization of Graphs"
+    },
+    {
+      "moduleNumber": "M-INFO-107201",
+      "moduleName": "Algorithms II"
+    },
+    {
+      "moduleNumber": "M-ETIT-107364",
+      "moduleName": "Analog Circuit Design"
+    },
+    {
+      "moduleNumber": "M-MATH-103164",
+      "moduleName": "Analysis 4"
+    },
+    {
+      "moduleNumber": "M-WIWI-101453",
+      "moduleName": "Angewandte strategische Entscheidungen"
+    },
+    {
+      "moduleNumber": "M-ETIT-107333",
+      "moduleName": "Applied Information Theory"
+    },
+    {
+      "moduleNumber": "M-GEISTSOZ-100614",
+      "moduleName": "Ars Rationalis"
+    },
+    {
+      "moduleNumber": "M-INFO-106810",
+      "moduleName": "Artificial Intelligence & IT-Security"
+    },
+    {
+      "moduleNumber": "M-INFO-107431",
+      "moduleName": "Ausgewählte Themen der Echtzeitsysteme"
+    },
+    {
+      "moduleNumber": "M-INFO-105338",
+      "moduleName": "Authentisierung und Verschlüsselung"
+    },
+    {
+      "moduleNumber": "M-INFO-104447",
+      "moduleName": "Automated Planning and Scheduling"
+    },
+    {
+      "moduleNumber": "M-INFO-100826",
+      "moduleName": "Automatische Sichtprüfung und Bildverarbeitung"
+    },
+    {
+      "moduleNumber": "M-MACH-107806",
+      "moduleName": "Autonomous Driving in Practice"
+    },
+    {
+      "moduleNumber": "M-INFO-106608",
+      "moduleName": "Autonomous Learning for Intelligent Robot Perception"
+    },
+    {
+      "moduleNumber": "M-MATH-106328",
+      "moduleName": "Bayes'sche inverse Probleme und deren Verbindungen zum maschinellen Lernen"
+    },
+    {
+      "moduleNumber": "M-INFO-107599",
+      "moduleName": "Beating the Worst-Case in Practice: Unexpectedly Efficient Algorithms"
+    },
+    {
+      "moduleNumber": "M-INFO-107620",
+      "moduleName": "Begleitseminar: Abschlussarbeiten in der Computergrafik"
+    },
+    {
+      "moduleNumber": "M-INFO-104199",
+      "moduleName": "Betriebswirtschaftslehre für dataintensives Rechnen"
+    },
+    {
+      "moduleNumber": "M-MACH-106903",
+      "moduleName": "Biologically Inspired Robots"
+    },
+    {
+      "moduleNumber": "M-WIWI-101410",
+      "moduleName": "Business & Service Engineering"
+    },
+    {
+      "moduleNumber": "M-ETIT-101834",
+      "moduleName": "Business Innovation in Optics and Photonics"
+    },
+    {
+      "moduleNumber": "M-MACH-106905",
+      "moduleName": "CAD Engineering Project for Intelligent Systems"
+    },
+    {
+      "moduleNumber": "M-ETIT-105616",
+      "moduleName": "Channel Coding: Algebraic Methods for Communications and Storage"
+    },
+    {
+      "moduleNumber": "M-ETIT-105617",
+      "moduleName": "Channel Coding: Graph-Based Codes"
+    },
+    {
+      "moduleNumber": "M-INFO-106824",
+      "moduleName": "Codierungstheorie"
+    },
+    {
+      "moduleNumber": "M-ETIT-107440",
+      "moduleName": "Coding of Audiovisual Signals"
+    },
+    {
+      "moduleNumber": "M-WIWI-101504",
+      "moduleName": "Collective Decision Making"
+    },
+    {
+      "moduleNumber": "M-INFO-106966",
+      "moduleName": "Compiler Design"
+    },
+    {
+      "moduleNumber": "M-MATH-106634",
+      "moduleName": "Computational Fluid Dynamics and Simulation Lab"
+    },
+    {
+      "moduleNumber": "M-INFO-107228",
+      "moduleName": "Computational Geometry"
+    },
+    {
+      "moduleNumber": "M-INFO-106190",
+      "moduleName": "Computational Imaging"
+    },
+    {
+      "moduleNumber": "M-PHYS-101933",
+      "moduleName": "Computational Photonics, with ext. Exercises"
+    },
+    {
+      "moduleNumber": "M-PHYS-103089",
+      "moduleName": "Computational Photonics, without ext. Exercises"
+    },
+    {
+      "moduleNumber": "M-INFO-100856",
+      "moduleName": "Computergrafik"
+    },
+    {
+      "moduleNumber": "M-INFO-106685",
+      "moduleName": "Computergrafik 2"
+    },
+    {
+      "moduleNumber": "M-INFO-106256",
+      "moduleName": "Constructive Logic"
+    },
+    {
+      "moduleNumber": "M-INFO-107435",
+      "moduleName": "Cryptographic Protocols II: Universal Composability"
+    },
+    {
+      "moduleNumber": "M-INFO-106355",
+      "moduleName": "Cybersicherheit für industrielle Automatisierungs- und Steuerungsanlagen"
+    },
+    {
+      "moduleNumber": "M-INFO-106655",
+      "moduleName": "Data Science and Artificial Intelligence for Energy Systems"
+    },
+    {
+      "moduleNumber": "M-INFO-101662",
+      "moduleName": "Datenbank-Praktikum"
+    },
+    {
+      "moduleNumber": "M-INFO-105334",
+      "moduleName": "Decentralized Systems: Fundamentals, Modeling, and Applications"
+    },
+    {
+      "moduleNumber": "M-INFO-107197",
+      "moduleName": "Deep Learning and Neural Networks"
+    },
+    {
+      "moduleNumber": "M-INFO-107843",
+      "moduleName": "Deep Learning for Computer Vision: Advanced Topics"
+    },
+    {
+      "moduleNumber": "M-INFO-107230",
+      "moduleName": "Design and Architectures of Embedded Systems (ESII)"
+    },
+    {
+      "moduleNumber": "M-MATH-101317",
+      "moduleName": "Differentialgeometrie"
+    },
+    {
+      "moduleNumber": "M-ETIT-107365",
+      "moduleName": "Digital Circuit Design"
+    },
+    {
+      "moduleNumber": "M-WIWI-106258",
+      "moduleName": "Digital Marketing"
+    },
+    {
+      "moduleNumber": "M-INFO-105882",
+      "moduleName": "Digitale Barrierefreiheit und Assistive Technologien"
+    },
+    {
+      "moduleNumber": "M-INFO-107215",
+      "moduleName": "Distributed Computing"
+    },
+    {
+      "moduleNumber": "M-INFO-107234",
+      "moduleName": "Edge-AI in Software and Sensor Applications"
+    },
+    {
+      "moduleNumber": "M-INFO-106101",
+      "moduleName": "Einführung in das Quantencomputing (IQC)"
+    },
+    {
+      "moduleNumber": "M-MATH-102889",
+      "moduleName": "Einführung in das Wissenschaftliche Rechnen"
+    },
+    {
+      "moduleNumber": "M-INFO-100736",
+      "moduleName": "Einführung in die Bildfolgenauswertung"
+    },
+    {
+      "moduleNumber": "M-MATH-103919",
+      "moduleName": "Einführung in die kinetische Theorie"
+    },
+    {
+      "moduleNumber": "M-GEISTSOZ-107546",
+      "moduleName": "Einführung in die Philosophie"
+    },
+    {
+      "moduleNumber": "M-ETIT-105394",
+      "moduleName": "Electric Power Transmission & Grid Control"
+    },
+    {
+      "moduleNumber": "M-INFO-105775",
+      "moduleName": "Embedded Machine Learning Lab"
+    },
+    {
+      "moduleNumber": "M-INFO-107685",
+      "moduleName": "Empirical Software Engineering"
+    },
+    {
+      "moduleNumber": "M-GEISTSOZ-103737",
+      "moduleName": "Empirische Sozialforschung"
+    },
+    {
+      "moduleNumber": "M-INFO-106864",
+      "moduleName": "Energieinformatik"
+    },
+    {
+      "moduleNumber": "M-WIWI-101451",
+      "moduleName": "Energiewirtschaft und Energiemärkte"
+    },
+    {
+      "moduleNumber": "M-WIWI-101452",
+      "moduleName": "Energiewirtschaft und Technologie"
+    },
+    {
+      "moduleNumber": "M-INFO-106626",
+      "moduleName": "Engineering Self-Adaptive Systems"
+    },
+    {
+      "moduleNumber": "M-WIWI-101488",
+      "moduleName": "Entrepreneurship (EnTechnon)"
+    },
+    {
+      "moduleNumber": "M-CHEMBIO-101957",
+      "moduleName": "Ergänzungsfach Biologie"
+    },
+    {
+      "moduleNumber": "M-INFO-106302",
+      "moduleName": "Explainable Artificial Intelligence"
+    },
+    {
+      "moduleNumber": "M-MATH-102939",
+      "moduleName": "Extremwerttheorie"
+    },
+    {
+      "moduleNumber": "M-WIWI-101482",
+      "moduleName": "Finance 1"
+    },
+    {
+      "moduleNumber": "M-WIWI-101483",
+      "moduleName": "Finance 2"
+    },
+    {
+      "moduleNumber": "M-INFO-106644",
+      "moduleName": "Fine-Grained Complexity Theory & Algorithms"
+    },
+    {
+      "moduleNumber": "M-INFO-100799",
+      "moduleName": "Formale Systeme"
+    },
+    {
+      "moduleNumber": "M-INFO-100744",
+      "moduleName": "Formale Systeme II: Anwendung"
+    },
+    {
+      "moduleNumber": "M-INFO-100841",
+      "moduleName": "Formale Systeme II: Theorie"
+    },
+    {
+      "moduleNumber": "M-INFO-105378",
+      "moduleName": "Forschungspraktikum Autonome Lernende Roboter"
+    },
+    {
+      "moduleNumber": "M-PHYS-101927",
+      "moduleName": "Fundamentals of Optics and Photonics"
+    },
+    {
+      "moduleNumber": "M-MATH-101320",
+      "moduleName": "Funktionalanalysis"
+    },
+    {
+      "moduleNumber": "M-INFO-100725",
+      "moduleName": "Gehirn und Zentrales Nervensystem: Struktur, Informationstransfer, Reizverarbeitung, Neurophysiologie und Therapie"
+    },
+    {
+      "moduleNumber": "M-MATH-102906",
+      "moduleName": "Generalisierte Regressionsmodelle"
+    },
+    {
+      "moduleNumber": "M-INFO-106237",
+      "moduleName": "Geometric Deep Learning"
+    },
+    {
+      "moduleNumber": "M-INFO-107211",
+      "moduleName": "Graph Partitioning and Graph Clustering in Theory and Practice"
+    },
+    {
+      "moduleNumber": "M-MATH-101336",
+      "moduleName": "Graphentheorie"
+    },
+    {
+      "moduleNumber": "M-INFO-101573",
+      "moduleName": "Hands-on Bioinformatics Practical"
+    },
+    {
+      "moduleNumber": "M-ETIT-100449",
+      "moduleName": "Hardware Modeling and Simulation"
+    },
+    {
+      "moduleNumber": "M-ETIT-106963",
+      "moduleName": "Hardware Synthesis and Optimization"
+    },
+    {
+      "moduleNumber": "M-ETIT-107444",
+      "moduleName": "Hardware/Software Co-Design"
+    },
+    {
+      "moduleNumber": "M-INFO-107448",
+      "moduleName": "Hardware-efficient Artificial Intelligence"
+    },
+    {
+      "moduleNumber": "M-INFO-100822",
+      "moduleName": "Heterogene parallele Rechensysteme"
+    },
+    {
+      "moduleNumber": "M-INFO-106650",
+      "moduleName": "HRI and Social Robotics"
+    },
+    {
+      "moduleNumber": "M-INFO-107166",
+      "moduleName": "Human Computer Interaction"
+    },
+    {
+      "moduleNumber": "M-WIWI-106292",
+      "moduleName": "Human-Centered Information Systems"
+    },
+    {
+      "moduleNumber": "M-INFO-106649",
+      "moduleName": "Humanoid Robots - Locomotion and Whole-Body Control"
+    },
+    {
+      "moduleNumber": "M-INFO-107152",
+      "moduleName": "Humanoid Robots - Seminar"
+    },
+    {
+      "moduleNumber": "M-WIWI-101471",
+      "moduleName": "Industrielle Produktion II"
+    },
+    {
+      "moduleNumber": "M-WIWI-101412",
+      "moduleName": "Industrielle Produktion III"
+    },
+    {
+      "moduleNumber": "M-WIWI-101507",
+      "moduleName": "Innovationsmanagement"
+    },
+    {
+      "moduleNumber": "M-INFO-100791",
+      "moduleName": "Innovative Konzepte zur Programmierung von Industrierobotern"
+    },
+    {
+      "moduleNumber": "M-ETIT-100457",
+      "moduleName": "Integrierte Intelligente Sensoren"
+    },
+    {
+      "moduleNumber": "M-INFO-100732",
+      "moduleName": "Interaktive Computergrafik"
+    },
+    {
+      "moduleNumber": "M-INFO-100800",
+      "moduleName": "Internet of Everything"
+    },
+    {
+      "moduleNumber": "M-INFO-100749",
+      "moduleName": "Introduction to Bioinformatics for Computer Scientists"
+    },
+    {
+      "moduleNumber": "M-INFO-106998",
+      "moduleName": "IT Security"
+    },
+    {
+      "moduleNumber": "M-INFO-100786",
+      "moduleName": "IT-Sicherheitsmanagement für vernetzte Systeme"
+    },
+    {
+      "moduleNumber": "M-MATH-102950",
+      "moduleName": "Kombinatorik"
+    },
+    {
+      "moduleNumber": "M-INFO-101575",
+      "moduleName": "Komplexitätstheorie, mit Anwendungen in der Kryptographie"
+    },
+    {
+      "moduleNumber": "M-INFO-100728",
+      "moduleName": "Kontextsensitive Systeme"
+    },
+    {
+      "moduleNumber": "M-INFO-105631",
+      "moduleName": "Kryptographische Protokolle"
+    },
+    {
+      "moduleNumber": "M-INFO-100742",
+      "moduleName": "Kryptographische Wahlverfahren"
+    },
+    {
+      "moduleNumber": "M-INFO-107176",
+      "moduleName": "Lab Project: Speech Translation"
+    },
+    {
+      "moduleNumber": "M-ETIT-101845",
+      "moduleName": "Lineare Elektrische Netze"
+    },
+    {
+      "moduleNumber": "M-INFO-107821",
+      "moduleName": "lntroduction to Quantum Machine Learning"
+    },
+    {
+      "moduleNumber": "M-INFO-107663",
+      "moduleName": "Localization of Mobile Agents"
+    },
+    {
+      "moduleNumber": "M-INFO-107906",
+      "moduleName": "Logic Programming"
+    },
+    {
+      "moduleNumber": "M-INFO-106102",
+      "moduleName": "Logical Foundations of Cyber-Physical Systems"
+    },
+    {
+      "moduleNumber": "M-INFO-100807",
+      "moduleName": "Low Power Design"
+    },
+    {
+      "moduleNumber": "M-INFO-107169",
+      "moduleName": "Machine Learning - Foundations and Algorithms"
+    },
+    {
+      "moduleNumber": "M-INFO-106959",
+      "moduleName": "Machine Learning for Natural Sciences"
+    },
+    {
+      "moduleNumber": "M-INFO-106470",
+      "moduleName": "Machine Learning in Climate and Environmental Sciences"
+    },
+    {
+      "moduleNumber": "M-WIWI-101446",
+      "moduleName": "Market Engineering"
+    },
+    {
+      "moduleNumber": "M-INFO-100848",
+      "moduleName": "Maschinelle Übersetzung"
+    },
+    {
+      "moduleNumber": "M-INFO-106435",
+      "moduleName": "Masterarbeit"
+    },
+    {
+      "moduleNumber": "M-INFO-104200",
+      "moduleName": "Materialwissenschaften für dataintensives Rechnen"
+    },
+    {
+      "moduleNumber": "M-MATH-102929",
+      "moduleName": "Mathematische Modellierung und Simulation in der Praxis"
+    },
+    {
+      "moduleNumber": "M-WIWI-101473",
+      "moduleName": "Mathematische Optimierung"
+    },
+    {
+      "moduleNumber": "M-MATH-106836",
+      "moduleName": "MathSEE Modeling Week"
+    },
+    {
+      "moduleNumber": "M-INFO-102288",
+      "moduleName": "Medienkunst"
+    },
+    {
+      "moduleNumber": "M-INFO-103147",
+      "moduleName": "Medienkunst Modell \"kleines Nebenfach\""
+    },
+    {
+      "moduleNumber": "M-INFO-100824",
+      "moduleName": "Mensch-Maschine-Wechselwirkung in der Anthropomatik: Basiswissen"
+    },
+    {
+      "moduleNumber": "M-MACH-102564",
+      "moduleName": "Mess- und Regelungstechnik"
+    },
+    {
+      "moduleNumber": "M-ETIT-106339",
+      "moduleName": "Mess- und Regelungstechnik"
+    },
+    {
+      "moduleNumber": "M-GEISTSOZ-103736",
+      "moduleName": "Methoden empirischer Sozialforschung"
+    },
+    {
+      "moduleNumber": "M-WIWI-101500",
+      "moduleName": "Microeconomic Theory"
+    },
+    {
+      "moduleNumber": "M-ETIT-100454",
+      "moduleName": "Mikrosystemtechnik"
+    },
+    {
+      "moduleNumber": "M-INFO-107245",
+      "moduleName": "Mobile Communication"
+    },
+    {
+      "moduleNumber": "M-ETIT-105971",
+      "moduleName": "Mobile Communications"
+    },
+    {
+      "moduleNumber": "M-INFO-106931",
+      "moduleName": "Model-Driven Software Development"
+    },
+    {
+      "moduleNumber": "M-ETIT-106782",
+      "moduleName": "Modeling Physiological Systems"
+    },
+    {
+      "moduleNumber": "M-PHYS-106332",
+      "moduleName": "Moderne Experimentalphysik II, Struktur der Materie"
+    },
+    {
+      "moduleNumber": "M-MATH-106957",
+      "moduleName": "Moderne Methoden der Kombinatorik"
+    },
+    {
+      "moduleNumber": "M-PHYS-101664",
+      "moduleName": "Moderne Theoretische Physik für Lehramt"
+    },
+    {
+      "moduleNumber": "M-PHYS-106335",
+      "moduleName": "Moderne Theoretische Physik II, Fortgeschrittene Quantenmechanik und Statistische Physik"
+    },
+    {
+      "moduleNumber": "M-INFO-102555",
+      "moduleName": "Motion in Human and Machine - Seminar"
+    },
+    {
+      "moduleNumber": "M-INFO-107676",
+      "moduleName": "Multimodal Artificial Intelligence"
+    },
+    {
+      "moduleNumber": "M-INFO-100825",
+      "moduleName": "Mustererkennung"
+    },
+    {
+      "moduleNumber": "M-ETIT-105604",
+      "moduleName": "Nano- and Quantum Electronics"
+    },
+    {
+      "moduleNumber": "M-INFO-107178",
+      "moduleName": "Natural Language Processing"
+    },
+    {
+      "moduleNumber": "M-INFO-107233",
+      "moduleName": "Natural Language Processing and Software Engineering"
+    },
+    {
+      "moduleNumber": "M-INFO-107218",
+      "moduleName": "Network Security: Architectures and Protocols"
+    },
+    {
+      "moduleNumber": "M-INFO-100784",
+      "moduleName": "Next Generation Internet"
+    },
+    {
+      "moduleNumber": "M-MATH-102910",
+      "moduleName": "Nichtparametrische Statistik"
+    },
+    {
+      "moduleNumber": "M-ETIT-107644",
+      "moduleName": "Nonlinear Control Systems"
+    },
+    {
+      "moduleNumber": "M-INFO-107809",
+      "moduleName": "NoSQL- und Cloud-native Datenbanksysteme"
+    },
+    {
+      "moduleNumber": "M-INFO-106754",
+      "moduleName": "Öffentliches Wirtschafts- und Technikrecht"
+    },
+    {
+      "moduleNumber": "M-WIWI-101502",
+      "moduleName": "Ökonomische Theorie und ihre Anwendung in Finance"
+    },
+    {
+      "moduleNumber": "M-WIWI-102832",
+      "moduleName": "Operations Research im Supply Chain Management"
+    },
+    {
+      "moduleNumber": "M-ETIT-106974",
+      "moduleName": "Optical Engineering and Machine Vision"
+    },
+    {
+      "moduleNumber": "M-ETIT-107497",
+      "moduleName": "Optimal Control"
+    },
+    {
+      "moduleNumber": "M-MATH-103219",
+      "moduleName": "Optimierungstheorie"
+    },
+    {
+      "moduleNumber": "M-INFO-107229",
+      "moduleName": "Optimization and Synthesis of Embedded Systems (ESI)"
+    },
+    {
+      "moduleNumber": "M-INFO-105329",
+      "moduleName": "Optimization Methods for Machine Learning and Engineering"
+    },
+    {
+      "moduleNumber": "M-ETIT-100509",
+      "moduleName": "Optoelectronic Components"
+    },
+    {
+      "moduleNumber": "M-INFO-107199",
+      "moduleName": "Parallel Algorithms"
+    },
+    {
+      "moduleNumber": "M-MATH-101338",
+      "moduleName": "Paralleles Rechnen"
+    },
+    {
+      "moduleNumber": "M-INFO-100808",
+      "moduleName": "Parallelrechner und Parallelprogrammierung"
+    },
+    {
+      "moduleNumber": "M-INFO-107167",
+      "moduleName": "Parameterized Algorithms"
+    },
+    {
+      "moduleNumber": "M-INFO-107170",
+      "moduleName": "Participatory Technology Design"
+    },
+    {
+      "moduleNumber": "M-INFO-107817",
+      "moduleName": "Photorealistic Rendering"
+    },
+    {
+      "moduleNumber": "M-ETIT-105608",
+      "moduleName": "Physics, Technology and Applications of Thin Films"
+    },
+    {
+      "moduleNumber": "M-ETIT-105874",
+      "moduleName": "Physiologie und Anatomie für die Medizintechnik"
+    },
+    {
+      "moduleNumber": "M-INFO-107642",
+      "moduleName": "Post-quantum Cryptography from Lattices"
+    },
+    {
+      "moduleNumber": "M-INFO-100804",
+      "moduleName": "Power Management"
+    },
+    {
+      "moduleNumber": "M-INFO-101542",
+      "moduleName": "Power Management Praktikum"
+    },
+    {
+      "moduleNumber": "M-INFO-107597",
+      "moduleName": "Practical Course on Telematics"
+    },
+    {
+      "moduleNumber": "M-INFO-103706",
+      "moduleName": "Practical Course: Internet of Things (IoT)"
+    },
+    {
+      "moduleNumber": "M-INFO-107739",
+      "moduleName": "Practical Course: Advanced Software Development Tools"
+    },
+    {
+      "moduleNumber": "M-INFO-105870",
+      "moduleName": "Practical Course: Advanced Topics in High Performance Computing, Data Management and Analytics"
+    },
+    {
+      "moduleNumber": "M-INFO-106800",
+      "moduleName": "Practical Course: AI for Climate and Weather Predictions"
+    },
+    {
+      "moduleNumber": "M-INFO-106996",
+      "moduleName": "Practical Course: Application Security"
+    },
+    {
+      "moduleNumber": "M-INFO-106867",
+      "moduleName": "Practical Course: Artificial Intelligence & Security Lab (AISEC-Lab)"
+    },
+    {
+      "moduleNumber": "M-INFO-107412",
+      "moduleName": "Practical Course: Building PETs"
+    },
+    {
+      "moduleNumber": "M-INFO-107265",
+      "moduleName": "Practical Course: Chip Design I"
+    },
+    {
+      "moduleNumber": "M-INFO-107266",
+      "moduleName": "Practical Course: Chip Design II"
+    },
+    {
+      "moduleNumber": "M-INFO-107677",
+      "moduleName": "Practical Course: Continuous Software Engineering"
+    },
+    {
+      "moduleNumber": "M-INFO-107897",
+      "moduleName": "Practical Course: Customized Embedded Processor Design"
+    },
+    {
+      "moduleNumber": "M-INFO-107836",
+      "moduleName": "Practical Course: Decentralized Learning Lab"
+    },
+    {
+      "moduleNumber": "M-INFO-107919",
+      "moduleName": "Practical Course: Designing and Conducting Experimental Studies"
+    },
+    {
+      "moduleNumber": "M-INFO-107678",
+      "moduleName": "Practical Course: Engineering Approaches to Software Development"
+    },
+    {
+      "moduleNumber": "M-INFO-106784",
+      "moduleName": "Practical Course: Fine-grained Algorithm Design and Engineering"
+    },
+    {
+      "moduleNumber": "M-INFO-102661",
+      "moduleName": "Practical Course: FPGA Programming"
+    },
+    {
+      "moduleNumber": "M-INFO-100724",
+      "moduleName": "Practical Course: General-Purpose Computation on Graphics Processing Units"
+    },
+    {
+      "moduleNumber": "M-INFO-106646",
+      "moduleName": "Practical Course: Human-Centred Robotics"
+    },
+    {
+      "moduleNumber": "M-INFO-107494",
+      "moduleName": "Practical Course: Interactive Theorem Proving"
+    },
+    {
+      "moduleNumber": "M-INFO-104031",
+      "moduleName": "Practical Course: Low Power Design and Embedded Systems"
+    },
+    {
+      "moduleNumber": "M-INFO-107845",
+      "moduleName": "Practical Course: Machine Learning and Intelligent Systems"
+    },
+    {
+      "moduleNumber": "M-INFO-107609",
+      "moduleName": "Practical Course: Mathematical and Computational Methods in Robotics and AI"
+    },
+    {
+      "moduleNumber": "M-INFO-106932",
+      "moduleName": "Practical Course: Model-Driven Software Development"
+    },
+    {
+      "moduleNumber": "M-INFO-106648",
+      "moduleName": "Practical Course: Movement and Technology"
+    },
+    {
+      "moduleNumber": "M-INFO-107177",
+      "moduleName": "Practical Course: Natural Language Dialog Systems"
+    },
+    {
+      "moduleNumber": "M-INFO-106503",
+      "moduleName": "Practical Course: Neural Network Acceleration on FPGAs"
+    },
+    {
+      "moduleNumber": "M-INFO-107865",
+      "moduleName": "Practical Course: Performance Engineering in C++ and Rust"
+    },
+    {
+      "moduleNumber": "M-INFO-108020",
+      "moduleName": "Practical Course: Programming Language Design and Implementation"
+    },
+    {
+      "moduleNumber": "M-INFO-106627",
+      "moduleName": "Practical Course: Real-world Vulnerability Discovery and Exploits"
+    },
+    {
+      "moduleNumber": "M-INFO-107600",
+      "moduleName": "Practical Course: Route Planning"
+    },
+    {
+      "moduleNumber": "M-INFO-105453",
+      "moduleName": "Practical Course: Security, Usability and Society"
+    },
+    {
+      "moduleNumber": "M-INFO-105955",
+      "moduleName": "Practical Course: Smart Energy System"
+    },
+    {
+      "moduleNumber": "M-MACH-106904",
+      "moduleName": "Practical Course: Software Development and Application of Mobile, Bio-Inspired Robots"
+    },
+    {
+      "moduleNumber": "M-INFO-101567",
+      "moduleName": "Practical Course: Visual Computing"
+    },
+    {
+      "moduleNumber": "M-INFO-107527",
+      "moduleName": "Practical Course: Wearable Computing"
+    },
+    {
+      "moduleNumber": "M-INFO-107241",
+      "moduleName": "Practical Introduction to Hardware Security"
+    },
+    {
+      "moduleNumber": "M-INFO-107238",
+      "moduleName": "Practical SAT Solving"
+    },
+    {
+      "moduleNumber": "M-INFO-107829",
+      "moduleName": "Practice of Research (Methods, 1st Semester)"
+    },
+    {
+      "moduleNumber": "M-INFO-107830",
+      "moduleName": "Practice of Research (Methods, 2nd Semester)"
+    },
+    {
+      "moduleNumber": "M-INFO-107831",
+      "moduleName": "Practice of Research (Project, 1st Semester)"
+    },
+    {
+      "moduleNumber": "M-INFO-107832",
+      "moduleName": "Practice of Research (Project, 2nd Semester)"
+    },
+    {
+      "moduleNumber": "M-INFO-103047",
+      "moduleName": "Praktikum Dezentrale Systeme und Netzdienste"
+    },
+    {
+      "moduleNumber": "M-PHYS-101353",
+      "moduleName": "Praktikum Klassische Physik I"
+    },
+    {
+      "moduleNumber": "M-PHYS-101354",
+      "moduleName": "Praktikum Klassische Physik II"
+    },
+    {
+      "moduleNumber": "M-INFO-101559",
+      "moduleName": "Praktikum Kryptoanalyse"
+    },
+    {
+      "moduleNumber": "M-ETIT-100468",
+      "moduleName": "Praktikum Nanoelektronik"
+    },
+    {
+      "moduleNumber": "M-ETIT-100460",
+      "moduleName": "Praktikum Software Engineering"
+    },
+    {
+      "moduleNumber": "M-INFO-104699",
+      "moduleName": "Praktikum: Aktuelle Forschungsthemen der Computergrafik"
+    },
+    {
+      "moduleNumber": "M-INFO-106286",
+      "moduleName": "Praktikum: Aktuelle Themen des Quantencomputings"
+    },
+    {
+      "moduleNumber": "M-INFO-106261",
+      "moduleName": "Praktikum: Automotive Software Engineering"
+    },
+    {
+      "moduleNumber": "M-INFO-105632",
+      "moduleName": "Praktikum: Data Science"
+    },
+    {
+      "moduleNumber": "M-INFO-106329",
+      "moduleName": "Praktikum: Data Science für die Wissenschaften"
+    },
+    {
+      "moduleNumber": "M-INFO-106290",
+      "moduleName": "Praktikum: Gestaltung und Evaluierung Interaktiver Systeme"
+    },
+    {
+      "moduleNumber": "M-INFO-103302",
+      "moduleName": "Praktikum: Graphenvisualisierung in der Praxis"
+    },
+    {
+      "moduleNumber": "M-INFO-105384",
+      "moduleName": "Praktikum: Graphics and Game Development"
+    },
+    {
+      "moduleNumber": "M-INFO-104895",
+      "moduleName": "Praktikum: Penetration Testing"
+    },
+    {
+      "moduleNumber": "M-INFO-101537",
+      "moduleName": "Praktikum: Programmverifikation"
+    },
+    {
+      "moduleNumber": "M-INFO-106851",
+      "moduleName": "Praktikum: Realtime Computer Graphics"
+    },
+    {
+      "moduleNumber": "M-INFO-106687",
+      "moduleName": "Praktikum: Rendering in CGI"
+    },
+    {
+      "moduleNumber": "M-INFO-106686",
+      "moduleName": "Praktikum: Scientific Visualization"
+    },
+    {
+      "moduleNumber": "M-INFO-103235",
+      "moduleName": "Praktikum: Smart Data Analytics"
+    },
+    {
+      "moduleNumber": "M-INFO-101635",
+      "moduleName": "Praktikum: Web-Anwendungen und Serviceorientierte Architekturen (II)"
+    },
+    {
+      "moduleNumber": "M-GEISTSOZ-104507",
+      "moduleName": "Praktische Philosophie I"
+    },
+    {
+      "moduleNumber": "M-GEISTSOZ-104508",
+      "moduleName": "Praktische Philosophie II"
+    },
+    {
+      "moduleNumber": "M-INFO-105452",
+      "moduleName": "Privacy Enhancing Technologies"
+    },
+    {
+      "moduleNumber": "M-INFO-107168",
+      "moduleName": "Probability and Computing"
+    },
+    {
+      "moduleNumber": "M-ETIT-104475",
+      "moduleName": "Projektmanagement in der Entwicklung von Produkten für sicherheitskritische Anwendungen"
+    },
+    {
+      "moduleNumber": "M-INFO-102383",
+      "moduleName": "Projektpraktikum Bildauswertung und -fusion"
+    },
+    {
+      "moduleNumber": "M-INFO-102966",
+      "moduleName": "Projektpraktikum Computer Vision für Mensch-Maschine-Interaktion"
+    },
+    {
+      "moduleNumber": "M-INFO-105792",
+      "moduleName": "Projektpraktikum: Humanoide Roboter"
+    },
+    {
+      "moduleNumber": "M-MATH-104054",
+      "moduleName": "Quantifizierung von Unsicherheiten"
+    },
+    {
+      "moduleNumber": "M-ETIT-105273",
+      "moduleName": "Quellencodierung"
+    },
+    {
+      "moduleNumber": "M-INFO-100818",
+      "moduleName": "Rechnerstrukturen"
+    },
+    {
+      "moduleNumber": "M-INFO-101216",
+      "moduleName": "Recht der Wirtschaftsunternehmen"
+    },
+    {
+      "moduleNumber": "M-INFO-101215",
+      "moduleName": "Recht des geistigen Eigentums"
+    },
+    {
+      "moduleNumber": "M-INFO-105623",
+      "moduleName": "Reinforcement Learning"
+    },
+    {
+      "moduleNumber": "M-INFO-100850",
+      "moduleName": "Reliable Computing I"
+    },
+    {
+      "moduleNumber": "M-INFO-106654",
+      "moduleName": "Research Focus Class: Blockchain & Cryptocurrencies"
+    },
+    {
+      "moduleNumber": "M-INFO-107728",
+      "moduleName": "Research Practical Course on Behavior Foundation Models"
+    },
+    {
+      "moduleNumber": "M-INFO-106866",
+      "moduleName": "Research Practical Course: Artificial Intelligence & Security"
+    },
+    {
+      "moduleNumber": "M-INFO-106495",
+      "moduleName": "Research Practical Course: Explainable Artificial Intelligence"
+    },
+    {
+      "moduleNumber": "M-INFO-107174",
+      "moduleName": "Research Project Deep Learning for Robotics"
+    },
+    {
+      "moduleNumber": "M-INFO-107163",
+      "moduleName": "Research Project: Generative AI for Autonomous Agents"
+    },
+    {
+      "moduleNumber": "M-INFO-106871",
+      "moduleName": "Research Project: Machine Learning for Autonomous Agents and Decision Making"
+    },
+    {
+      "moduleNumber": "M-INFO-106813",
+      "moduleName": "Research Seminar in Selected Topics in Statistical Learning and Data Science"
+    },
+    {
+      "moduleNumber": "M-INFO-105591",
+      "moduleName": "Resilient Networking"
+    },
+    {
+      "moduleNumber": "M-MACH-107621",
+      "moduleName": "Robotic Intelligence: Navigation and Mobile Manipulation"
+    },
+    {
+      "moduleNumber": "M-MACH-107558",
+      "moduleName": "Robotic Intelligence: Perception and Scene Understanding"
+    },
+    {
+      "moduleNumber": "M-INFO-107155",
+      "moduleName": "Robotics - Practical Course"
+    },
+    {
+      "moduleNumber": "M-INFO-107162",
+      "moduleName": "Robotics I - Introduction to Robotics"
+    },
+    {
+      "moduleNumber": "M-INFO-107123",
+      "moduleName": "Robotics II - Humanoid Robotics"
+    },
+    {
+      "moduleNumber": "M-INFO-107130",
+      "moduleName": "Robotics III - Sensors and Perception in Robotics"
+    },
+    {
+      "moduleNumber": "M-INFO-107598",
+      "moduleName": "Robotics Institute Germany - Lecture Series"
+    },
+    {
+      "moduleNumber": "M-INFO-107090",
+      "moduleName": "Sampling Methods for Machine Learning"
+    },
+    {
+      "moduleNumber": "M-INFO-107867",
+      "moduleName": "Scalable Graph and Sparse Matrix Algorithms for Learning"
+    },
+    {
+      "moduleNumber": "M-INFO-102835",
+      "moduleName": "Schlüsselqualifikationen"
+    },
+    {
+      "moduleNumber": "M-INFO-105780",
+      "moduleName": "Scientific Methods to Design and Analyze Secure Decentralized Systems"
+    },
+    {
+      "moduleNumber": "M-PHYS-104577",
+      "moduleName": "Selected Topics in Meteorology (Second Major, graded)"
+    },
+    {
+      "moduleNumber": "M-INFO-103062",
+      "moduleName": "Seminar Ausgewählte Kapitel der Rechnerarchitektur"
+    },
+    {
+      "moduleNumber": "M-INFO-100849",
+      "moduleName": "Seminar Betriebssysteme für Fortgeschrittene"
+    },
+    {
+      "moduleNumber": "M-INFO-102375",
+      "moduleName": "Seminar Bildauswertung und -fusion"
+    },
+    {
+      "moduleNumber": "M-INFO-102373",
+      "moduleName": "Seminar Computer Vision für Mensch-Maschine-Schnittstellen"
+    },
+    {
+      "moduleNumber": "M-INFO-102662",
+      "moduleName": "Seminar Dependable Computing"
+    },
+    {
+      "moduleNumber": "M-INFO-103048",
+      "moduleName": "Seminar Dezentrale Systeme und Netzdienste"
+    },
+    {
+      "moduleNumber": "M-INFO-107846",
+      "moduleName": "Seminar for Practical Course: Machine Learning and Intelligent Systems"
+    },
+    {
+      "moduleNumber": "M-INFO-100746",
+      "moduleName": "Seminar Hot Topics in Networking"
+    },
+    {
+      "moduleNumber": "M-INFO-107242",
+      "moduleName": "Seminar in Privacy"
+    },
+    {
+      "moduleNumber": "M-INFO-107729",
+      "moduleName": "Seminar on Behavior Foundation Models"
+    },
+    {
+      "moduleNumber": "M-ETIT-107839",
+      "moduleName": "Seminar Radiation Protection in Medicine"
+    },
+    {
+      "moduleNumber": "M-INFO-105888",
+      "moduleName": "Seminar: Advanced Topics in High Performance Computing, Data Management and Analytics"
+    },
+    {
+      "moduleNumber": "M-INFO-107353",
+      "moduleName": "Seminar: Advanced Topics in Natural Language Processing"
+    },
+    {
+      "moduleNumber": "M-INFO-107209",
+      "moduleName": "Seminar: Advanced Topics on SAT Solving"
+    },
+    {
+      "moduleNumber": "M-INFO-105708",
+      "moduleName": "Seminar: Aktuelle Forschungsthemen in der Computergrafik"
+    },
+    {
+      "moduleNumber": "M-INFO-106086",
+      "moduleName": "Seminar: Algorithm Engineering"
+    },
+    {
+      "moduleNumber": "M-INFO-101536",
+      "moduleName": "Seminar: Anwendung Formaler Verifikation"
+    },
+    {
+      "moduleNumber": "M-INFO-106490",
+      "moduleName": "Seminar: Artificial Intelligence for Energy Systems"
+    },
+    {
+      "moduleNumber": "M-INFO-105586",
+      "moduleName": "Seminar: Ausgewählte Themen der Public-Key-Kryptographie"
+    },
+    {
+      "moduleNumber": "M-MACH-106902",
+      "moduleName": "Seminar: Bionic Algorithms and Robot Technologies"
+    },
+    {
+      "moduleNumber": "M-INFO-105309",
+      "moduleName": "Seminar: Continuous Software Engineering"
+    },
+    {
+      "moduleNumber": "M-INFO-106958",
+      "moduleName": "Seminar: Critical Topics in AI"
+    },
+    {
+      "moduleNumber": "M-INFO-107027",
+      "moduleName": "Seminar: Current Trends in Theoretical Computer Science"
+    },
+    {
+      "moduleNumber": "M-INFO-107175",
+      "moduleName": "Seminar: Deep Learning for Robotics"
+    },
+    {
+      "moduleNumber": "M-INFO-105884",
+      "moduleName": "Seminar: Digitale Barrierefreiheit und Assistive Technologien"
+    },
+    {
+      "moduleNumber": "M-INFO-107231",
+      "moduleName": "Seminar: Embedded Systems I"
+    },
+    {
+      "moduleNumber": "M-INFO-107232",
+      "moduleName": "Seminar: Embedded Systems II"
+    },
+    {
+      "moduleNumber": "M-INFO-103153",
+      "moduleName": "Seminar: Energieinformatik"
+    },
+    {
+      "moduleNumber": "M-INFO-105409",
+      "moduleName": "Seminar: E-Voting"
+    },
+    {
+      "moduleNumber": "M-INFO-106927",
+      "moduleName": "Seminar: Exoskeletons & Motion Capture"
+    },
+    {
+      "moduleNumber": "M-INFO-106497",
+      "moduleName": "Seminar: Explainable Artificial Intelligence"
+    },
+    {
+      "moduleNumber": "M-INFO-106651",
+      "moduleName": "Seminar: Exploring Robotics - Insights from Science Fiction, Research and Society"
+    },
+    {
+      "moduleNumber": "M-INFO-107436",
+      "moduleName": "Seminar: Failing Forward: Robotics, Critical Reading and the Making of Good Research"
+    },
+    {
+      "moduleNumber": "M-INFO-104941",
+      "moduleName": "Seminar: Fairness und Diskriminierungsfreiheit aus Sicht von Ethik und Informatik"
+    },
+    {
+      "moduleNumber": "M-INFO-106645",
+      "moduleName": "Seminar: Fine-Grained Complexity Theory & Algorithms"
+    },
+    {
+      "moduleNumber": "M-INFO-106594",
+      "moduleName": "Seminar: Forschungstrends in der Mensch-Maschine-Interaktion"
+    },
+    {
+      "moduleNumber": "M-INFO-102729",
+      "moduleName": "Seminar: Fortgeschrittene Algorithmen in der Computergrafik"
+    },
+    {
+      "moduleNumber": "M-INFO-102550",
+      "moduleName": "Seminar: Graphenalgorithmen"
+    },
+    {
+      "moduleNumber": "M-INFO-106868",
+      "moduleName": "Seminar: Hot Topics in Artificial Intelligence & Security 1"
+    },
+    {
+      "moduleNumber": "M-INFO-106869",
+      "moduleName": "Seminar: Hot Topics in Artificial Intelligence & Security 2"
+    },
+    {
+      "moduleNumber": "M-INFO-100750",
+      "moduleName": "Seminar: Hot Topics in Bioinformatics"
+    },
+    {
+      "moduleNumber": "M-INFO-104891",
+      "moduleName": "Seminar: Hot Topics in Decentralized Systems"
+    },
+    {
+      "moduleNumber": "M-INFO-106392",
+      "moduleName": "Seminar: Hot Topics in Explainable Artificial Intelligence (XAI)"
+    },
+    {
+      "moduleNumber": "M-INFO-105328",
+      "moduleName": "Seminar: Informatik TECO"
+    },
+    {
+      "moduleNumber": "M-INFO-107686",
+      "moduleName": "Seminar: Information Systems"
+    },
+    {
+      "moduleNumber": "M-INFO-107217",
+      "moduleName": "Seminar: Interpretability and Causality in Machine Learning"
+    },
+    {
+      "moduleNumber": "M-INFO-107933",
+      "moduleName": "Seminar: KI und Recht"
+    },
+    {
+      "moduleNumber": "M-INFO-105337",
+      "moduleName": "Seminar: Kryptoanalyse"
+    },
+    {
+      "moduleNumber": "M-INFO-107033",
+      "moduleName": "Seminar: Lernen von Kausalität – Herausforderung für menschliche und künstliche Intelligenz"
+    },
+    {
+      "moduleNumber": "M-INFO-106719",
+      "moduleName": "Seminar: Machine Learning in Climate and Environmental Sciences"
+    },
+    {
+      "moduleNumber": "M-INFO-106653",
+      "moduleName": "Seminar: Multimodal Large Language Models"
+    },
+    {
+      "moduleNumber": "M-INFO-107816",
+      "moduleName": "Seminar: Neural Networks and Artificial Intelligence"
+    },
+    {
+      "moduleNumber": "M-INFO-105898",
+      "moduleName": "Seminar: Nutzeradaptive Systeme"
+    },
+    {
+      "moduleNumber": "M-INFO-107940",
+      "moduleName": "Seminar: Öffentliches Recht und Informatik 1"
+    },
+    {
+      "moduleNumber": "M-INFO-107205",
+      "moduleName": "Seminar: Operating Systems"
+    },
+    {
+      "moduleNumber": "M-INFO-105585",
+      "moduleName": "Seminar: Post-Quantum Cryptography"
+    },
+    {
+      "moduleNumber": "M-INFO-107264",
+      "moduleName": "Seminar: Practical Graph Algorithms"
+    },
+    {
+      "moduleNumber": "M-INFO-107216",
+      "moduleName": "Seminar: Privacy and Security"
+    },
+    {
+      "moduleNumber": "M-INFO-103306",
+      "moduleName": "Seminar: Proofs from THE BOOK"
+    },
+    {
+      "moduleNumber": "M-INFO-105408",
+      "moduleName": "Seminar: Quantum Information Theory"
+    },
+    {
+      "moduleNumber": "M-INFO-107172",
+      "moduleName": "Seminar: Recent Highlights in Algorithms"
+    },
+    {
+      "moduleNumber": "M-INFO-107926",
+      "moduleName": "Seminar: Robot Reinforcement Learning"
+    },
+    {
+      "moduleNumber": "M-INFO-105761",
+      "moduleName": "Seminar: Secure Multiparty Computation"
+    },
+    {
+      "moduleNumber": "M-INFO-102372",
+      "moduleName": "Seminar: Serviceorientierte Architekturen"
+    },
+    {
+      "moduleNumber": "M-INFO-107236",
+      "moduleName": "Seminar: Software Architecture, Security and Privacy"
+    },
+    {
+      "moduleNumber": "M-INFO-105895",
+      "moduleName": "Seminar: Softwarequalitätssicherung und Softwaretest"
+    },
+    {
+      "moduleNumber": "M-INFO-107179",
+      "moduleName": "Seminar: Speech-to-Speech Translation"
+    },
+    {
+      "moduleNumber": "M-INFO-107625",
+      "moduleName": "Seminar: Type Systems and Static Program Analysis"
+    },
+    {
+      "moduleNumber": "M-INFO-101880",
+      "moduleName": "Seminar: Ubiquitäre Systeme"
+    },
+    {
+      "moduleNumber": "M-INFO-102305",
+      "moduleName": "Seminar: Von Big Data zu Data Science: Moderne Methoden der Informationsverarbeitung"
+    },
+    {
+      "moduleNumber": "M-INFO-107929",
+      "moduleName": "Seminar: Zivilrecht 1"
+    },
+    {
+      "moduleNumber": "M-WIWI-101506",
+      "moduleName": "Service Analytics"
+    },
+    {
+      "moduleNumber": "M-WIWI-101503",
+      "moduleName": "Service Design Thinking"
+    },
+    {
+      "moduleNumber": "M-WIWI-101448",
+      "moduleName": "Service Management"
+    },
+    {
+      "moduleNumber": "M-INFO-104877",
+      "moduleName": "Sichere Mensch-Roboter-Kollaboration"
+    },
+    {
+      "moduleNumber": "M-ETIT-107871",
+      "moduleName": "Signal Processing for Communication Receivers"
+    },
+    {
+      "moduleNumber": "M-ETIT-106633",
+      "moduleName": "Signal Processing Lab"
+    },
+    {
+      "moduleNumber": "M-ETIT-106899",
+      "moduleName": "Signal Processing Methods"
+    },
+    {
+      "moduleNumber": "M-INFO-106504",
+      "moduleName": "Simulation and Optimization in Robotics and Biomechanics"
+    },
+    {
+      "moduleNumber": "M-INFO-105868",
+      "moduleName": "Skalierbare Methoden der künstlichen Intelligenz"
+    },
+    {
+      "moduleNumber": "M-INFO-107237",
+      "moduleName": "Software Architecture and Quality"
+    },
+    {
+      "moduleNumber": "M-INFO-107235",
+      "moduleName": "Software Engineering II"
+    },
+    {
+      "moduleNumber": "M-INFO-107212",
+      "moduleName": "Software Product Line Engineering"
+    },
+    {
+      "moduleNumber": "M-INFO-106344",
+      "moduleName": "Software Security Engineering"
+    },
+    {
+      "moduleNumber": "M-INFO-100719",
+      "moduleName": "Software-Evolution"
+    },
+    {
+      "moduleNumber": "M-INFO-102998",
+      "moduleName": "Softwarepraktikum Parallele Numerik"
+    },
+    {
+      "moduleNumber": "M-INFO-107239",
+      "moduleName": "Softwaretest and Quality Management (SQM)"
+    },
+    {
+      "moduleNumber": "M-MATH-103220",
+      "moduleName": "Statistik"
+    },
+    {
+      "moduleNumber": "M-INFO-107847",
+      "moduleName": "Stochastic Information Processing"
+    },
+    {
+      "moduleNumber": "M-WIWI-103289",
+      "moduleName": "Stochastische Optimierung"
+    },
+    {
+      "moduleNumber": "M-MATH-106053",
+      "moduleName": "Stochastische Simulation"
+    },
+    {
+      "moduleNumber": "M-ETIT-105073",
+      "moduleName": "Student Innovation Lab"
+    },
+    {
+      "moduleNumber": "M-ETIT-107763",
+      "moduleName": "System-on-Chip Lab"
+    },
+    {
+      "moduleNumber": "M-ETIT-100537",
+      "moduleName": "Systems and Software Engineering"
+    },
+    {
+      "moduleNumber": "M-ETIT-100462",
+      "moduleName": "Systems Engineering for Automotive Electronics"
+    },
+    {
+      "moduleNumber": "M-INFO-107877",
+      "moduleName": "Systemsoftware für Echtzeitsysteme"
+    },
+    {
+      "moduleNumber": "M-PHYS-102114",
+      "moduleName": "Teilchenphysik I"
+    },
+    {
+      "moduleNumber": "M-INFO-107243",
+      "moduleName": "Telematics"
+    },
+    {
+      "moduleNumber": "M-ETIT-100546",
+      "moduleName": "Test eingebetteter Systeme im industriellen Umfeld"
+    },
+    {
+      "moduleNumber": "M-INFO-100851",
+      "moduleName": "Testing Digital Systems I"
+    },
+    {
+      "moduleNumber": "M-INFO-102962",
+      "moduleName": "Testing Digital Systems II"
+    },
+    {
+      "moduleNumber": "M-INFO-107202",
+      "moduleName": "Text Indexing"
+    },
+    {
+      "moduleNumber": "M-PHYS-102277",
+      "moduleName": "Theoretical Optics"
+    },
+    {
+      "moduleNumber": "M-INFO-105584",
+      "moduleName": "Theoretische Grundlagen der Kryptographie"
+    },
+    {
+      "moduleNumber": "M-GEISTSOZ-104509",
+      "moduleName": "Theoretische Philosophie I"
+    },
+    {
+      "moduleNumber": "M-GEISTSOZ-104510",
+      "moduleName": "Theoretische Philosophie II"
+    },
+    {
+      "moduleNumber": "M-INFO-107639",
+      "moduleName": "Theory of Satisfiability Algorithms"
+    },
+    {
+      "moduleNumber": "M-INFO-106870",
+      "moduleName": "Tools für Probabilistisches Machine Learning"
+    },
+    {
+      "moduleNumber": "M-INFO-107664",
+      "moduleName": "Type Systems and Program Analysis"
+    },
+    {
+      "moduleNumber": "M-INFO-107161",
+      "moduleName": "Ubiquitous Computing"
+    },
+    {
+      "moduleNumber": "M-INFO-107834",
+      "moduleName": "User Studies in Human-Robot Interaction"
+    },
+    {
+      "moduleNumber": "M-BGU-106811",
+      "moduleName": "Verkehrswesen für Informatik - Vertiefung"
+    },
+    {
+      "moduleNumber": "M-BGU-102963",
+      "moduleName": "Verkehrswesen für Informatik I"
+    },
+    {
+      "moduleNumber": "M-ETIT-100361",
+      "moduleName": "Verteilte ereignisdiskrete Systeme"
+    },
+    {
+      "moduleNumber": "M-INFO-100867",
+      "moduleName": "Virtuelle Systeme"
+    },
+    {
+      "moduleNumber": "M-INFO-100738",
+      "moduleName": "Visualisierung"
+    },
+    {
+      "moduleNumber": "M-MATH-102956",
+      "moduleName": "Vorhersagen: Theorie und Praxis"
+    },
+    {
+      "moduleNumber": "M-INFO-107113",
+      "moduleName": "Wearable Robotic Technologies"
+    },
+    {
+      "moduleNumber": "M-INFO-100734",
+      "moduleName": "Web-Anwendungen und Serviceorientierte Architekturen (II)"
+    },
+    {
+      "moduleNumber": "M-MATH-102911",
+      "moduleName": "Zeitreihenanalyse"
+    }
+  ]
+}

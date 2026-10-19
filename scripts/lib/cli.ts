@@ -1,19 +1,19 @@
-import { parseArgs } from "node:util"
+import { parseArgs } from "node:util";
 
-import { normalizeSemesterName } from "./normalize"
-import type { SemesterName } from "./types"
-import type { SourceType } from "./sources"
+import { normalizeSemesterName } from "./normalize";
+import type { SemesterName } from "./types";
+import type { SourceType } from "./sources";
 
 export type CliOptions = {
-  source: SourceType
-  file?: string
-  campusUrl?: string
-  semesterName: SemesterName
-  semesterYear: number
-  dryRun: boolean
-  verbose: boolean
-  help: boolean
-}
+  source: SourceType;
+  file?: string;
+  campusUrl?: string;
+  semesterName: SemesterName;
+  semesterYear: number;
+  dryRun: boolean;
+  verbose: boolean;
+  help: boolean;
+};
 
 const HELP_TEXT = `
 KITea — Module import script
@@ -40,7 +40,7 @@ Examples:
 
 KIT course catalog (SPA, often needs HTML export):
   https://campus.studium.kit.edu/english/events/catalog.php
-`.trim()
+`.trim();
 
 export function parseCli(argv: string[]): CliOptions {
   const { values } = parseArgs({
@@ -56,7 +56,7 @@ export function parseCli(argv: string[]): CliOptions {
       help: { type: "boolean", default: false },
     },
     allowPositionals: false,
-  })
+  });
 
   if (values.help) {
     return {
@@ -66,30 +66,33 @@ export function parseCli(argv: string[]): CliOptions {
       dryRun: false,
       verbose: false,
       help: true,
-    }
+    };
   }
 
-  const source = values.source as SourceType | undefined
+  const source = values.source as SourceType | undefined;
   if (!source || !["csv", "json", "campus"].includes(source)) {
-    throw new Error("--source is required (csv | json | campus). Use --help for usage.")
+    throw new Error("--source is required (csv | json | campus). Use --help for usage.");
   }
 
   if ((source === "csv" || source === "json") && !values.file) {
-    throw new Error(`--file is required for source "${source}"`)
+    throw new Error(`--file is required for source "${source}"`);
   }
 
-  const semesterRaw = values.semester ?? inferDefaultSemesterName()
-  const semesterName = normalizeSemesterName(semesterRaw)
+  const semesterRaw = values.semester ?? inferDefaultSemesterName();
+  const semesterName = normalizeSemesterName(semesterRaw);
   if (!semesterName) {
-    throw new Error(
-      `Invalid --semester "${semesterRaw}". Use Wintersemester or Sommersemester.`
-    )
+    throw new Error(`Invalid --semester "${semesterRaw}". Use Wintersemester or Sommersemester.`);
   }
 
-  const yearRaw = values.year ?? String(new Date().getFullYear())
-  const semesterYear = Number.parseInt(yearRaw, 10)
-  if (!Number.isFinite(semesterYear) || semesterYear < 2000 || semesterYear > 2100) {
-    throw new Error(`Invalid --year "${yearRaw}". Use a four-digit year.`)
+  const yearRaw = values.year ?? String(new Date().getFullYear());
+  const semesterYear = Number.parseInt(yearRaw, 10);
+  if (
+    !/^\d{4}$/.test(yearRaw) ||
+    !Number.isFinite(semesterYear) ||
+    semesterYear < 2000 ||
+    semesterYear > 2100
+  ) {
+    throw new Error(`Invalid --year "${yearRaw}". Use a four-digit year.`);
   }
 
   return {
@@ -101,15 +104,15 @@ export function parseCli(argv: string[]): CliOptions {
     dryRun: values["dry-run"] ?? false,
     verbose: values.verbose ?? false,
     help: false,
-  }
+  };
 }
 
 function inferDefaultSemesterName(): string {
-  const month = new Date().getMonth() + 1
+  const month = new Date().getMonth() + 1;
   // KIT: WS default from October; SS from April
-  return month >= 10 || month <= 3 ? "Wintersemester" : "Sommersemester"
+  return month >= 10 || month <= 3 ? "Wintersemester" : "Sommersemester";
 }
 
 export function printHelp() {
-  console.log(HELP_TEXT)
+  console.log(HELP_TEXT);
 }

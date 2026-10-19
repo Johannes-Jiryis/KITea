@@ -1,26 +1,21 @@
-import Link from "next/link"
-import { Calendar, PenLine } from "lucide-react"
+import Link from "next/link";
+import { Calendar, PenLine } from "lucide-react";
 
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import type { ModulePageData } from "@/lib/modules/types"
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import type { ModulePageData } from "@/lib/modules/types";
 
 type ModuleHeaderProps = {
-  module: Pick<
-    ModulePageData,
-    "id" | "moduleNumber" | "moduleName" | "description" | "semesters"
-  >
-  isAuthenticated: boolean
-}
+  module: Pick<ModulePageData, "id" | "moduleNumber" | "moduleName" | "description" | "semesters">;
+  isAuthenticated: boolean;
+};
 
 export function ModuleHeader({ module, isAuthenticated }: ModuleHeaderProps) {
   return (
     <header className="space-y-6">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
         <div className="space-y-2">
-          <p className="font-mono text-sm text-muted-foreground">
-            {module.moduleNumber}
-          </p>
+          <p className="font-mono text-sm text-muted-foreground">{module.moduleNumber}</p>
           <h1 className="text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
             {module.moduleName}
           </h1>
@@ -41,7 +36,9 @@ export function ModuleHeader({ module, isAuthenticated }: ModuleHeaderProps) {
             </Button>
           ) : (
             <Button asChild variant="outline">
-              <Link href={`/login?callbackUrl=/modules/${module.id}`}>
+              <Link
+                href={`/login?callbackUrl=${encodeURIComponent(`/modules/${module.moduleNumber}`)}`}
+              >
                 Sign in to review
               </Link>
             </Button>
@@ -65,5 +62,5 @@ export function ModuleHeader({ module, isAuthenticated }: ModuleHeaderProps) {
         </div>
       )}
     </header>
-  )
+  );
 }

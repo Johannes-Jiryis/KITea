@@ -1,14 +1,11 @@
-"use client"
+"use client";
 
-import { ModuleSearchBar } from "@/components/search/module-search-bar"
+import { ModuleSearchBar } from "@/components/search/module-search-bar";
 
 export function HeroSection() {
   return (
-    <section className="relative flex min-h-[85vh] items-center justify-center overflow-hidden pt-24 pb-12">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10"
-      >
+    <section className="relative flex min-h-[85vh] items-center justify-center pt-24 pb-12">
+      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
         <div className="absolute top-1/4 left-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/10 blur-3xl" />
         <div className="absolute right-1/4 bottom-0 h-80 w-80 rounded-full bg-secondary/10 blur-3xl" />
       </div>
@@ -31,5 +28,5 @@ export function HeroSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }

@@ -1,27 +1,27 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { signOut } from "next-auth/react"
-import { Loader2, LogOut } from "lucide-react"
+import { useState } from "react";
+import { signOut } from "next-auth/react";
+import { Loader2, LogOut } from "lucide-react";
 
-import { Button } from "@/components/ui/button"
-import { useToast } from "@/hooks/use-toast"
+import { Button } from "@/components/ui/button";
+import { useToast } from "@/hooks/use-toast";
 
 export function SignOutButton() {
-  const [isLoading, setIsLoading] = useState(false)
-  const { toast } = useToast()
+  const [isLoading, setIsLoading] = useState(false);
+  const { toast } = useToast();
 
   async function handleSignOut() {
-    setIsLoading(true)
+    setIsLoading(true);
     try {
-      await signOut({ callbackUrl: "/" })
+      await signOut({ callbackUrl: "/" });
     } catch {
-      setIsLoading(false)
+      setIsLoading(false);
       toast({
         variant: "destructive",
         title: "Sign out failed",
         description: "Please try again.",
-      })
+      });
     }
   }
 
@@ -45,5 +45,5 @@ export function SignOutButton() {
         </>
       )}
     </Button>
-  )
+  );
 }

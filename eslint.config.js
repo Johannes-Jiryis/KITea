@@ -1,15 +1,16 @@
-// ESLint v9 uses the "flat config" format by default.
-// We delegate to Next.js' maintained config, then relax a couple rules that
-// can be triggered by shadcn/ui's built-in component patterns.
-const nextConfig = require("eslint-config-next")
-
+const { FlatCompat } = require("@eslint/eslintrc");
+const compat = new FlatCompat({ baseDirectory: __dirname });
 module.exports = [
-  ...nextConfig,
   {
-    rules: {
-      "react-hooks/set-state-in-effect": "off",
-      "react-hooks/purity": "off",
-    },
+    ignores: [
+      ".next/**",
+      ".work/**",
+      "dist/**",
+      "coverage/**",
+      "playwright-report/**",
+      "test-results/**",
+      "next-env.d.ts",
+    ],
   },
-]
-
+  ...compat.extends("next/core-web-vitals"),
+];

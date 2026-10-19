@@ -20,16 +20,16 @@ npm run import:modules -- --source csv --file data/modules.example.csv --semeste
 
 ## CLI reference
 
-| Flag | Description |
-|------|-------------|
-| `--source` | **Required.** `csv`, `json`, or `campus` |
-| `--file` | Input path (**required** for `csv` / `json`; **recommended** for `campus`) |
-| `--semester` | `Wintersemester` or `Sommersemester` (aliases: `ws`, `ss`, `winter`, `summer`) |
-| `--year` | Four-digit year, e.g. `2025` |
-| `--campus-url` | Optional URL to fetch for `campus` source |
-| `--dry-run` | Parse and log actions without writing to the database |
-| `--verbose` | Enable debug logging |
-| `--help` | Show usage |
+| Flag           | Description                                                                    |
+| -------------- | ------------------------------------------------------------------------------ |
+| `--source`     | **Required.** `csv`, `json`, or `campus`                                       |
+| `--file`       | Input path (**required** for `csv` / `json`; **recommended** for `campus`)     |
+| `--semester`   | `Wintersemester` or `Sommersemester` (aliases: `ws`, `ss`, `winter`, `summer`) |
+| `--year`       | Four-digit year, e.g. `2025`                                                   |
+| `--campus-url` | Optional URL to fetch for `campus` source                                      |
+| `--dry-run`    | Parse and log actions without writing to the database                          |
+| `--verbose`    | Enable debug logging                                                           |
+| `--help`       | Show usage                                                                     |
 
 If `--semester` is omitted, the script picks WS (Oct–Mar) or SS (Apr–Sep) based on the current date.
 
@@ -39,11 +39,11 @@ If `--semester` is omitted, the script picks WS (Oct–Mar) or SS (Apr–Sep) ba
 
 **File:** `data/modules.example.csv`
 
-| Column | Required | Aliases |
-|--------|----------|---------|
-| `module_number` | Yes | `modulenummer`, `number`, `lv_nr` |
-| `module_name` | Yes | `modulename`, `name`, `title` |
-| `description` | No | `beschreibung`, `summary` |
+| Column          | Required | Aliases                           |
+| --------------- | -------- | --------------------------------- |
+| `module_number` | Yes      | `modulenummer`, `number`, `lv_nr` |
+| `module_name`   | Yes      | `modulename`, `name`, `title`     |
+| `description`   | No       | `beschreibung`, `summary`         |
 
 ```bash
 npm run import:modules -- --source csv --file ./my-modules.csv --semester Sommersemester --year 2026
@@ -90,6 +90,10 @@ Extend `CampusModuleSource` or add a new `ModuleImportSource` implementation for
 
 ## Duplicate handling
 
+The maintained importer rejects recognizable timetable rows, location-only labels, and catalog headings as module titles. It does not infer that unfamiliar or short academic titles are invalid.
+
+To preview existing catalog metadata cleanup, run `npm exec tsx -- scripts/clean-module-catalog.ts`. Add `--apply` to remove confirmed metadata rows without reviews. Cleanup saves module records and semester IDs under ignored `.work/` before deleting, locks affected rows, and checks for new reviews before committing. It preserves `M-*` module records and all reviewed entries. Keep the backup outside an ephemeral deployment before running cleanup on a remote database.
+
 - Input rows are deduplicated by normalized `moduleNumber`.
 - Existing modules are matched by **unique** `moduleNumber`.
 - If the module exists but is not linked to the target semester → **linked**.
@@ -131,9 +135,9 @@ npm run db:migrate
 
 ## Troubleshooting
 
-| Issue | Fix |
-|-------|-----|
-| `DATABASE_URL is not set` | Add `DATABASE_URL` to `.env.local` |
-| Campus source finds 0 modules | Use CSV/JSON or save catalog HTML with `--file` |
-| Unique constraint error | Module already exists with different casing; normalization should prevent this |
-| Prisma client errors | Run `npm run prisma:generate` |
+| Issue                         | Fix                                                                            |
+| ----------------------------- | ------------------------------------------------------------------------------ |
+| `DATABASE_URL is not set`     | Add `DATABASE_URL` to `.env.local`                                             |
+| Campus source finds 0 modules | Use CSV/JSON or save catalog HTML with `--file`                                |
+| Unique constraint error       | Module already exists with different casing; normalization should prevent this |
+| Prisma client errors          | Run `npm run prisma:generate`                                                  |

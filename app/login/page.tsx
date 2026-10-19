@@ -1,21 +1,21 @@
-import Link from "next/link"
-import { Coffee } from "lucide-react"
+import Link from "next/link";
+import { Coffee } from "lucide-react";
 
-import { GoogleSignInButton } from "@/components/auth/google-sign-in-button"
-import { LoginErrorAlert } from "@/components/auth/login-error-alert"
-import { Footer } from "@/components/footer"
-import { Navbar } from "@/components/navbar"
-import { safeCallbackUrl } from "@/lib/auth-errors"
+import { GoogleSignInButton } from "@/components/auth/google-sign-in-button";
+import { LoginErrorAlert } from "@/components/auth/login-error-alert";
+import { Footer } from "@/components/footer";
+import { Navbar } from "@/components/navbar";
+import { safeCallbackUrl } from "@/lib/auth-errors";
 
-export const dynamic = "force-dynamic"
+export const dynamic = "force-dynamic";
 
 type LoginPageProps = {
-  searchParams: Promise<{ callbackUrl?: string; error?: string }>
-}
+  searchParams: Promise<{ callbackUrl?: string; error?: string }>;
+};
 
 export default async function LoginPage({ searchParams }: LoginPageProps) {
-  const params = await searchParams
-  const callbackUrl = safeCallbackUrl(params.callbackUrl)
+  const params = await searchParams;
+  const callbackUrl = safeCallbackUrl(params.callbackUrl);
 
   return (
     <>
@@ -58,5 +58,5 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
         <Footer />
       </main>
     </>
-  )
+  );
 }

@@ -1,41 +1,70 @@
-import Link from "next/link"
-import { notFound } from "next/navigation"
-import { ArrowLeft } from "lucide-react"
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { ArrowLeft } from "lucide-react";
 
-import { auth } from "@/auth"
-import { Footer } from "@/components/footer"
-import { ModulePageContent } from "@/components/modules/module-page-content"
-import { Navbar } from "@/components/navbar"
-import { Button } from "@/components/ui/button"
-import { getModulePageData } from "@/lib/modules/get-module-page"
+import { auth } from "@/auth";
+import { Footer } from "@/components/footer";
+import { ModulePageContent } from "@/components/modules/module-page-content";
+import { Navbar } from "@/components/navbar";
+import { Button } from "@/components/ui/button";
+import { getModulePageData } from "@/lib/modules/get-module-page";
+import { getModuleByNumber } from "@/lib/modules/get-module";
+import { reviewQuerySchema } from "@/lib/modules/review-query";
+import { isDatabaseConnectionError } from "@/lib/database/read";
+import { ModuleUnavailable } from "@/components/modules/module-unavailable";
 
-export const dynamic = "force-dynamic"
+export const dynamic = "force-dynamic";
 
 type ModulePageProps = {
-  params: Promise<{ moduleNumber: string }>
-}
+  params: Promise<{ moduleNumber: string }>;
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+};
 
 export async function generateMetadata({ params }: ModulePageProps) {
-  const { moduleNumber } = await params
-  const data = await getModulePageData(moduleNumber)
+  const { moduleNumber } = await params;
+  let data;
+  try {
+    data = await getModuleByNumber(moduleNumber);
+  } catch (error) {
+    if (!isDatabaseConnectionError(error)) throw error;
+    return { title: "Module temporarily unavailable | KITea" };
+  }
 
   if (!data) {
-    return { title: "Module not found — KITea" }
+    return { title: "Module not found — KITea" };
   }
 
   return {
     title: `${data.moduleNumber} ${data.moduleName} — KITea`,
     description: `Reviews and ratings for ${data.moduleName} at KIT.`,
-  }
+  };
 }
 
-export default async function ModulePage({ params }: ModulePageProps) {
-  const { moduleNumber } = await params
-  const session = await auth()
-  const data = await getModulePageData(moduleNumber, session?.user?.id)
+export default async function ModulePage({ params, searchParams }: ModulePageProps) {
+  const { moduleNumber } = await params;
+  const session = await auth();
+  const parsed = reviewQuerySchema.safeParse(await searchParams);
+  let data;
+  try {
+    data = await getModulePageData(
+      moduleNumber,
+      session?.user?.id,
+      parsed.success ? parsed.data : reviewQuerySchema.parse({}),
+    );
+  } catch (error) {
+    if (!isDatabaseConnectionError(error)) throw error;
+    console.error(
+      JSON.stringify({
+        level: "error",
+        event: "module.load.unavailable",
+        reason: "connection_failure",
+      }),
+    );
+    return <ModuleUnavailable />;
+  }
 
   if (!data) {
-    notFound()
+    notFound();
   }
 
   return (
@@ -55,14 +84,10 @@ export default async function ModulePage({ params }: ModulePageProps) {
             </Link>
           </Button>
 
-          <ModulePageContent
-            data={data}
-            currentUserId={session?.user?.id}
-            isAuthenticated={!!session?.user}
-          />
+          <ModulePageContent data={data} isAuthenticated={!!session?.user} />
         </div>
       </main>
       <Footer />
     </>
-  )
+  );
 }

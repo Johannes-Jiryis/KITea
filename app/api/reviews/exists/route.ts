@@ -1,23 +1,12 @@
-import { NextResponse } from "next/server"
+import { getPrisma } from "@/lib/prisma";
+import { apiError, publicReadGuard } from "@/lib/http/api";
 
-import { getPrisma } from "@/lib/prisma"
-
-export async function GET() {
+export const GET = async (request: Request) => {
   try {
-    const prisma = getPrisma()
-    
-    // Check if there are any reviews in the system
-    const reviewCount = await prisma.review.count()
-    
-    return NextResponse.json({ 
-      hasReviews: reviewCount > 0,
-      count: reviewCount 
-    })
+    await publicReadGuard(request);
+    const review = await getPrisma().review.findFirst({ select: { id: true } });
+    return Response.json({ hasReviews: !!review });
   } catch (error) {
-    console.error("[GET /api/reviews/exists]", error)
-    return NextResponse.json(
-      { hasReviews: false, count: 0 },
-      { status: 500 }
-    )
+    return apiError(error, "reviews.exists");
   }
-}
+};

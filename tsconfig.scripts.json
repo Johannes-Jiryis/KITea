@@ -9,6 +9,6 @@
     "declaration": false,
     "incremental": false
   },
-  "include": ["scripts/**/*.ts"],
+  "include": ["scripts/import-modules.ts", "scripts/load-env.ts", "scripts/lib/**/*.ts"],
   "exclude": ["node_modules"]
 }

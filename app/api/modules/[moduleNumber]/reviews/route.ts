@@ -1,5 +1,5 @@
 import { auth } from "@/auth";
-import { getPrisma } from "@/lib/prisma";
+import { getModuleByNumber } from "@/lib/modules/get-module";
 import { apiError, publicReadGuard, readJson } from "@/lib/http/api";
 import { HttpError } from "@/lib/http/errors";
 import { getModuleReviews } from "@/lib/modules/reviews";
@@ -12,10 +12,7 @@ export const GET = async (request: Request, { params }: Context) => {
   try {
     await publicReadGuard(request);
     const { moduleNumber } = await params;
-    const foundModule = await getPrisma().module.findUnique({
-      where: { moduleNumber: moduleNumber.toUpperCase() },
-      select: { id: true },
-    });
+    const foundModule = await getModuleByNumber(moduleNumber);
     if (!foundModule) throw new HttpError(404, "Module not found.");
     const query = reviewQuerySchema.parse(Object.fromEntries(new URL(request.url).searchParams));
     const session = await auth();
@@ -35,10 +32,7 @@ export const POST = async (request: Request, { params }: Context) => {
     if (!body || typeof body !== "object" || Array.isArray(body))
       throw new HttpError(400, "Expected an object.");
     const { moduleNumber } = await params;
-    const foundModule = await getPrisma().module.findUnique({
-      where: { moduleNumber: moduleNumber.toUpperCase() },
-      select: { id: true },
-    });
+    const foundModule = await getModuleByNumber(moduleNumber);
     if (!foundModule) throw new HttpError(404, "Module not found.");
     const result = await saveReview(session.user.id, { ...body, moduleId: foundModule.id });
     invalidateReviews(result.moduleNumbers);

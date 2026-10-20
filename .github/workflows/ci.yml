@@ -25,6 +25,7 @@ jobs:
       - run: npm run prisma:generate
       - run: npm run db:validate
       - run: npm run check
+      - run: python3 -m unittest discover -s tests -p test_handbook_links.py
       - run: npm run test:integration
       - run: npx playwright install --with-deps chromium
       - run: npm run test:e2e

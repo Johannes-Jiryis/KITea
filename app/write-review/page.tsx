@@ -14,9 +14,7 @@ export default async function WriteReviewPage({ searchParams }: WriteReviewPageP
   const params = await searchParams;
   const options = await getReviewFormOptions(params.moduleId);
 
-  const selectedModule = params.moduleId
-    ? options.modules.find((module) => module.id === params.moduleId)
-    : undefined;
+  const selectedModule = params.moduleId ? options.modules[0] : undefined;
 
   return (
     <AuthGuard>
@@ -34,7 +32,7 @@ export default async function WriteReviewPage({ searchParams }: WriteReviewPageP
             <ReviewForm
               options={options}
               mode="create"
-              defaultModuleId={params.moduleId}
+              defaultModuleId={selectedModule?.id}
               moduleLabel={selectedModule?.label}
             />
           </div>

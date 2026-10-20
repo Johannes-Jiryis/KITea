@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 
 import { auth } from "@/auth";
@@ -65,6 +65,17 @@ export default async function ModulePage({ params, searchParams }: ModulePagePro
 
   if (!data) {
     notFound();
+  }
+
+  if (moduleNumber !== data.moduleNumber) {
+    const query = new URLSearchParams();
+    for (const [key, value] of Object.entries(await searchParams)) {
+      if (typeof value === "string") query.set(key, value);
+      else if (value) for (const entry of value) query.append(key, entry);
+    }
+    permanentRedirect(
+      `/modules/${encodeURIComponent(data.moduleNumber)}${query.size ? `?${query}` : ""}`,
+    );
   }
 
   return (

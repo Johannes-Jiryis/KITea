@@ -30,14 +30,14 @@ const validateReferences = async (
 ) => {
   const foundModule = await tx.module.findUnique({
     where: { id: moduleId },
-    select: { moduleNumber: true },
+    include: { canonicalModule: true },
   });
   const semester = await tx.semester.findUnique({
     where: { id: semesterId },
     select: { id: true },
   });
   if (!foundModule || !semester) throw new HttpError(404, "Module or semester not found.");
-  return foundModule.moduleNumber;
+  return foundModule.canonicalModule ?? foundModule;
 };
 
 export const saveReview = async (
@@ -63,7 +63,9 @@ export const saveReview = async (
         ? { ...toReviewFormValues(existing), ...reviewPatchSchema.parse(input) }
         : input;
     const values = reviewFormSchema.parse(candidate);
-    const moduleNumber = await validateReferences(tx, values.moduleId, values.semesterTakenId);
+    const targetModule = await validateReferences(tx, values.moduleId, values.semesterTakenId);
+    values.moduleId = targetModule.id;
+    const moduleNumber = targetModule.moduleNumber;
     if (!existing) {
       const count = await tx.reviewSubmission.count({
         where: { userId, createdAt: { gte: new Date(Date.now() - 86_400_000) } },

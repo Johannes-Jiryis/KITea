@@ -25,6 +25,7 @@
     "check": "npm run lint && npm run typecheck && npm run typecheck:scripts && npm test && npm run format:check",
     "test:smoke": "tsx scripts/smoke-production.ts",
     "db:maintenance": "tsx scripts/maintenance.ts",
+    "catalog:consolidate": "tsx scripts/consolidate-module-catalog.ts",
     "test:smoke:db": "tsx scripts/test-database.ts smoke"
   },
   "dependencies": {

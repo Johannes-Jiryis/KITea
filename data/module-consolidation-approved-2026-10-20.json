@@ -1,0 +1,1438 @@
+[
+  {
+    "courseNumber": "0102200",
+    "moduleNumber": "M-MATH-101315"
+  },
+  {
+    "courseNumber": "0102210",
+    "moduleNumber": "M-MATH-101315"
+  },
+  {
+    "courseNumber": "0104500",
+    "moduleNumber": "M-MATH-101336"
+  },
+  {
+    "courseNumber": "0104510",
+    "moduleNumber": "M-MATH-101336"
+  },
+  {
+    "courseNumber": "0109400",
+    "moduleNumber": "M-MATH-102929"
+  },
+  {
+    "courseNumber": "0150310",
+    "moduleNumber": "M-MATH-102950"
+  },
+  {
+    "courseNumber": "0155450",
+    "moduleNumber": "M-MATH-103919"
+  },
+  {
+    "courseNumber": "0155500",
+    "moduleNumber": "M-MATH-103219"
+  },
+  {
+    "courseNumber": "0161100",
+    "moduleNumber": "M-MATH-102911"
+  },
+  {
+    "courseNumber": "0161110",
+    "moduleNumber": "M-MATH-102911"
+  },
+  {
+    "courseNumber": "0161400",
+    "moduleNumber": "M-MATH-102906"
+  },
+  {
+    "courseNumber": "0161410",
+    "moduleNumber": "M-MATH-102906"
+  },
+  {
+    "courseNumber": "0161700",
+    "moduleNumber": "M-MATH-106634"
+  },
+  {
+    "courseNumber": "0163900",
+    "moduleNumber": "M-MATH-103164"
+  },
+  {
+    "courseNumber": "0164000",
+    "moduleNumber": "M-MATH-103164"
+  },
+  {
+    "courseNumber": "0164400",
+    "moduleNumber": "M-MATH-104054"
+  },
+  {
+    "courseNumber": "0164410",
+    "moduleNumber": "M-MATH-104054"
+  },
+  {
+    "courseNumber": "0165000",
+    "moduleNumber": "M-MATH-102889"
+  },
+  {
+    "courseNumber": "0165010",
+    "moduleNumber": "M-MATH-102889"
+  },
+  {
+    "courseNumber": "2113820",
+    "moduleNumber": "M-MACH-107806"
+  },
+  {
+    "courseNumber": "2117054",
+    "moduleNumber": "M-WIWI-102832"
+  },
+  {
+    "courseNumber": "2121331",
+    "moduleNumber": "M-MACH-107558"
+  },
+  {
+    "courseNumber": "2121332",
+    "moduleNumber": "M-MACH-107558"
+  },
+  {
+    "courseNumber": "2121333",
+    "moduleNumber": "M-MACH-107621"
+  },
+  {
+    "courseNumber": "2121334",
+    "moduleNumber": "M-MACH-107621"
+  },
+  {
+    "courseNumber": "2121343",
+    "moduleNumber": "M-MACH-106902"
+  },
+  {
+    "courseNumber": "2122330",
+    "moduleNumber": "M-MACH-106903"
+  },
+  {
+    "courseNumber": "2122331",
+    "moduleNumber": "M-MACH-106905"
+  },
+  {
+    "courseNumber": "2137301",
+    "moduleNumber": "M-MACH-102564"
+  },
+  {
+    "courseNumber": "2137302",
+    "moduleNumber": "M-MACH-102564"
+  },
+  {
+    "courseNumber": "2145182",
+    "moduleNumber": "M-WIWI-101488"
+  },
+  {
+    "courseNumber": "2162257",
+    "moduleNumber": "M-INFO-104200"
+  },
+  {
+    "courseNumber": "2162282",
+    "moduleNumber": "M-INFO-104200"
+  },
+  {
+    "courseNumber": "2181740",
+    "moduleNumber": "M-INFO-104200"
+  },
+  {
+    "courseNumber": "2182740",
+    "moduleNumber": "M-INFO-104200"
+  },
+  {
+    "courseNumber": "2183702",
+    "moduleNumber": "M-INFO-104200"
+  },
+  {
+    "courseNumber": "2183717",
+    "moduleNumber": "M-INFO-104200"
+  },
+  {
+    "courseNumber": "2302106",
+    "moduleNumber": "M-ETIT-100361"
+  },
+  {
+    "courseNumber": "2302108",
+    "moduleNumber": "M-ETIT-100361"
+  },
+  {
+    "courseNumber": "2302113",
+    "moduleNumber": "M-ETIT-106899"
+  },
+  {
+    "courseNumber": "2302115",
+    "moduleNumber": "M-ETIT-106899"
+  },
+  {
+    "courseNumber": "2302134",
+    "moduleNumber": "M-ETIT-106633"
+  },
+  {
+    "courseNumber": "2302150",
+    "moduleNumber": "M-ETIT-106974"
+  },
+  {
+    "courseNumber": "2302151",
+    "moduleNumber": "M-ETIT-106974"
+  },
+  {
+    "courseNumber": "2302300",
+    "moduleNumber": "M-ETIT-106339"
+  },
+  {
+    "courseNumber": "2302301",
+    "moduleNumber": "M-ETIT-106339"
+  },
+  {
+    "courseNumber": "2303183",
+    "moduleNumber": "M-ETIT-107497"
+  },
+  {
+    "courseNumber": "2303185",
+    "moduleNumber": "M-ETIT-107497"
+  },
+  {
+    "courseNumber": "2303192",
+    "moduleNumber": "M-ETIT-105073"
+  },
+  {
+    "courseNumber": "2303320",
+    "moduleNumber": "M-ETIT-107644"
+  },
+  {
+    "courseNumber": "2303321",
+    "moduleNumber": "M-ETIT-107644"
+  },
+  {
+    "courseNumber": "2303851",
+    "moduleNumber": "M-ETIT-107497"
+  },
+  {
+    "courseNumber": "2305256",
+    "moduleNumber": "M-ETIT-101845"
+  },
+  {
+    "courseNumber": "2305258",
+    "moduleNumber": "M-ETIT-101845"
+  },
+  {
+    "courseNumber": "2305281",
+    "moduleNumber": "M-ETIT-105874"
+  },
+  {
+    "courseNumber": "2305282",
+    "moduleNumber": "M-ETIT-105874"
+  },
+  {
+    "courseNumber": "2305302",
+    "moduleNumber": "M-ETIT-106782"
+  },
+  {
+    "courseNumber": "2305303",
+    "moduleNumber": "M-ETIT-106782"
+  },
+  {
+    "courseNumber": "2305581",
+    "moduleNumber": "M-ETIT-101845"
+  },
+  {
+    "courseNumber": "2305742",
+    "moduleNumber": "M-ETIT-101834"
+  },
+  {
+    "courseNumber": "2305743",
+    "moduleNumber": "M-ETIT-101834"
+  },
+  {
+    "courseNumber": "2307376",
+    "moduleNumber": "M-ETIT-105394"
+  },
+  {
+    "courseNumber": "2307377",
+    "moduleNumber": "M-ETIT-105394"
+  },
+  {
+    "courseNumber": "2309486",
+    "moduleNumber": "M-ETIT-100509"
+  },
+  {
+    "courseNumber": "2309487",
+    "moduleNumber": "M-ETIT-100509"
+  },
+  {
+    "courseNumber": "2310520",
+    "moduleNumber": "M-ETIT-105617"
+  },
+  {
+    "courseNumber": "2310521",
+    "moduleNumber": "M-ETIT-105617"
+  },
+  {
+    "courseNumber": "2310523",
+    "moduleNumber": "M-ETIT-105971"
+  },
+  {
+    "courseNumber": "2310524",
+    "moduleNumber": "M-ETIT-105971"
+  },
+  {
+    "courseNumber": "2310537",
+    "moduleNumber": "M-ETIT-107333"
+  },
+  {
+    "courseNumber": "2310539",
+    "moduleNumber": "M-ETIT-107333"
+  },
+  {
+    "courseNumber": "2310540",
+    "moduleNumber": "M-ETIT-106815"
+  },
+  {
+    "courseNumber": "2310541",
+    "moduleNumber": "M-ETIT-106815"
+  },
+  {
+    "courseNumber": "2310546",
+    "moduleNumber": "M-ETIT-105616"
+  },
+  {
+    "courseNumber": "2311605",
+    "moduleNumber": "M-ETIT-100537"
+  },
+  {
+    "courseNumber": "2311607",
+    "moduleNumber": "M-ETIT-100537"
+  },
+  {
+    "courseNumber": "2311608",
+    "moduleNumber": "M-ETIT-100449"
+  },
+  {
+    "courseNumber": "2311610",
+    "moduleNumber": "M-ETIT-100449"
+  },
+  {
+    "courseNumber": "2311612",
+    "moduleNumber": "M-ETIT-107763"
+  },
+  {
+    "courseNumber": "2311619",
+    "moduleNumber": "M-ETIT-106963"
+  },
+  {
+    "courseNumber": "2311620",
+    "moduleNumber": "M-ETIT-107444"
+  },
+  {
+    "courseNumber": "2311621",
+    "moduleNumber": "M-ETIT-106963"
+  },
+  {
+    "courseNumber": "2311623",
+    "moduleNumber": "M-ETIT-107444"
+  },
+  {
+    "courseNumber": "2311625",
+    "moduleNumber": "M-ETIT-100454"
+  },
+  {
+    "courseNumber": "2311630",
+    "moduleNumber": "M-ETIT-100457"
+  },
+  {
+    "courseNumber": "2311640",
+    "moduleNumber": "M-ETIT-100460"
+  },
+  {
+    "courseNumber": "2311641",
+    "moduleNumber": "M-ETIT-104475"
+  },
+  {
+    "courseNumber": "2311642",
+    "moduleNumber": "M-ETIT-100462"
+  },
+  {
+    "courseNumber": "2311643",
+    "moduleNumber": "M-ETIT-104475"
+  },
+  {
+    "courseNumber": "2311644",
+    "moduleNumber": "M-ETIT-100462"
+  },
+  {
+    "courseNumber": "2311648",
+    "moduleNumber": "M-ETIT-100546"
+  },
+  {
+    "courseNumber": "2311649",
+    "moduleNumber": "M-ETIT-100546"
+  },
+  {
+    "courseNumber": "2312664",
+    "moduleNumber": "M-ETIT-107364"
+  },
+  {
+    "courseNumber": "2312666",
+    "moduleNumber": "M-ETIT-107364"
+  },
+  {
+    "courseNumber": "2312668",
+    "moduleNumber": "M-ETIT-105604"
+  },
+  {
+    "courseNumber": "2312669",
+    "moduleNumber": "M-ETIT-100468"
+  },
+  {
+    "courseNumber": "2312670",
+    "moduleNumber": "M-ETIT-105604"
+  },
+  {
+    "courseNumber": "2312683",
+    "moduleNumber": "M-ETIT-107365"
+  },
+  {
+    "courseNumber": "2312685",
+    "moduleNumber": "M-ETIT-107365"
+  },
+  {
+    "courseNumber": "2400002",
+    "moduleNumber": "M-INFO-105585"
+  },
+  {
+    "courseNumber": "2400003",
+    "moduleNumber": "M-INFO-106470"
+  },
+  {
+    "courseNumber": "2400007",
+    "moduleNumber": "M-INFO-107243"
+  },
+  {
+    "courseNumber": "2400008",
+    "moduleNumber": "M-INFO-106959"
+  },
+  {
+    "courseNumber": "2400010",
+    "moduleNumber": "M-INFO-106998"
+  },
+  {
+    "courseNumber": "2400012",
+    "moduleNumber": "M-INFO-102998"
+  },
+  {
+    "courseNumber": "2400013",
+    "moduleNumber": "M-INFO-103153"
+  },
+  {
+    "courseNumber": "2400015",
+    "moduleNumber": "M-INFO-107245"
+  },
+  {
+    "courseNumber": "2400016",
+    "moduleNumber": "M-INFO-107597"
+  },
+  {
+    "courseNumber": "2400018",
+    "moduleNumber": "M-INFO-107169"
+  },
+  {
+    "courseNumber": "2400020",
+    "moduleNumber": "M-INFO-107209"
+  },
+  {
+    "courseNumber": "2400021",
+    "moduleNumber": "M-INFO-100795"
+  },
+  {
+    "courseNumber": "2400023",
+    "moduleNumber": "M-INFO-106290"
+  },
+  {
+    "courseNumber": "2400024",
+    "moduleNumber": "M-INFO-107197"
+  },
+  {
+    "courseNumber": "2400025",
+    "moduleNumber": "M-INFO-101536"
+  },
+  {
+    "courseNumber": "2400030",
+    "moduleNumber": "M-INFO-102662"
+  },
+  {
+    "courseNumber": "2400032",
+    "moduleNumber": "M-INFO-107179"
+  },
+  {
+    "courseNumber": "2400034",
+    "moduleNumber": "M-INFO-106959"
+  },
+  {
+    "courseNumber": "2400035",
+    "moduleNumber": "M-INFO-102375"
+  },
+  {
+    "courseNumber": "2400036",
+    "moduleNumber": "M-INFO-100804"
+  },
+  {
+    "courseNumber": "2400040",
+    "moduleNumber": "M-INFO-100746"
+  },
+  {
+    "courseNumber": "2400041",
+    "moduleNumber": "M-INFO-106687"
+  },
+  {
+    "courseNumber": "2400045",
+    "moduleNumber": "M-INFO-105338"
+  },
+  {
+    "courseNumber": "2400047",
+    "moduleNumber": "M-INFO-102550"
+  },
+  {
+    "courseNumber": "2400049",
+    "moduleNumber": "M-INFO-107163"
+  },
+  {
+    "courseNumber": "2400053",
+    "moduleNumber": "M-INFO-107199"
+  },
+  {
+    "courseNumber": "2400056",
+    "moduleNumber": "M-INFO-107412"
+  },
+  {
+    "courseNumber": "2400059",
+    "moduleNumber": "M-INFO-106344"
+  },
+  {
+    "courseNumber": "2400062",
+    "moduleNumber": "M-INFO-107113"
+  },
+  {
+    "courseNumber": "2400063",
+    "moduleNumber": "M-INFO-102555"
+  },
+  {
+    "courseNumber": "2400064",
+    "moduleNumber": "M-INFO-106800"
+  },
+  {
+    "courseNumber": "2400069",
+    "moduleNumber": "M-INFO-102835"
+  },
+  {
+    "courseNumber": "2400071",
+    "moduleNumber": "M-INFO-102835"
+  },
+  {
+    "courseNumber": "2400072",
+    "moduleNumber": "M-INFO-102372"
+  },
+  {
+    "courseNumber": "2400076",
+    "moduleNumber": "M-INFO-107642"
+  },
+  {
+    "courseNumber": "2400077",
+    "moduleNumber": "M-INFO-107639"
+  },
+  {
+    "courseNumber": "2400078",
+    "moduleNumber": "M-INFO-107929"
+  },
+  {
+    "courseNumber": "2400079",
+    "moduleNumber": "M-INFO-106655"
+  },
+  {
+    "courseNumber": "2400080",
+    "moduleNumber": "M-INFO-106594"
+  },
+  {
+    "courseNumber": "2400084",
+    "moduleNumber": "M-INFO-107926"
+  },
+  {
+    "courseNumber": "2400085",
+    "moduleNumber": "M-INFO-105408"
+  },
+  {
+    "courseNumber": "2400089",
+    "moduleNumber": "M-INFO-105334"
+  },
+  {
+    "courseNumber": "2400098",
+    "moduleNumber": "M-INFO-106655"
+  },
+  {
+    "courseNumber": "2400101",
+    "moduleNumber": "M-INFO-107027"
+  },
+  {
+    "courseNumber": "2400105",
+    "moduleNumber": "M-INFO-107677"
+  },
+  {
+    "courseNumber": "2400106",
+    "moduleNumber": "M-INFO-102661"
+  },
+  {
+    "courseNumber": "2400107",
+    "moduleNumber": "M-INFO-107266"
+  },
+  {
+    "courseNumber": "2400111",
+    "moduleNumber": "M-INFO-106685"
+  },
+  {
+    "courseNumber": "2400113",
+    "moduleNumber": "M-INFO-107239"
+  },
+  {
+    "courseNumber": "2400114",
+    "moduleNumber": "M-INFO-106996"
+  },
+  {
+    "courseNumber": "2400115",
+    "moduleNumber": "M-INFO-104895"
+  },
+  {
+    "courseNumber": "2400117",
+    "moduleNumber": "M-INFO-106996"
+  },
+  {
+    "courseNumber": "2400118",
+    "moduleNumber": "M-INFO-107216"
+  },
+  {
+    "courseNumber": "2400120",
+    "moduleNumber": "M-INFO-106812"
+  },
+  {
+    "courseNumber": "2400121",
+    "moduleNumber": "M-INFO-107599"
+  },
+  {
+    "courseNumber": "2400123",
+    "moduleNumber": "M-INFO-102966"
+  },
+  {
+    "courseNumber": "2400125",
+    "moduleNumber": "M-INFO-107933"
+  },
+  {
+    "courseNumber": "2400126",
+    "moduleNumber": "M-INFO-105585"
+  },
+  {
+    "courseNumber": "2400128",
+    "moduleNumber": "M-INFO-106302"
+  },
+  {
+    "courseNumber": "2400131",
+    "moduleNumber": "M-INFO-107686"
+  },
+  {
+    "courseNumber": "2400135",
+    "moduleNumber": "M-INFO-106649"
+  },
+  {
+    "courseNumber": "2400136",
+    "moduleNumber": "M-INFO-107729"
+  },
+  {
+    "courseNumber": "2400141",
+    "moduleNumber": "M-INFO-107676"
+  },
+  {
+    "courseNumber": "2400142",
+    "moduleNumber": "M-INFO-106495"
+  },
+  {
+    "courseNumber": "2400143",
+    "moduleNumber": "M-INFO-106497"
+  },
+  {
+    "courseNumber": "2400145",
+    "moduleNumber": "M-INFO-107863"
+  },
+  {
+    "courseNumber": "2400146",
+    "moduleNumber": "M-INFO-106686"
+  },
+  {
+    "courseNumber": "2400149",
+    "moduleNumber": "M-INFO-106646"
+  },
+  {
+    "courseNumber": "2400150",
+    "moduleNumber": "M-INFO-107176"
+  },
+  {
+    "courseNumber": "2400154",
+    "moduleNumber": "M-INFO-105631"
+  },
+  {
+    "courseNumber": "2400155",
+    "moduleNumber": "M-INFO-106961"
+  },
+  {
+    "courseNumber": "2400156",
+    "moduleNumber": "M-INFO-107228"
+  },
+  {
+    "courseNumber": "2400159",
+    "moduleNumber": "M-INFO-106650"
+  },
+  {
+    "courseNumber": "2400161",
+    "moduleNumber": "M-INFO-106102"
+  },
+  {
+    "courseNumber": "2400162",
+    "moduleNumber": "M-INFO-102835"
+  },
+  {
+    "courseNumber": "2400166",
+    "moduleNumber": "M-INFO-105309"
+  },
+  {
+    "courseNumber": "2400170",
+    "moduleNumber": "M-INFO-105955"
+  },
+  {
+    "courseNumber": "2400172",
+    "moduleNumber": "M-INFO-106754"
+  },
+  {
+    "courseNumber": "2400177",
+    "moduleNumber": "M-INFO-107940"
+  },
+  {
+    "courseNumber": "2400178",
+    "moduleNumber": "M-INFO-107167"
+  },
+  {
+    "courseNumber": "2400179",
+    "moduleNumber": "M-INFO-106237"
+  },
+  {
+    "courseNumber": "2400180",
+    "moduleNumber": "M-INFO-107817"
+  },
+  {
+    "courseNumber": "2400181",
+    "moduleNumber": "M-INFO-107217"
+  },
+  {
+    "courseNumber": "2400185",
+    "moduleNumber": "M-INFO-106654"
+  },
+  {
+    "courseNumber": "2400186",
+    "moduleNumber": "M-INFO-106626"
+  },
+  {
+    "courseNumber": "2400189",
+    "moduleNumber": "M-INFO-107170"
+  },
+  {
+    "courseNumber": "2400190",
+    "moduleNumber": "M-INFO-107940"
+  },
+  {
+    "courseNumber": "2400193",
+    "moduleNumber": "M-INFO-106646"
+  },
+  {
+    "courseNumber": "2400194",
+    "moduleNumber": "M-INFO-107090"
+  },
+  {
+    "courseNumber": "2400195",
+    "moduleNumber": "M-INFO-107906"
+  },
+  {
+    "courseNumber": "2400196",
+    "moduleNumber": "M-INFO-107264"
+  },
+  {
+    "courseNumber": "2400199",
+    "moduleNumber": "M-INFO-106594"
+  },
+  {
+    "courseNumber": "2400204",
+    "moduleNumber": "M-INFO-107865"
+  },
+  {
+    "courseNumber": "2400205",
+    "moduleNumber": "M-INFO-106503"
+  },
+  {
+    "courseNumber": "2400208",
+    "moduleNumber": "M-INFO-106290"
+  },
+  {
+    "courseNumber": "2400213",
+    "moduleNumber": "M-INFO-106608"
+  },
+  {
+    "courseNumber": "2400221",
+    "moduleNumber": "M-INFO-107940"
+  },
+  {
+    "courseNumber": "2400231",
+    "moduleNumber": "M-INFO-106958"
+  },
+  {
+    "courseNumber": "2400232",
+    "moduleNumber": "M-INFO-107448"
+  },
+  {
+    "courseNumber": "2400236",
+    "moduleNumber": "M-INFO-104877"
+  },
+  {
+    "courseNumber": "2400280",
+    "moduleNumber": "M-INFO-105329"
+  },
+  {
+    "courseNumber": "2400281",
+    "moduleNumber": "M-INFO-105329"
+  },
+  {
+    "courseNumber": "2400295",
+    "moduleNumber": "M-INFO-105775"
+  },
+  {
+    "courseNumber": "2411604",
+    "moduleNumber": "M-INFO-101216"
+  },
+  {
+    "courseNumber": "2424079",
+    "moduleNumber": "M-INFO-107201"
+  },
+  {
+    "courseNumber": "2424081",
+    "moduleNumber": "M-INFO-100856"
+  },
+  {
+    "courseNumber": "2424086",
+    "moduleNumber": "M-INFO-100799"
+  },
+  {
+    "courseNumber": "2424100",
+    "moduleNumber": "M-INFO-100824"
+  },
+  {
+    "courseNumber": "2424104",
+    "moduleNumber": "M-INFO-100800"
+  },
+  {
+    "courseNumber": "2424106",
+    "moduleNumber": "M-INFO-107230"
+  },
+  {
+    "courseNumber": "2424113",
+    "moduleNumber": "M-INFO-107847"
+  },
+  {
+    "courseNumber": "2424117",
+    "moduleNumber": "M-INFO-100822"
+  },
+  {
+    "courseNumber": "2424136",
+    "moduleNumber": "M-INFO-101215"
+  },
+  {
+    "courseNumber": "2424146",
+    "moduleNumber": "M-INFO-107161"
+  },
+  {
+    "courseNumber": "2424152",
+    "moduleNumber": "M-INFO-107162"
+  },
+  {
+    "courseNumber": "2424164",
+    "moduleNumber": "M-INFO-100719"
+  },
+  {
+    "courseNumber": "2424169",
+    "moduleNumber": "M-INFO-100826"
+  },
+  {
+    "courseNumber": "2424179",
+    "moduleNumber": "M-INFO-100791"
+  },
+  {
+    "courseNumber": "2424186",
+    "moduleNumber": "M-INFO-107929"
+  },
+  {
+    "courseNumber": "2424187",
+    "moduleNumber": "M-INFO-107233"
+  },
+  {
+    "courseNumber": "2424281",
+    "moduleNumber": "M-INFO-107845"
+  },
+  {
+    "courseNumber": "2424283",
+    "moduleNumber": "M-INFO-101567"
+  },
+  {
+    "courseNumber": "2424286",
+    "moduleNumber": "M-INFO-101662"
+  },
+  {
+    "courseNumber": "2424287",
+    "moduleNumber": "M-INFO-106851"
+  },
+  {
+    "courseNumber": "2424299",
+    "moduleNumber": "M-INFO-102383"
+  },
+  {
+    "courseNumber": "2424304",
+    "moduleNumber": "M-INFO-103706"
+  },
+  {
+    "courseNumber": "2424305",
+    "moduleNumber": "M-INFO-107600"
+  },
+  {
+    "courseNumber": "2424344",
+    "moduleNumber": "M-INFO-102305"
+  },
+  {
+    "courseNumber": "2424354",
+    "moduleNumber": "M-INFO-101215"
+  },
+  {
+    "courseNumber": "2424358",
+    "moduleNumber": "M-INFO-102373"
+  },
+  {
+    "courseNumber": "2424362",
+    "moduleNumber": "M-INFO-103062"
+  },
+  {
+    "courseNumber": "2424570",
+    "moduleNumber": "M-INFO-100818"
+  },
+  {
+    "courseNumber": "2424638",
+    "moduleNumber": "M-INFO-100031"
+  },
+  {
+    "courseNumber": "2424657",
+    "moduleNumber": "M-INFO-106931"
+  },
+  {
+    "courseNumber": "2424667",
+    "moduleNumber": "M-INFO-107237"
+  },
+  {
+    "courseNumber": "2424672",
+    "moduleNumber": "M-INFO-100807"
+  },
+  {
+    "courseNumber": "2424811",
+    "moduleNumber": "M-INFO-104031"
+  },
+  {
+    "courseNumber": "2424844",
+    "moduleNumber": "M-INFO-101880"
+  },
+  {
+    "courseNumber": "2424890",
+    "moduleNumber": "M-INFO-105792"
+  },
+  {
+    "courseNumber": "2424902",
+    "moduleNumber": "M-INFO-101567"
+  },
+  {
+    "courseNumber": "2500014",
+    "moduleNumber": "M-WIWI-101453"
+  },
+  {
+    "courseNumber": "2500016",
+    "moduleNumber": "M-WIWI-105659"
+  },
+  {
+    "courseNumber": "2500018",
+    "moduleNumber": "M-WIWI-101507"
+  },
+  {
+    "courseNumber": "2500053",
+    "moduleNumber": "M-WIWI-101507"
+  },
+  {
+    "courseNumber": "2500059",
+    "moduleNumber": "M-WIWI-106258"
+  },
+  {
+    "courseNumber": "2500073",
+    "moduleNumber": "M-WIWI-106292"
+  },
+  {
+    "courseNumber": "2512554",
+    "moduleNumber": "M-INFO-105453"
+  },
+  {
+    "courseNumber": "2512555",
+    "moduleNumber": "M-INFO-105453"
+  },
+  {
+    "courseNumber": "2513214",
+    "moduleNumber": "M-INFO-107929"
+  },
+  {
+    "courseNumber": "2530560",
+    "moduleNumber": "M-WIWI-101483"
+  },
+  {
+    "courseNumber": "2530562",
+    "moduleNumber": "M-WIWI-101483"
+  },
+  {
+    "courseNumber": "2530565",
+    "moduleNumber": "M-WIWI-101483"
+  },
+  {
+    "courseNumber": "2530570",
+    "moduleNumber": "M-WIWI-101483"
+  },
+  {
+    "courseNumber": "2540420",
+    "moduleNumber": "M-WIWI-106292"
+  },
+  {
+    "courseNumber": "2540494",
+    "moduleNumber": "M-WIWI-101446"
+  },
+  {
+    "courseNumber": "2540495",
+    "moduleNumber": "M-WIWI-101446"
+  },
+  {
+    "courseNumber": "2540553",
+    "moduleNumber": "M-INFO-105898"
+  },
+  {
+    "courseNumber": "2540554",
+    "moduleNumber": "M-WIWI-106292"
+  },
+  {
+    "courseNumber": "2540558",
+    "moduleNumber": "M-WIWI-106292"
+  },
+  {
+    "courseNumber": "2545002",
+    "moduleNumber": "M-WIWI-101488"
+  },
+  {
+    "courseNumber": "2545004",
+    "moduleNumber": "M-WIWI-101488"
+  },
+  {
+    "courseNumber": "2545021",
+    "moduleNumber": "M-WIWI-101488"
+  },
+  {
+    "courseNumber": "2545109",
+    "moduleNumber": "M-WIWI-101488"
+  },
+  {
+    "courseNumber": "2550111",
+    "moduleNumber": "M-WIWI-101473"
+  },
+  {
+    "courseNumber": "2550112",
+    "moduleNumber": "M-WIWI-101473"
+  },
+  {
+    "courseNumber": "2550113",
+    "moduleNumber": "M-WIWI-101473"
+  },
+  {
+    "courseNumber": "2550114",
+    "moduleNumber": "M-WIWI-101473"
+  },
+  {
+    "courseNumber": "2550134",
+    "moduleNumber": "M-WIWI-101473"
+  },
+  {
+    "courseNumber": "2550135",
+    "moduleNumber": "M-WIWI-101473"
+  },
+  {
+    "courseNumber": "2550136",
+    "moduleNumber": "M-WIWI-101473"
+  },
+  {
+    "courseNumber": "2550137",
+    "moduleNumber": "M-WIWI-101473"
+  },
+  {
+    "courseNumber": "2550464",
+    "moduleNumber": "M-WIWI-103289"
+  },
+  {
+    "courseNumber": "2550465",
+    "moduleNumber": "M-WIWI-103289"
+  },
+  {
+    "courseNumber": "2550488",
+    "moduleNumber": "M-WIWI-102832"
+  },
+  {
+    "courseNumber": "2550490",
+    "moduleNumber": "M-WIWI-102832"
+  },
+  {
+    "courseNumber": "2550552",
+    "moduleNumber": "M-INFO-104199"
+  },
+  {
+    "courseNumber": "2550553",
+    "moduleNumber": "M-INFO-104199"
+  },
+  {
+    "courseNumber": "2561127",
+    "moduleNumber": "M-WIWI-101504"
+  },
+  {
+    "courseNumber": "2571184",
+    "moduleNumber": "M-WIWI-106258"
+  },
+  {
+    "courseNumber": "2571185",
+    "moduleNumber": "M-WIWI-106258"
+  },
+  {
+    "courseNumber": "2571186",
+    "moduleNumber": "M-WIWI-106258"
+  },
+  {
+    "courseNumber": "2572170",
+    "moduleNumber": "M-INFO-104199"
+  },
+  {
+    "courseNumber": "2572171",
+    "moduleNumber": "M-INFO-104199"
+  },
+  {
+    "courseNumber": "2581001",
+    "moduleNumber": "M-WIWI-101452"
+  },
+  {
+    "courseNumber": "2581003",
+    "moduleNumber": "M-WIWI-101452"
+  },
+  {
+    "courseNumber": "2581006",
+    "moduleNumber": "M-WIWI-101452"
+  },
+  {
+    "courseNumber": "2581007",
+    "moduleNumber": "M-WIWI-101451"
+  },
+  {
+    "courseNumber": "2581008",
+    "moduleNumber": "M-WIWI-101451"
+  },
+  {
+    "courseNumber": "2581020",
+    "moduleNumber": "M-WIWI-101451"
+  },
+  {
+    "courseNumber": "2581023",
+    "moduleNumber": "M-WIWI-101452"
+  },
+  {
+    "courseNumber": "2581025",
+    "moduleNumber": "M-WIWI-101451"
+  },
+  {
+    "courseNumber": "2581954",
+    "moduleNumber": "M-WIWI-101412"
+  },
+  {
+    "courseNumber": "2581955",
+    "moduleNumber": "M-WIWI-101412"
+  },
+  {
+    "courseNumber": "2581998",
+    "moduleNumber": "M-WIWI-101451"
+  },
+  {
+    "courseNumber": "2595600",
+    "moduleNumber": "M-WIWI-101503"
+  },
+  {
+    "courseNumber": "3137020",
+    "moduleNumber": "M-MACH-102564"
+  },
+  {
+    "courseNumber": "3137021",
+    "moduleNumber": "M-MACH-102564"
+  },
+  {
+    "courseNumber": "4010051",
+    "moduleNumber": "M-PHYS-106332"
+  },
+  {
+    "courseNumber": "4010052",
+    "moduleNumber": "M-PHYS-106332"
+  },
+  {
+    "courseNumber": "4010151",
+    "moduleNumber": "M-PHYS-106335"
+  },
+  {
+    "courseNumber": "4010152",
+    "moduleNumber": "M-PHYS-106335"
+  },
+  {
+    "courseNumber": "4011113",
+    "moduleNumber": "M-PHYS-101353"
+  },
+  {
+    "courseNumber": "4011123",
+    "moduleNumber": "M-PHYS-101353"
+  },
+  {
+    "courseNumber": "4011213",
+    "moduleNumber": "M-PHYS-101354"
+  },
+  {
+    "courseNumber": "4011223",
+    "moduleNumber": "M-PHYS-101354"
+  },
+  {
+    "courseNumber": "4011233",
+    "moduleNumber": "M-PHYS-101354"
+  },
+  {
+    "courseNumber": "4012131",
+    "moduleNumber": "M-PHYS-101664"
+  },
+  {
+    "courseNumber": "4012132",
+    "moduleNumber": "M-PHYS-101664"
+  },
+  {
+    "courseNumber": "4022031",
+    "moduleNumber": "M-PHYS-102114"
+  },
+  {
+    "courseNumber": "4022032",
+    "moduleNumber": "M-PHYS-102114"
+  },
+  {
+    "courseNumber": "4023111",
+    "moduleNumber": "M-PHYS-102277"
+  },
+  {
+    "courseNumber": "4023112",
+    "moduleNumber": "M-PHYS-102277"
+  },
+  {
+    "courseNumber": "4044021",
+    "moduleNumber": "M-PHYS-101927"
+  },
+  {
+    "courseNumber": "4044022",
+    "moduleNumber": "M-PHYS-101927"
+  },
+  {
+    "courseNumber": "4052051",
+    "moduleNumber": "M-PHYS-104577"
+  },
+  {
+    "courseNumber": "4052052",
+    "moduleNumber": "M-PHYS-104577"
+  },
+  {
+    "courseNumber": "4052061",
+    "moduleNumber": "M-PHYS-104577"
+  },
+  {
+    "courseNumber": "4052071",
+    "moduleNumber": "M-PHYS-104577"
+  },
+  {
+    "courseNumber": "4052081",
+    "moduleNumber": "M-PHYS-104577"
+  },
+  {
+    "courseNumber": "4052082",
+    "moduleNumber": "M-PHYS-104577"
+  },
+  {
+    "courseNumber": "4052101",
+    "moduleNumber": "M-PHYS-104577"
+  },
+  {
+    "courseNumber": "4052111",
+    "moduleNumber": "M-PHYS-104577"
+  },
+  {
+    "courseNumber": "4052112",
+    "moduleNumber": "M-PHYS-104577"
+  },
+  {
+    "courseNumber": "4052121",
+    "moduleNumber": "M-PHYS-104577"
+  },
+  {
+    "courseNumber": "4052131",
+    "moduleNumber": "M-PHYS-104577"
+  },
+  {
+    "courseNumber": "4052151",
+    "moduleNumber": "M-PHYS-104577"
+  },
+  {
+    "courseNumber": "4052152",
+    "moduleNumber": "M-PHYS-104577"
+  },
+  {
+    "courseNumber": "4052171",
+    "moduleNumber": "M-PHYS-104577"
+  },
+  {
+    "courseNumber": "4052172",
+    "moduleNumber": "M-PHYS-104577"
+  },
+  {
+    "courseNumber": "4052191",
+    "moduleNumber": "M-PHYS-104577"
+  },
+  {
+    "courseNumber": "4052194",
+    "moduleNumber": "M-PHYS-104577"
+  },
+  {
+    "courseNumber": "5000048",
+    "moduleNumber": "M-GEISTSOZ-103737"
+  },
+  {
+    "courseNumber": "5011004",
+    "moduleNumber": "M-GEISTSOZ-103737"
+  },
+  {
+    "courseNumber": "5011006",
+    "moduleNumber": "M-GEISTSOZ-103736"
+  },
+  {
+    "courseNumber": "5011007",
+    "moduleNumber": "M-GEISTSOZ-103737"
+  },
+  {
+    "courseNumber": "5011008",
+    "moduleNumber": "M-GEISTSOZ-103736"
+  },
+  {
+    "courseNumber": "5011011",
+    "moduleNumber": "M-GEISTSOZ-103737"
+  },
+  {
+    "courseNumber": "5011013",
+    "moduleNumber": "M-GEISTSOZ-103737"
+  },
+  {
+    "courseNumber": "5011018",
+    "moduleNumber": "M-GEISTSOZ-103736"
+  },
+  {
+    "courseNumber": "5011019",
+    "moduleNumber": "M-GEISTSOZ-103737"
+  },
+  {
+    "courseNumber": "5012001",
+    "moduleNumber": "M-GEISTSOZ-100614"
+  },
+  {
+    "courseNumber": "5012002",
+    "moduleNumber": "M-GEISTSOZ-107546"
+  },
+  {
+    "courseNumber": "5012007",
+    "moduleNumber": "M-GEISTSOZ-107546"
+  },
+  {
+    "courseNumber": "5012016",
+    "moduleNumber": "M-INFO-104941"
+  },
+  {
+    "courseNumber": "5012017",
+    "moduleNumber": "M-GEISTSOZ-107546"
+  },
+  {
+    "courseNumber": "5012019",
+    "moduleNumber": "M-GEISTSOZ-107546"
+  },
+  {
+    "courseNumber": "5012022",
+    "moduleNumber": "M-GEISTSOZ-107546"
+  },
+  {
+    "courseNumber": "5012046",
+    "moduleNumber": "M-GEISTSOZ-107546"
+  },
+  {
+    "courseNumber": "5012052",
+    "moduleNumber": "M-GEISTSOZ-104510"
+  },
+  {
+    "courseNumber": "5012070",
+    "moduleNumber": "M-GEISTSOZ-104510"
+  },
+  {
+    "courseNumber": "6232701",
+    "moduleNumber": "M-BGU-102963"
+  },
+  {
+    "courseNumber": "6232703",
+    "moduleNumber": "M-BGU-102963"
+  },
+  {
+    "courseNumber": "6232802",
+    "moduleNumber": "M-BGU-106811"
+  },
+  {
+    "courseNumber": "6232804",
+    "moduleNumber": "M-BGU-102963"
+  },
+  {
+    "courseNumber": "6232809",
+    "moduleNumber": "M-BGU-106811"
+  },
+  {
+    "courseNumber": "6232901",
+    "moduleNumber": "M-BGU-106811"
+  },
+  {
+    "courseNumber": "6232903",
+    "moduleNumber": "M-BGU-106811"
+  },
+  {
+    "courseNumber": "6232904",
+    "moduleNumber": "M-BGU-106811"
+  },
+  {
+    "courseNumber": "6232905",
+    "moduleNumber": "M-BGU-106811"
+  },
+  {
+    "courseNumber": "6232907",
+    "moduleNumber": "M-BGU-106811"
+  }
+]

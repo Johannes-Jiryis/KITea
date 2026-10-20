@@ -84,7 +84,15 @@ These are unverified external conditions, not completed deployment claims:
 6. Schedule `db:maintenance` for expired rate-limit keys and submission events older than 30 days.
 7. Run the full API benchmark through the real ingress and measure saturation, cold starts, error recovery and shutdown behavior.
 
-No production database has been queried or changed. No application has been published or deployed.
+At the initial production-readiness verification, no production database had been queried or changed and no application had been published or deployed. Subsequent explicitly authorized catalog maintenance is recorded below and in its linked reports.
+
+## Handbook-based consolidation, 20 October 2026
+
+The user supplied the 10 September 2026 Informatik Master PDF and approved adding alias support and consolidating the reviewed 359 course/parent candidates in the connected Supabase database. A complete PDF extraction revealed reused course numbers, title translations, and historical-semester differences. Final number/title/semester checks narrowed application to 114 aliases across 81 parents. The other 245 initially listed candidates remain unchanged pending further evidence; eligible entries outside the approved set were also excluded.
+
+The additive migration and verified aliases were applied after explicit approval. No modules or reviews were deleted. Both existing reviews were already on parents and remain intact; there are no separate alias reviews. Affected records and relationships were backed up privately before mutation, and a repeated scoped dry run proposed zero new aliases. Read-only checks verified the Machine Learning lecture/exercise and Sampling Methods examples resolve to their correct parents. Search deduplicates before its final limit; legacy URLs, APIs, form options and writes resolve the same parent. Imports reject reused numeric identifiers with different titles.
+
+Validation: 59 unit tests, 22 PostgreSQL integration tests, 3 Python extraction tests, fresh/repeated/upgrade migrations, lint, both TypeScript projects, a Chromium search/redirect/review/account lifecycle test, and an isolated Vercel-mode production build passed. The build used synthetic environment values and did not contact the production database. See [the exact applied scope and remaining entries](MODULE_CONSOLIDATION_REVIEW.md) and [the runbook](MODULE_CONSOLIDATION.md). Live deployment verification of the matching revision is a separate step.
 
 ## Sources used for implementation decisions
 
@@ -94,3 +102,5 @@ No production database has been queried or changed. No application has been publ
 - [react-markdown security](https://github.com/remarkjs/react-markdown#security)
 
 Dependency decisions also used installed package metadata and npm's current advisory responses. No broad framework major migration was required.
+
+Formatting for this change was checked against the explicit Git source-file list using Prettier and its existing ignores. The usual whole-directory command encountered Windows permissions on ignored temporary work directories; this does not affect a clean CI checkout.

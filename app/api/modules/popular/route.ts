@@ -5,6 +5,7 @@ export const GET = async (request: Request) => {
   try {
     await publicReadGuard(request);
     const modules = await getPrisma().module.findMany({
+      where: { canonicalModuleId: null },
       select: { moduleNumber: true, moduleName: true },
       orderBy: [{ reviews: { _count: "desc" } }, { moduleNumber: "asc" }],
       take: 6,

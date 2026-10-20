@@ -9,6 +9,14 @@ test("search to module, then authenticated create, edit and delete", async ({ pa
   await prisma.module.create({
     data: { id: "e2e-module", moduleNumber: "E2E-101", moduleName: "Integration Analysis" },
   });
+  await prisma.module.create({
+    data: {
+      id: "e2e-exercise",
+      moduleNumber: "2400999",
+      moduleName: "Exercise for Integration Analysis",
+      canonicalModuleId: "e2e-module",
+    },
+  });
   await prisma.semester.create({
     data: { id: "e2e-semester", name: "Wintersemester", year: 2026 },
   });
@@ -29,8 +37,11 @@ test("search to module, then authenticated create, edit and delete", async ({ pa
   ]);
   try {
     await page.goto("/");
-    await page.getByRole("combobox", { name: "Search modules by number or name" }).fill("E2E-101");
+    await page.getByRole("combobox", { name: "Search modules by number or name" }).fill("2400999");
     await page.getByRole("option").filter({ hasText: "E2E-101" }).click();
+    await expect(page).toHaveURL(/\/modules\/E2E-101$/);
+    await page.goto("/modules/2400999?sortBy=oldest");
+    await expect(page).toHaveURL(/\/modules\/E2E-101\?sortBy=oldest$/);
     await expect(
       page.getByRole("heading", { name: "Integration Analysis", exact: true }),
     ).toBeVisible();
@@ -45,6 +56,12 @@ test("search to module, then authenticated create, edit and delete", async ({ pa
       .fill("A detailed integration test review for this module.");
     await page.getByRole("button", { name: "Submit review", exact: true }).click();
     await expect(page).toHaveURL(/my-reviews/);
+    await page.goto("/modules/2400999");
+    await expect(page).toHaveURL(/\/modules\/E2E-101$/);
+    await expect(
+      page.getByText("A detailed integration test review for this module.", { exact: true }),
+    ).toBeVisible();
+    await page.goto("/my-reviews");
     await page.getByRole("link", { name: "Edit", exact: true }).click();
     await page
       .getByRole("textbox", { name: "Summary / recommendation" })

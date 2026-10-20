@@ -94,7 +94,11 @@ model Module {
   searchVector Unsupported("tsvector")?
   semesters    Semester[]
   reviews      Review[]
+  canonicalModuleId String?
+  canonicalModule Module? @relation("ModuleAliases", fields: [canonicalModuleId], references: [id], onDelete: Restrict)
+  aliases Module[] @relation("ModuleAliases")
 
+  @@index([canonicalModuleId])
   @@unique([moduleNumber])
   @@index([moduleNumber])
   @@index([moduleName])

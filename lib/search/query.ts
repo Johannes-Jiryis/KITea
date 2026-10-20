@@ -24,12 +24,23 @@ export const buildSearchQuery = (query: string) => {
       SELECT m.id, m."moduleNumber", m."moduleName", 5 AS rank,
         greatest(similarity(m."moduleName", ${query}), similarity(m."moduleNumber", ${query})) AS score
       FROM "Module" m
-      WHERE ${query.length >= 3} AND (SELECT count(*) FROM literal_matches) < 10
+      WHERE ${query.length >= 3} AND (
+          SELECT count(DISTINCT coalesce(source."canonicalModuleId", source.id))
+          FROM literal_matches l JOIN "Module" source ON source.id = l.id
+        ) < 10
         AND (m."moduleName" % ${query} OR m."moduleNumber" % ${query})
         AND NOT EXISTS (SELECT 1 FROM literal_matches l WHERE l.id = m.id)
+    ), resolved AS (
+      SELECT parent.id, parent."moduleNumber", parent."moduleName", matches.rank, matches.score,
+        row_number() OVER (
+          PARTITION BY parent.id ORDER BY matches.rank ASC, matches.score DESC, matches.id ASC
+        ) AS position
+      FROM (SELECT * FROM literal_matches UNION ALL SELECT * FROM fuzzy_matches) matches
+      JOIN "Module" source ON source.id = matches.id
+      JOIN "Module" parent ON parent.id = coalesce(source."canonicalModuleId", source.id)
     )
     SELECT id, "moduleNumber", "moduleName"
-    FROM (SELECT * FROM literal_matches UNION ALL SELECT * FROM fuzzy_matches) matches
+    FROM resolved WHERE position = 1
     ORDER BY rank ASC, score DESC, "moduleNumber" ASC, id ASC
     LIMIT 10`;
 };

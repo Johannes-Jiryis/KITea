@@ -6,6 +6,7 @@ import { HttpError } from "@/lib/http/errors";
 import { saveReview, removeReview } from "@/lib/reviews/service";
 import { invalidateReviews } from "@/lib/reviews/invalidate";
 import { apiError } from "@/lib/http/api";
+import { getModuleByNumber } from "@/lib/modules/get-module";
 import { semesterLabel, toReviewFormValues, type ReviewListItem } from "@/lib/reviews/serialize";
 import type { ReviewFormValues } from "@/lib/reviews/schema";
 
@@ -17,13 +18,7 @@ export const getReviewFormOptions = async (moduleId?: string): Promise<ReviewFor
   if (!(await auth())?.user?.id) return { modules: [], semesters: [] };
   const prisma = getPrisma();
   const [modules, semesters] = await Promise.all([
-    moduleId
-      ? prisma.module.findMany({
-          where: { id: moduleId },
-          take: 1,
-          select: { id: true, moduleNumber: true, moduleName: true },
-        })
-      : [],
+    moduleId ? getModuleByNumber(moduleId).then((module) => (module ? [module] : [])) : [],
     prisma.semester.findMany({ take: 100, orderBy: [{ year: "desc" }, { name: "asc" }] }),
   ]);
   return {

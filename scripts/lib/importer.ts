@@ -3,6 +3,7 @@ import type { PrismaClient } from "@prisma/client";
 import type { Logger } from "./logger";
 import { dedupeModules } from "./normalize";
 import { moduleTitleIssue } from "./module-title";
+import { handbookParent, sameCourseTitle } from "./handbook-links";
 import type {
   ImportModuleRecord,
   ImportOptions,
@@ -46,6 +47,7 @@ export async function importModules(
   logger: Logger,
 ): Promise<ImportResult> {
   const uniqueRecords = dedupeModules(records);
+  const inputNumbers = new Set(uniqueRecords.map((record) => record.moduleNumber));
   const invalid = uniqueRecords.filter((record) => moduleTitleIssue(record.moduleName));
   if (invalid.length) {
     throw new Error(
@@ -72,14 +74,20 @@ export async function importModules(
     errors: 0,
   };
 
-  for (const record of uniqueRecords) {
+  // Create handbook parents before their numeric course aliases in the same import.
+  for (const record of [...uniqueRecords].sort(
+    (a, b) => Number(/^\d/.test(a.moduleNumber)) - Number(/^\d/.test(b.moduleNumber)),
+  )) {
     try {
       const outcome = await upsertModuleForSemester(
         prisma,
         record,
         semester.id,
+        options.semesterName,
+        options.semesterYear,
         options.dryRun,
         logger,
+        inputNumbers,
       );
       stats[outcome]++;
     } catch (error) {
@@ -101,15 +109,69 @@ async function upsertModuleForSemester(
   prisma: PrismaClient,
   record: ImportModuleRecord,
   semesterId: string,
+  semesterName: SemesterName,
+  semesterYear: number,
   dryRun: boolean,
   logger: Logger,
+  inputNumbers: Set<string>,
 ): Promise<"created" | "linked" | "skipped"> {
   const existing = await prisma.module.findUnique({
     where: { moduleNumber: record.moduleNumber },
     include: {
+      canonicalModule: true,
       semesters: { where: { id: semesterId }, select: { id: true } },
     },
   });
+
+  const parentNumber = handbookParent(record.moduleNumber, record.moduleName, {
+    name: semesterName,
+    year: semesterYear,
+  });
+  if (
+    existing &&
+    /^\d/.test(record.moduleNumber) &&
+    !sameCourseTitle(existing.moduleName, record.moduleName)
+  )
+    throw new Error(
+      `Course number ${record.moduleNumber} has been reused for another title; review its identity before importing`,
+    );
+  const parent = parentNumber
+    ? await prisma.module.findUnique({ where: { moduleNumber: parentNumber } })
+    : null;
+  if (parentNumber && !parent && dryRun && inputNumbers.has(parentNumber) && !existing)
+    return "created";
+  if (parentNumber && !parent)
+    throw new Error(`Import parent ${parentNumber} before course ${record.moduleNumber}`);
+  if (existing?.canonicalModuleId && parent && existing.canonicalModuleId !== parent.id)
+    throw new Error(
+      `Course number ${record.moduleNumber} now refers to a different parent; review before importing`,
+    );
+  if (existing?.canonicalModuleId || parent) {
+    const target = existing?.canonicalModule ?? parent!;
+    if (!dryRun) {
+      // Existing unmerged entries need the reviewed consolidation command to transfer reviews first.
+      if (existing && !existing.canonicalModuleId)
+        throw new Error(`Consolidate existing course ${record.moduleNumber} before importing it`);
+      await prisma.module.update({
+        where: { id: target.id },
+        data: {
+          semesters: { connect: { id: semesterId } },
+          ...(!existing
+            ? {
+                aliases: {
+                  create: {
+                    moduleNumber: record.moduleNumber,
+                    moduleName: record.moduleName,
+                    semesters: { connect: { id: semesterId } },
+                  },
+                },
+              }
+            : {}),
+        },
+      });
+    }
+    return existing ? "linked" : "created";
+  }
 
   if (existing) {
     const alreadyLinked = existing.semesters.length > 0;

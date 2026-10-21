@@ -94,6 +94,10 @@ The additive migration and verified aliases were applied after explicit approval
 
 Validation: 59 unit tests, 22 PostgreSQL integration tests, 3 Python extraction tests, fresh/repeated/upgrade migrations, lint, both TypeScript projects, a Chromium search/redirect/review/account lifecycle test, and an isolated Vercel-mode production build passed. The build used synthetic environment values and did not contact the production database. See [the exact applied scope and remaining entries](MODULE_CONSOLIDATION_REVIEW.md) and [the runbook](MODULE_CONSOLIDATION.md). Live deployment verification of the matching revision is a separate step.
 
+## Supabase Security Advisor hardening, 21 October 2026
+
+At the owner's request, an additive migration pinned and schema-qualified both module-alias trigger functions, restricted direct internal-function execution by public API roles, and relocated `pg_trgm` to `extensions`. The existing automatic-RLS function body, owner and event trigger were retained. A rollback-only preview passed on Supabase before the actual migration. Live metadata checks verified all five reported warning conditions cleared, index identities/validity preserved, unchanged record counts, and working typo search. See [the hardening report](SECURITY_ADVISOR.md) for scope, evidence, deployment ordering, and recovery. Integration coverage now totals 26 PostgreSQL tests, including restricted execution and hostile-search-path regressions.
+
 ## Sources used for implementation decisions
 
 - [Next.js 15.5: stable Node middleware](https://nextjs.org/blog/next-15-5)

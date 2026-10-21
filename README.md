@@ -40,6 +40,8 @@ Browser tests use a signed local Auth.js test session on port 3101, with isolate
 
 ## Search and data access
 
+Database function and extension hardening, verification, and recovery are documented in [the Supabase Security Advisor report](docs/SECURITY_ADVISOR.md).
+
 Handbook-confirmed lectures and exercises share their parent module's review page. Search accepts legacy course names/numbers and returns the parent once; old links redirect there. Numeric course identifiers can be reused, so consolidation checks the handbook title and semester as well. See [the applied mapping and remaining candidates](docs/MODULE_CONSOLIDATION_REVIEW.md) and [the consolidation runbook](docs/MODULE_CONSOLIDATION.md) before changing catalog relationships.
 
 Search uses one parameterized PostgreSQL query with exact-code, prefix, full-text, substring and trigram relevance, deterministic ordering and a ten-result bound. It returns plain text. Two-character terms use literal substring/word matching; typo tolerance starts at three characters. Unicode compatibility forms and whitespace are normalized. Accents are preserved; transliteration is not promised. See [search benchmarks](docs/SEARCH_BENCHMARK.md).

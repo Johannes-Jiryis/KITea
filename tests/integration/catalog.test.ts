@@ -282,3 +282,20 @@ it("imports new parent/alias pairs atomically and previews the same batch withou
     ),
   ).toBe(true);
 });
+
+it("resolves trigger tables in public even when caller temp tables shadow their names", async () => {
+  await expect(
+    prisma.$transaction(async (tx) => {
+      await tx.$executeRaw`CREATE TEMP TABLE "Module" (unrelated integer) ON COMMIT DROP`;
+      await tx.$executeRaw`CREATE TEMP TABLE "Review" (unrelated integer) ON COMMIT DROP`;
+      await tx.$executeRaw`SET LOCAL search_path = pg_temp, public`;
+      await tx.$executeRaw`INSERT INTO public."Module" (id,"moduleNumber","moduleName","canonicalModuleId") VALUES ('security-alias','SEC-ALIAS','Alias','cat-parent')`;
+      await tx.$executeRaw`INSERT INTO public."Review" (id,"userId","moduleId","semesterTakenId","overallRating","difficultyRating","workloadRating","updatedAt") VALUES ('security-review','cat-u1','security-alias','cat-semester',4,3,2,now())`;
+      const [review] = await tx.$queryRaw<
+        { moduleId: string }[]
+      >`SELECT "moduleId" FROM public."Review" WHERE id='security-review'`;
+      expect(review.moduleId).toBe("cat-parent");
+      throw new Error("probe rollback");
+    }),
+  ).rejects.toThrow("probe rollback");
+});

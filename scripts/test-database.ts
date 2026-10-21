@@ -49,6 +49,8 @@ const main = async () => {
     await postgres.initialise();
     await postgres.start();
     await postgres.createDatabase("kitea_test");
+    if (mode === "integration")
+      await run("node_modules/tsx/dist/cli.mjs", ["scripts/test-security-fixture.ts"]);
     await run("node_modules/prisma/build/index.js", ["migrate", "deploy"]);
     // A second application must be a harmless no-op.
     await run("node_modules/prisma/build/index.js", ["migrate", "deploy"]);

@@ -22,13 +22,13 @@ export const buildSearchQuery = (query: string) => {
         OR "searchVector" @@ plainto_tsquery('simple', ${query})
     ), fuzzy_matches AS (
       SELECT m.id, m."moduleNumber", m."moduleName", 5 AS rank,
-        greatest(similarity(m."moduleName", ${query}), similarity(m."moduleNumber", ${query})) AS score
+        greatest(extensions.similarity(m."moduleName", ${query}), extensions.similarity(m."moduleNumber", ${query})) AS score
       FROM "Module" m
       WHERE ${query.length >= 3} AND (
           SELECT count(DISTINCT coalesce(source."canonicalModuleId", source.id))
           FROM literal_matches l JOIN "Module" source ON source.id = l.id
         ) < 10
-        AND (m."moduleName" % ${query} OR m."moduleNumber" % ${query})
+        AND (m."moduleName" OPERATOR(extensions.%) ${query} OR m."moduleNumber" OPERATOR(extensions.%) ${query})
         AND NOT EXISTS (SELECT 1 FROM literal_matches l WHERE l.id = m.id)
     ), resolved AS (
       SELECT parent.id, parent."moduleNumber", parent."moduleName", matches.rank, matches.score,
